@@ -28,6 +28,7 @@
   height: 353px;
   background-position: center bottom;
   position: absolute;
+  min-width: 100vw;
   width: 100%;
   top: 0px;
   z-index: -1;

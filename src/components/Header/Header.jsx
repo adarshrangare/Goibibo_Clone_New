@@ -1,11 +1,21 @@
-import React from 'react'
-
+import React from "react";
+import Logo from "./Logo";
+import MyAccount from "./MyAccount";
+import Navbar from "./Navbar";
+import "./style.css";
 const Header = () => {
   return (
-    <header>
-        
-    </header>
-  )
-}
+    <header className="w-full h-16 bg-white shadow-md">
+      <div className="w-full max-w-[1475px] mx-auto h-full flex items-center px-[50px] justify-between">
+        <div className="flex items-center h-full">
+          <Logo />
+          <Navbar />
+        </div>
 
-export default Header
+        <MyAccount />
+      </div>
+    </header>
+  );
+};
+
+export default Header;
