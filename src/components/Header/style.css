@@ -28,6 +28,11 @@
     @apply content-[""] w-[100%] h-[4px] bg-[color:var(--skyBlue)] absolute rounded-[5px] bottom-[0];
     
   }
+
+  .shadowup{
+    box-shadow: -0px -0px 5px 1px ;
+  }
+
 }
 
 

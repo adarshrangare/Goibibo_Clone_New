@@ -6,7 +6,7 @@ import "./style.css";
 const Header = () => {
   return (
     <header className="w-full h-16 bg-white shadow-md">
-      <div className="w-full max-w-[1475px] mx-auto h-full flex items-center px-[50px] justify-between">
+      <div className="w-full max-w-[1475px] mx-auto h-full flex items-center px-[50px] justify-between max-sm:px-1">
         <div className="flex items-center h-full">
           <Logo />
           <Navbar />
