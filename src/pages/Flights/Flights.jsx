@@ -1,8 +1,11 @@
 import React from 'react'
+import SearchSection from './SearchSection/SearchSection'
 
 const Flights = () => {
   return (
-    <div>Flights</div>
+    <main>
+      <SearchSection/>
+    </main>
   )
 }
 
