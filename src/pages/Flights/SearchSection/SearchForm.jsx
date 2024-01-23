@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import React, { useReducer, useState } from "react";
 
-import { InputField, RadioInput, SwapButton } from "../../../components";
+import { DatePicker, InputField, RadioInput, SearchButton, SwapButton } from "../../../components";
 
 function reducerFunction(state, action) {
 
@@ -13,6 +13,10 @@ function reducerFunction(state, action) {
     case "set_source_location": {
       return { ...state, source_location: action.payload.value };
     }
+    case "set_date_of_journey": {
+      // console.log(state.journey_location);
+      return { ...state, date_of_journey: action.payload.value };
+    }
 
     case "swap_location":{
 
@@ -21,6 +25,7 @@ function reducerFunction(state, action) {
       return{...state ,source_location: state.destination_location, destination_location : temp    }
 
     }
+
 
     default:
       return state;
@@ -31,9 +36,15 @@ const initialState = {
   source_location: "",
   destination_location: "",
   oneway: true,
-  number_of_Passanger: 1,
-  travel_class: "",
-  date_of_journey: dayjs(Date.now()).format("DD-MM-YYY"),
+  travel_details:{
+    numbers :{
+      adult : 1,
+      child : 0,
+      infant : 0
+    },
+    class:'economy'
+  },
+  date_of_journey: Date.now() ,
 };
 
 const SearchForm = () => {
@@ -42,12 +53,13 @@ const SearchForm = () => {
     initialState
   );
 
+  console.log(journeyDetails)
+
   const {
     source_location,
     destination_location,
     oneway,
-    number_of_Passanger,
-    travel_class,
+    travel_details,
     date_of_journey,
   } = journeyDetails;
 
@@ -58,7 +70,7 @@ const SearchForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full h-72 bg-white shadow-2xl rounded-md p-4 flex flex-col md:w-10/12 md:p-8"
+      className="w-full relative bg-white shadow-2xl rounded-2xl p-4 flex flex-col md:w-11/12 md:p-8"
     >
       <RadioInput
         label={"One-way"}
@@ -67,7 +79,7 @@ const SearchForm = () => {
         id={"one-way"}
       />
 
-      <div className="inputSection flex flex-col gap-1 w-full m-4 py-2 md:flex-row">
+      <div className="inputSection flex flex-col gap-1 w-full m-4 mx-auto py-2 md:flex-row  ">
         <div className="flex flex-col md:flex-row ">
           <InputField
             className=""
@@ -99,7 +111,37 @@ const SearchForm = () => {
             }}
           />
         </div>
+        <DatePicker
+            className=""
+            label="Departure"
+            placeholder="Enter date of journey"
+            id="date_of_journey"
+            min={dayjs(Date.now()).format('YYYY-MM-DD')}
+            inputValue={date_of_journey}
+            handleInput={(value) => {
+              console.log("handleDate")
+              dispatchJourneyDetails({
+                type: "set_date_of_journey",
+                payload: {value},
+              });
+            }}
+          />
 
+    <DatePicker
+            className=""
+            label="Departure"
+            placeholder="Enter date of journey"
+            id="date_of_journey"
+            min={dayjs(Date.now()).format('YYYY-MM-DD')}
+            inputValue={date_of_journey}
+            handleInput={(value) => {
+              console.log("handleDate")
+              dispatchJourneyDetails({
+                type: "set_date_of_journey",
+                payload: {value},
+              });
+            }}
+          />
 
             
         <div className="">
@@ -107,6 +149,9 @@ const SearchForm = () => {
 
         </div>
       </div>
+      
+      <SearchButton handleSubmit={""} type={"flights"} className="px-12 py-4 rounded-full text-base md:text-lg font-semibold text-white bg-orange-500 w-fit self-center absolute bottom-[-25px] hover:bg-orange-600 " />
+
     </form>
   );
 };

@@ -20,6 +20,8 @@ const SearchSection = () => {
         
         <SearchForm />
         
+        
+
 
     </section>
       </ContentWrapper>
