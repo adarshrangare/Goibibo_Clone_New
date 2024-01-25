@@ -53,6 +53,9 @@ const initialState = {
 };
 
 const SearchForm = () => {
+
+  const [inputSourceValue, setInputSourceValue] = useState('');
+  const [inputDestValue, setInputDestValue] = useState('');
   const [airportList, setAirportList] = useState([]);
   const [journeyDetails, dispatchJourneyDetails] = useReducer(
     reducerFunction,
@@ -73,11 +76,9 @@ const SearchForm = () => {
     e.preventDefault();
   }
 
-  useEffect(() => {
-    // fetchAirports().then((res) => {
-    //   setAirportList(res);
-    // });
-  }, []);
+  
+
+ 
 
   return (
     <form
@@ -98,8 +99,10 @@ const SearchForm = () => {
             label="From"
             placeholder="Enter city or airport"
             id="source_location"
-            inputValue={source_location}
-            handleInput={(value) => {
+            selectedValue={source_location}
+            inputValue={inputSourceValue}
+            setInputValue ={setInputSourceValue}
+            handleValue={(value) => {
               dispatchJourneyDetails({
                 type: "set_source_location",
                 payload: { value },
@@ -108,6 +111,9 @@ const SearchForm = () => {
           />
           <SwapButton
             handleSwap={() => {
+              const temp = inputDestValue;
+              setInputDestValue(inputSourceValue);
+              setInputSourceValue(temp);
               dispatchJourneyDetails({ type: "swap_location" });
             }}
             className="self-center swap-button flex items-center justify-center bg-white cursor-pointer  z-[1] rounded-xl border shadow-md w-9 h-9 m-[-20px] "
@@ -117,8 +123,10 @@ const SearchForm = () => {
             label="To"
             placeholder="Enter city or airport"
             id="destination_location"
-            inputValue={destination_location}
-            handleInput={(value) => {
+            inputValue={inputDestValue}
+            setInputValue ={setInputDestValue}
+            selectedValue={destination_location}
+            handleValue={(value) => {
               dispatchJourneyDetails({
                 type: "set_destination_location",
                 payload: { value },
