@@ -6,6 +6,8 @@ import InputField from "./SmallComponents/InputField/InputField";
 import SwapButton from "./SmallComponents/Buttons/SwapButton";
 import DatePicker from "./SmallComponents/DatePicker/DatePicker";
 import SearchButton from "./SmallComponents/Buttons/SearchButton";
+import Carousel from "./Carousel/Carousel";
+
 export {
   SearchButton,
   DatePicker,
@@ -15,4 +17,5 @@ export {
   RadioInput,
   InputField,
   SwapButton,
+  Carousel
 };

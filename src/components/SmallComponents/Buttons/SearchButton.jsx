@@ -2,7 +2,7 @@ import React from 'react'
 
 const SearchButton = ({type, className}) => {
   return (
-    <button className={`${className} uppercase`}>
+    <button className={`${className} uppercase transition-all `}>
         SEARCH {type}
     </button>
   )

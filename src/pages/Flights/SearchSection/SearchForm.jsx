@@ -1,11 +1,15 @@
 import dayjs from "dayjs";
-import React, { useReducer, useState } from "react";
-
-import { DatePicker, InputField, RadioInput, SearchButton, SwapButton } from "../../../components";
+import React, { useReducer, useState, useEffect } from "react";
+import { fetchAirports } from "../../../apis/FetchAirports";
+import {
+  DatePicker,
+  InputField,
+  RadioInput,
+  SearchButton,
+  SwapButton,
+} from "../../../components";
 
 function reducerFunction(state, action) {
-
-
   switch (action.type) {
     case "set_destination_location": {
       return { ...state, destination_location: action.payload.value };
@@ -18,14 +22,15 @@ function reducerFunction(state, action) {
       return { ...state, date_of_journey: action.payload.value };
     }
 
-    case "swap_location":{
-
+    case "swap_location": {
       const temp = state.source_location;
-      
-      return{...state ,source_location: state.destination_location, destination_location : temp    }
 
+      return {
+        ...state,
+        source_location: state.destination_location,
+        destination_location: temp,
+      };
     }
-
 
     default:
       return state;
@@ -36,24 +41,25 @@ const initialState = {
   source_location: "",
   destination_location: "",
   oneway: true,
-  travel_details:{
-    numbers :{
-      adult : 1,
-      child : 0,
-      infant : 0
+  travel_details: {
+    numbers: {
+      adult: 1,
+      child: 0,
+      infant: 0,
     },
-    class:'economy'
+    class: "economy",
   },
-  date_of_journey: Date.now() ,
+  date_of_journey: Date.now(),
 };
 
 const SearchForm = () => {
+  const [airportList, setAirportList] = useState([]);
   const [journeyDetails, dispatchJourneyDetails] = useReducer(
     reducerFunction,
     initialState
   );
 
-  console.log(journeyDetails)
+  // console.log(journeyDetails);
 
   const {
     source_location,
@@ -66,6 +72,12 @@ const SearchForm = () => {
   function handleSubmit(e) {
     e.preventDefault();
   }
+
+  useEffect(() => {
+    // fetchAirports().then((res) => {
+    //   setAirportList(res);
+    // });
+  }, []);
 
   return (
     <form
@@ -90,13 +102,16 @@ const SearchForm = () => {
             handleInput={(value) => {
               dispatchJourneyDetails({
                 type: "set_source_location",
-                payload: {value},
+                payload: { value },
               });
             }}
           />
-          <SwapButton handleSwap={ ()=>{
-            dispatchJourneyDetails({type:"swap_location" })
-          } } className="self-center swap-button flex items-center justify-center bg-white cursor-pointer  z-[1] rounded-xl border shadow-md w-9 h-9 m-[-20px] " />
+          <SwapButton
+            handleSwap={() => {
+              dispatchJourneyDetails({ type: "swap_location" });
+            }}
+            className="self-center swap-button flex items-center justify-center bg-white cursor-pointer  z-[1] rounded-xl border shadow-md w-9 h-9 m-[-20px] "
+          />
           <InputField
             className=""
             label="To"
@@ -106,52 +121,51 @@ const SearchForm = () => {
             handleInput={(value) => {
               dispatchJourneyDetails({
                 type: "set_destination_location",
-                payload: {value},
+                payload: { value },
               });
             }}
           />
         </div>
         <DatePicker
-            className=""
-            label="Departure"
-            placeholder="Enter date of journey"
-            id="date_of_journey"
-            min={dayjs(Date.now()).format('YYYY-MM-DD')}
-            inputValue={date_of_journey}
-            handleInput={(value) => {
-              console.log("handleDate")
-              dispatchJourneyDetails({
-                type: "set_date_of_journey",
-                payload: {value},
-              });
-            }}
-          />
+          className=""
+          label="Departure"
+          placeholder="Enter date of journey"
+          id="date_of_journey"
+          min={dayjs(Date.now()).format("YYYY-MM-DD")}
+          inputValue={date_of_journey}
+          handleInput={(value) => {
+            console.log("handleDate");
+            dispatchJourneyDetails({
+              type: "set_date_of_journey",
+              payload: { value },
+            });
+          }}
+        />
 
-    <DatePicker
-            className=""
-            label="Departure"
-            placeholder="Enter date of journey"
-            id="date_of_journey"
-            min={dayjs(Date.now()).format('YYYY-MM-DD')}
-            inputValue={date_of_journey}
-            handleInput={(value) => {
-              console.log("handleDate")
-              dispatchJourneyDetails({
-                type: "set_date_of_journey",
-                payload: {value},
-              });
-            }}
-          />
+        <DatePicker
+          className=""
+          label="Departure"
+          placeholder="Enter date of journey"
+          id="date_of_journey"
+          min={dayjs(Date.now()).format("YYYY-MM-DD")}
+          inputValue={date_of_journey}
+          handleInput={(value) => {
+            console.log("handleDate");
+            dispatchJourneyDetails({
+              type: "set_date_of_journey",
+              payload: { value },
+            });
+          }}
+        />
 
-            
-        <div className="">
-            
-
-        </div>
+        <div className=""></div>
       </div>
-      
-      <SearchButton handleSubmit={""} type={"flights"} className="px-12 py-4 rounded-full text-base md:text-lg font-semibold text-white bg-orange-500 w-fit self-center absolute bottom-[-25px] hover:bg-orange-600 " />
 
+      <SearchButton
+        handleSubmit={""}
+        type={"flights"}
+        className="px-12 py-4 rounded-full text-base md:text-lg font-semibold text-white bg-orange-500 w-fit self-center absolute bottom-[-25px] hover:bg-orange-600 "
+      />
     </form>
   );
 };

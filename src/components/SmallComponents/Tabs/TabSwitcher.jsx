@@ -2,17 +2,17 @@ import React from 'react'
 import { useState } from 'react';
 
 
-const TabSwitcher = ({tabs, }) => {
+const TabSwitcher = ({tabs,onTabChange }) => {
 
     const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-  const [left, setLeft] = useState(0);
+
 
   const activeTab = (tab, index) => {
     // setLeft(index * 100);
 
       setSelectedTabIndex(index);
 
-    onTabChange(tab, index);
+    onTabChange(tab);
   };
 
 
@@ -30,7 +30,7 @@ const TabSwitcher = ({tabs, }) => {
             {tab}
           </span>
         ))}
-        <span className="movingBg" style={{ left: left }}></span>
+
       </div>
     </div>
   )
