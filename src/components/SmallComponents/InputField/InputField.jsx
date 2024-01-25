@@ -77,7 +77,7 @@ const InputField = ({
       </label>
 
       {showSuggetion && (
-        <ul className="absolute w-fit min-w-full h-64 min-h-fit overflow-y-scroll bg-white border left-0 z-10 top-20 rounded-md ">
+        <ul className="absolute w-fit min-w-full h-fit max-h-48 overflow-y-scroll bg-white border left-0 z-10 top-20 rounded-md ">
           { airportsList.length > 0 ? airportsList?.map((airport) => (
             <li
               key={airport?._id}
@@ -99,7 +99,7 @@ const InputField = ({
                 </p>
               </p>
             </li>
-          )) : ( <div className="font-medium text-lg text-center w-full h-full flex justify-center items-center">NO RESULT FOUND</div> ) }
+          )) : ( <div className="font-medium text-slate-300 text-lg py-4 text-center w-full h-full flex justify-center items-center">NO RESULT FOUND</div> ) }
         </ul>
       )}
     </div>
