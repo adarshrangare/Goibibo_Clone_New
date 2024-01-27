@@ -31,7 +31,7 @@ const TravellersCount = ({ value, handleValue }) => {
 
       <label
         htmlFor={"id"}
-        className={`absolute -top-3 left-3 px-1 rounded bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm`}
+        className={`absolute -top-3 left-3 px-1 rounded bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm z-[2]`}
       >
         Travellers & Class
       </label>
@@ -97,7 +97,7 @@ const TravellersCount = ({ value, handleValue }) => {
         />
       </div>
       
-      
+
 
     </div>
   );
