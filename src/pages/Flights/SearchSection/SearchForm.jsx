@@ -8,6 +8,7 @@ import {
   SearchButton,
   SwapButton,
 } from "../../../components";
+import TravellersCount from "../../../components/SmallComponents/TravellersCount/TravellersCount";
 
 function reducerFunction(state, action) {
   switch (action.type) {
@@ -32,6 +33,23 @@ function reducerFunction(state, action) {
       };
     }
 
+    case "set_travel_details": {
+      const { travel_details } = state;
+      const { numbers } = travel_details;
+
+      if (action.secondType == "increase") {
+        numbers[action.target] += 1;
+
+        travel_details.numbers = { ...numbers };
+      } else if (action.secondType == "decrease") {
+        numbers[action.target] -= 1;
+
+        travel_details.numbers = { ...numbers };
+      }
+
+      return { ...state, travel_details };
+    }
+
     default:
       return state;
   }
@@ -53,9 +71,8 @@ const initialState = {
 };
 
 const SearchForm = () => {
-
-  const [inputSourceValue, setInputSourceValue] = useState('');
-  const [inputDestValue, setInputDestValue] = useState('');
+  const [inputSourceValue, setInputSourceValue] = useState("");
+  const [inputDestValue, setInputDestValue] = useState("");
   const [airportList, setAirportList] = useState([]);
   const [journeyDetails, dispatchJourneyDetails] = useReducer(
     reducerFunction,
@@ -76,10 +93,6 @@ const SearchForm = () => {
     e.preventDefault();
   }
 
-  
-
- 
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -92,7 +105,7 @@ const SearchForm = () => {
         id={"one-way"}
       />
 
-      <div className="inputSection flex flex-col gap-1 w-full m-4 mx-auto py-2 md:flex-row  ">
+      <div className="inputSection flex flex-col gap-1 w-full m-4 mx-auto py-2 md:flex-row md:items-center  ">
         <div className="flex flex-col md:flex-row ">
           <InputField
             className=""
@@ -101,7 +114,7 @@ const SearchForm = () => {
             id="source_location"
             selectedValue={source_location}
             inputValue={inputSourceValue}
-            setInputValue ={setInputSourceValue}
+            setInputValue={setInputSourceValue}
             handleValue={(value) => {
               dispatchJourneyDetails({
                 type: "set_source_location",
@@ -124,7 +137,7 @@ const SearchForm = () => {
             placeholder="Enter city or airport"
             id="destination_location"
             inputValue={inputDestValue}
-            setInputValue ={setInputDestValue}
+            setInputValue={setInputDestValue}
             selectedValue={destination_location}
             handleValue={(value) => {
               dispatchJourneyDetails({
@@ -150,23 +163,16 @@ const SearchForm = () => {
           }}
         />
 
-        <DatePicker
-          className=""
-          label="Departure"
-          placeholder="Enter date of journey"
-          id="date_of_journey"
-          min={dayjs(Date.now()).format("YYYY-MM-DD")}
-          inputValue={date_of_journey}
-          handleInput={(value) => {
-            console.log("handleDate");
+        <TravellersCount
+          value={travel_details}
+          handleValue={(secondType, target) => {
             dispatchJourneyDetails({
-              type: "set_date_of_journey",
-              payload: { value },
+              type: "set_travel_details",
+              secondType: secondType,
+              target: target,
             });
           }}
         />
-
-        <div className=""></div>
       </div>
 
       <SearchButton

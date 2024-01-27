@@ -36,7 +36,7 @@ const OfferSection = () => {
 
       <TabSwitcher
         onTabChange={onTabChange}
-        tabs={["All", "Flights", "Hotels", "Buses", "Trains", "Cabs"]}
+        tabs={["All", "Flights", "Hotels", "Trains", "Cabs","Holidays"]}
       />
 
       <Carousel offers={offers} loading={loading} />

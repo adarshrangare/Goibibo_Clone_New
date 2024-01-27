@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "./style.css";
 import { fetchAirports } from "../../../apis/FetchAirports";
 import { useState } from "react";
+import autoprefixer from "autoprefixer";
 const InputField = ({
   label,
   placeholder,
@@ -67,6 +68,7 @@ const InputField = ({
         onChange={(e) => {
           console.log(e.target.value);
           handleInput(e.target.value);
+          autocomplete="off"
         }}
       />
       <label
