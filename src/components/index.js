@@ -8,6 +8,8 @@ import DatePicker from "./SmallComponents/DatePicker/DatePicker";
 import SearchButton from "./SmallComponents/Buttons/SearchButton";
 import Carousel from "./Carousel/Carousel";
 import TravellersCount from "./SmallComponents/TravellersCount/TravellersCount";
+import TabSwitcher from "./SmallComponents/Tabs/TabSwitcher";
+import PrimaryButton from "./SmallComponents/Buttons/PrimaryButton";
 export {
   SearchButton,
   DatePicker,
@@ -18,5 +20,7 @@ export {
   InputField,
   SwapButton,
   Carousel,
-  TravellersCount
+  TravellersCount,
+  TabSwitcher,
+  PrimaryButton
 };

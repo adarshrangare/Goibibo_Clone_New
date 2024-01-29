@@ -37,7 +37,7 @@ const TravellersCount = ({ value, handleValue }) => {
       </label>
 
       <div
-        className={`counter absolute top-20 -left-1 bg-white rounded shadow-all w-96 p-4 px-8 z-[2] flex flex-col md:right-0 md:left-auto  transition-all duration-500 origin-top-left ${
+        className={`counter absolute top-20 -left-1 bg-white rounded shadow-all w-[250px] md:w-96 p-4 px-8 z-[2] flex flex-col md:right-0 md:left-auto  transition-all duration-500 origin-top-left ${
           showMenu ? "scale-100 " : "scale-0"
         }`}
       >
