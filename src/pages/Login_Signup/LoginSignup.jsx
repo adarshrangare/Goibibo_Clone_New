@@ -16,9 +16,9 @@ const LoginSignup = () => {
 
       {displayComponent === "Log In"
         ? 
-        <LoginPage/>
+        <LoginPage />
         : 
-        <SignUpPage/>
+        <SignUpPage />
         }
     </div>
   );

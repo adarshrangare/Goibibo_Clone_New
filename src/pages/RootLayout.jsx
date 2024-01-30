@@ -1,11 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import {Header} from '../components'
+import { Header } from "../components";
 import Login from "../components/Modals/LoginModal/Login";
+import { ToastContainer, toast } from "react-toastify";
 const RootLayout = () => {
   return (
     <>
-      <Header/>
+      <div className="toast absolute z-50 ">
+       
+      </div>
+      <Header />
       <main>
         <Outlet />
       </main>

@@ -10,6 +10,8 @@ import Carousel from "./Carousel/Carousel";
 import TravellersCount from "./SmallComponents/TravellersCount/TravellersCount";
 import TabSwitcher from "./SmallComponents/Tabs/TabSwitcher";
 import PrimaryButton from "./SmallComponents/Buttons/PrimaryButton";
+import Inputbox from "./SmallComponents/BasicInputBox/Inputbox";
+
 export {
   SearchButton,
   DatePicker,
@@ -22,5 +24,6 @@ export {
   Carousel,
   TravellersCount,
   TabSwitcher,
-  PrimaryButton
+  PrimaryButton,
+  Inputbox
 };
