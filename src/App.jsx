@@ -6,13 +6,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { Flights, RootLayout, Hotels, Trains, Bus, MyTrip, Profile } from "./pages";
+import { Flights, RootLayout, Hotels, Trains, Bus, MyTrip, Profile,FlightSearch } from "./pages";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Flights />} />
       <Route path="/flight" element={<Flights />} />
+      <Route path="/flight/:searchQuery" element={<FlightSearch/>} />
       <Route path="/hotels" element={<Hotels />} />
       <Route path="/trains" element={<Trains />} />
       <Route path="/bus" element={<Bus />} />

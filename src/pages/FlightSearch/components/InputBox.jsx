@@ -1,12 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
-import "./style.css";
 import { fetchAirports } from "../../../apis/FetchAirports";
 import { useState } from "react";
-import { useFlightPassanger } from "../../../context";
-
-
-const InputField = ({
+import autoprefixer from "autoprefixer";
+const InputBox = ({
   label,
   placeholder,
   id,
@@ -14,16 +11,12 @@ const InputField = ({
   selectedValue,
   handleValue,
   inputValue,
-  setInputValue,
+  setInputValue
 }) => {
   // const [inputValue, setInputValue] = useState("");
   const [OGairportsList, setOGAirportsList] = useState(null);
   const [airportsList, setAirportsList] = useState(null);
   const [showSuggetion, setShowSuggetion] = useState(false);
-
-  const {journeyDetails} = useFlightPassanger();
-
-  console.log(journeyDetails);
 
   useEffect(() => {
     fetchAirports().then((res) => {
@@ -64,60 +57,49 @@ const InputField = ({
   }
 
   return (
-    <div className={`inputBox flex relative p-0 `}>
+    <div className={` relative p-0 `}>
       <input
         placeholder={placeholder ? placeholder : "Enter your text"}
         type={type}
         id={id}
         value={inputValue}
-        className="w-full relative rounded-lg m-3 focus:outline-none  border-2 border-solid border-slate-200 hover:border-slate-500 focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 "
+        className="h-8 rounded-lg bg-blue-800 font-medium px-4 py-2 text-white focus:outline-none w-48"
         onChange={(e) => {
           console.log(e.target.value);
           handleInput(e.target.value);
-          autocomplete = "off";
+          autocomplete="off"
         }}
       />
-      <label
-        htmlFor={id}
-        className="absolute top-[2px] left-6 px-1 rounded bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm "
-      >
-        {label ? label : "Input"}
-      </label>
+      
 
       {showSuggetion && (
         <ul className="absolute w-fit min-w-full h-fit max-h-48 overflow-y-scroll bg-white border left-0 z-10 top-20 rounded-md ">
-          {airportsList.length > 0 ? (
-            airportsList?.map((airport) => (
-              <li
-                key={airport?._id}
-                onClick={() => {
-                  handleSelect(airport);
-                }}
-                className="flex py-2 px-3 gap-3 hover:bg-sky-100 cursor-pointer"
-              >
-                <img
-                  src="https://gos3.ibcdn.com/flightIcon-1675492260.png"
-                  alt="flight Icon"
-                  className="p-2 w-10 h-10"
-                />
-                <p className="font-medium text-slate-700 ">
-                  {airport?.city}, {airport?.country}{" "}
-                  <span>({airport?.iata_code})</span>
-                  <p className="font-normal text-xs text-slate-400 ">
-                    {airport?.name}
-                  </p>
+          { airportsList.length > 0 ? airportsList?.map((airport) => (
+            <li
+              key={airport?._id}
+              onClick={() => {
+                handleSelect(airport);
+              }}
+              className="flex py-2 px-3 gap-3 hover:bg-sky-100 cursor-pointer"
+            >
+              <img
+                src="https://gos3.ibcdn.com/flightIcon-1675492260.png"
+                alt="flight Icon"
+                className="p-2 w-10 h-10"
+              />
+              <p className="font-medium text-slate-700 ">
+                {airport?.city}, {airport?.country}{" "}
+                <span>({airport?.iata_code})</span>
+                <p className="font-normal text-xs text-slate-400 ">
+                  {airport?.name}
                 </p>
-              </li>
-            ))
-          ) : (
-            <div className="font-medium text-slate-300 text-lg py-4 text-center w-full h-full flex justify-center items-center">
-              NO RESULT FOUND
-            </div>
-          )}
+              </p>
+            </li>
+          )) : ( <div className="font-medium text-slate-300 text-lg py-4 text-center w-full h-full flex justify-center items-center">NO RESULT FOUND</div> ) }
         </ul>
       )}
     </div>
   );
 };
 
-export default InputField;
+export default InputBox;

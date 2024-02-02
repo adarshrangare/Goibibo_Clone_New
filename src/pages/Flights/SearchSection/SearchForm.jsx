@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import React, { useReducer, useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchAirports } from "../../../apis/FetchAirports";
 import {
   DatePicker,
@@ -11,14 +12,14 @@ import {
 } from "../../../components";
 import { useFlightPassanger } from "../../../context/";
 
-
-
 const SearchForm = () => {
   const [inputSourceValue, setInputSourceValue] = useState("");
   const [inputDestValue, setInputDestValue] = useState("");
-  const {journeyDetails, dispatchJourneyDetails} = useFlightPassanger();
-  
-  console.log("context",useFlightPassanger())
+  const { journeyDetails, dispatchJourneyDetails } = useFlightPassanger();
+
+  // console.log("context",useFlightPassanger())
+
+  const pathname = useLocation().pathname;
 
   const {
     source_location,
@@ -28,13 +29,34 @@ const SearchForm = () => {
     date_of_journey,
   } = journeyDetails;
 
+  const navigate = useNavigate();
   function handleSubmit(e) {
-    e.preventDefault();
+    const { adult, child, infant } = travel_details?.numbers;
+
+    if(source_location == destination_location){
+      alert("Both airports are the same, Please Select Different Airports");
+      return;
+    }
+
+
+    if (pathname.includes("flight")) {
+      navigate(
+        `air-${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
+      );
+    } else {
+      navigate(
+        `flight/air-${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
+      );
+    }
   }
+
+  // console.log(navigate);
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
       className="w-full relative bg-white shadow-2xl rounded-2xl p-4 flex flex-col md:w-11/12 md:p-8"
     >
       <RadioInput
@@ -115,7 +137,7 @@ const SearchForm = () => {
       </div>
 
       <SearchButton
-        handleSubmit={""}
+        handleSubmit={handleSubmit}
         type={"flights"}
         className="px-12 py-4 rounded-full text-base md:text-lg font-semibold text-white bg-orange-500 w-fit self-center absolute bottom-[-25px] hover:bg-orange-600 "
       />

@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import Counter from "../Counter/Counter";
+import { Counter } from "../../../components/";
 
-const TravellersCount = ({ value, handleValue }) => {
+const Travellers = ({ value, handleValue }) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div
-      className={`text-left  relative border-2 rounded-md p-0 m-3 min-w-[200px] w-fit h-[74.5px] hover:border-slate-500 cursor-pointer ${
-        showMenu ? "border-blue-500" : ""
-      } `}
+      className={`h-8 bg-blue-800  rounded-lg flex items-center justify-center`}
       onClick={() => {
         setShowMenu(true);
       }}
     >
-      <p className="font-medium leading-0 px-4 pt-2 m-0">
+      <p className="font-medium text-white  px-4 py-2 cursor-pointer ">
         {value?.numbers?.adult} {value?.numbers?.adult > 1 ? "Adults" : "Adult"}
         {value?.numbers?.child > 0
           ? value?.numbers?.child > 1
@@ -25,19 +23,9 @@ const TravellersCount = ({ value, handleValue }) => {
             : ", " + value?.numbers?.infant + " Infant"
           : ""}
       </p>
-      <span className="py-0 px-4 m-0 font-thin text-xs capitalize">
-        {value?.class}
-      </span>
-
-      <label
-        htmlFor={"id"}
-        className={`absolute -top-3 left-3 px-1 rounded bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm z-[2]`}
-      >
-        Travellers & Class
-      </label>
 
       <div
-        className={`counter absolute top-20 -left-1 bg-white rounded shadow-all w-[250px] md:w-96 p-4 px-8 z-[2] flex flex-col md:right-0 md:left-auto  transition-all duration-500 origin-top-left ${
+        className={`counter absolute top-[95%]   bg-white rounded shadow-all w-[250px] md:w-96 p-4 px-8 z-[20] flex flex-col  md:left-auto  transition-all duration-500 origin-top-left ${
           showMenu ? "scale-100 " : "scale-0"
         }`}
       >
@@ -61,7 +49,9 @@ const TravellersCount = ({ value, handleValue }) => {
           count={value?.numbers?.adult}
           disabledNeg={value?.numbers?.adult == 1}
           disabledPos={
-            value?.numbers?.adult + value?.numbers?.child + value?.numbers?.infant ===
+            value?.numbers?.adult +
+              value?.numbers?.child +
+              value?.numbers?.infant ===
             9
           }
           handleClick={(secondType) => {
@@ -74,7 +64,9 @@ const TravellersCount = ({ value, handleValue }) => {
           count={value?.numbers?.child}
           disabledNeg={value?.numbers?.child == 0}
           disabledPos={
-            value?.numbers?.adult + value?.numbers?.child + value?.numbers?.infant ==
+            value?.numbers?.adult +
+              value?.numbers?.child +
+              value?.numbers?.infant ==
             9
           }
           handleClick={(secondType) => {
@@ -88,7 +80,9 @@ const TravellersCount = ({ value, handleValue }) => {
           disabledNeg={value?.numbers?.infant == 0}
           disabledPos={
             value?.numbers?.adult <= value?.numbers?.infant ||
-            value?.numbers?.adult + value?.numbers?.child + value?.numbers?.infant ==
+            value?.numbers?.adult +
+              value?.numbers?.child +
+              value?.numbers?.infant ==
               9
           }
           handleClick={(secondType) => {
@@ -96,11 +90,8 @@ const TravellersCount = ({ value, handleValue }) => {
           }}
         />
       </div>
-      
-
-
     </div>
   );
 };
 
-export default TravellersCount;
+export default Travellers;

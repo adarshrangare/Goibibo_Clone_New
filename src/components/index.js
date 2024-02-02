@@ -11,6 +11,7 @@ import TravellersCount from "./SmallComponents/TravellersCount/TravellersCount";
 import TabSwitcher from "./SmallComponents/Tabs/TabSwitcher";
 import PrimaryButton from "./SmallComponents/Buttons/PrimaryButton";
 import Inputbox from "./SmallComponents/BasicInputBox/Inputbox";
+import Counter from "./SmallComponents/Counter/Counter";
 
 export {
   SearchButton,
@@ -25,5 +26,6 @@ export {
   TravellersCount,
   TabSwitcher,
   PrimaryButton,
-  Inputbox
+  Inputbox,
+  Counter
 };

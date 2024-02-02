@@ -4,10 +4,11 @@ export function reducerFunction(state, action) {
       return { ...state, destination_location: action.payload.value };
     }
     case "set_source_location": {
+      console.log("setting...");
       return { ...state, source_location: action.payload.value };
     }
     case "set_date_of_journey": {
-      // console.log(state.journey_location);
+        
       return { ...state, date_of_journey: action.payload.value };
     }
 
@@ -43,17 +44,4 @@ export function reducerFunction(state, action) {
   }
 }
 
-export const initialState = {
-  source_location: "",
-  destination_location: "",
-  oneway: true,
-  travel_details: {
-    numbers: {
-      adult: 1,
-      child: 0,
-      infant: 0,
-    },
-    class: "economy",
-  },
-  date_of_journey: Date.now(),
-};
+

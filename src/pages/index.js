@@ -6,6 +6,7 @@ import Hotels from "./Hotels/Hotels";
 import MyTrip from "./MyTrip/MyTrip";
 import Profile from "./Profile/Profile";
 import Trains from "./Trains/Trains";
+import FlightSearch from "./FlightSearch/FlightSearch";
 
 export {Bus,
 Trains,
@@ -13,5 +14,7 @@ Profile,
 MyTrip,
 Hotels,
 Flights,
-RootLayout}
+FlightSearch,
+RootLayout,
+}
  
