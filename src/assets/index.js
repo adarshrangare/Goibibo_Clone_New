@@ -1,3 +1,3 @@
-import image from './advertisement.jpg';
+import image from "./advertisment.jpg";
 
 export default image;
