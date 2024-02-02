@@ -17,7 +17,7 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
 
   const { searchQuery } = useParams();
   const [location,date,counts] = searchQuery.split("--");
-
+  console.log(date);
   const [type,source,dest] = location.split("-");
   const [adult,child,infant] = counts.split("-");
 
@@ -58,10 +58,7 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
 
   const [inputSourceValue, setInputSourceValue] = useState(source);
   const [inputDestValue, setInputDestValue] = useState(dest);
-  const [inputDate, setInputDate] = useState(date);
-  const [inputAdult, setInputAdult] = useState(adult);
-  const [inputChild, setInputChild] = useState(child);
-  const [inputInfant, setInputInfant] = useState(infant);
+  const [expand, setExpand] = useState(false);
 
   const navigate = useNavigate();
   function handleSearch(){
@@ -77,7 +74,7 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
 
   return (
     <div className="flex flex-col pt-1 pb-6 md:flex-row w-full lg:w-10/11 justify-center">
-      <div className="flex my-2 w-full md:w-fit lg:w-fit justify-center ">
+      <div className="flex overflow-x-hidden px-2 my-2 w-full md:w-fit lg:w-fit justify-center ">
         {/* <input type="text" className='h-8 rounded-lg bg-blue-800 font-medium px-4 py-2 text-white focus:outline-none w-48'
             
             /> */}
@@ -123,12 +120,13 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
           }}
         />
       </div>
+     
       <div className="flex my-2 mx-auto justify-center md:justify-start md:w-fit lg:w-fit gap-2 md:mx-4 ">
         
         <DatePicker
           className="bg-blue-800 outline-none border-none font-medium h-8 hover:bg-blue-800 text-white px-2 py-2 "
           locale={locale}
-          min={dayjs(Date.now()).format("YYYY-MM-DD")}
+          
           format={"DD-MM-YYYY"}
           value={dayjs(date_of_journey)}
           onChange={(value) => {
@@ -165,6 +163,8 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
         onClick={handleSearch}
         className="px-8 py-2 mt-1 bg-orange-500 w-fit mx-auto rounded-full font-medium text-base text-white hover:bg-orange-600 outline-none focus:outline-none absolute -bottom-6 left-[50%] translate-x-[-50%]  uppercase transition-all"
       > UPDATE SEARCH</button>
+
+
     </div>
   );
 };

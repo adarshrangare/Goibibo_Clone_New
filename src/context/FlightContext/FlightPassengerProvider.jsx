@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React, { useReducer } from "react";
 import { createContext, useContext } from "react";
 // import { reducerFunction } from "../../utils/flightPassangerReducer";
@@ -69,7 +70,7 @@ const initialState = {
     },
     class: "economy",
   },
-  date_of_journey: Date.now(),
+  date_of_journey: dayjs().format("YYYY-MM-DD") ,
 };
 
 const FlightPassengerContext = createContext();

@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import React from "react";
 // import "./style.css";
 
@@ -20,6 +20,7 @@ const DatePicker = ({
         type="date"
         id={id}
         min={min}
+        // value="2018-07-22"
         value={dayjs(inputValue).format('YYYY-MM-DD')}
         className="w-fit relative rounded-lg m-3 focus:outline-none  border-2 border-solid border-slate-200 bg-white hover:border-slate-500 focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 "
         onChange={(e) => {
