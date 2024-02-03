@@ -63,7 +63,7 @@ const InputBox = ({
         type={type}
         id={id}
         value={inputValue}
-        className="h-8 rounded-lg bg-blue-800 font-medium px-4 py-2 text-white focus:outline-none w-48"
+        className="h-8 rounded-lg bg-blue-800 font-medium px-4 py-2 text-white focus:outline-none w-44 md:w-52"
         onChange={(e) => {
           console.log(e.target.value);
           handleInput(e.target.value);
