@@ -20,6 +20,7 @@ import {
 FilterTwoTone 
 } from '@ant-design/icons';
 import "./style.css";
+import Filter from "./components/Filter";
 const FlightSearch = () => {
   useEffect(() => {
     document.querySelector(".bgSvg").style.display = "none";
@@ -64,18 +65,18 @@ const FlightSearch = () => {
   const [results, setResults] = useState(0);
   const [flightsList, setFlightsList] = useState([]);
   const [sortValue, setSortValue] = useState("");
+  const [filterValue, setFilterValue] = useState("")
   const [showFilter,setShowFilter] = useState("true");
-
   useEffect(() => {
     const day = dayjs(date).format("ddd");
-    fetchFlights(source, dest, day, 10, page,sortValue).then((response) => {
+    fetchFlights(source, dest, day, 10, page,sortValue,filterValue).then((response) => {
       console.log({ response });
       // setFlightsList((prev) => [...prev, ...response]);
       setTotal(response?.totalResults);
       setResults(response?.results);
       setFlightsList(response?.data?.flights);
     });
-  }, [page, source, dest, date,sortValue]);
+  }, [page, source, dest, date,sortValue,filterValue]);
 
 
 
@@ -109,11 +110,7 @@ const FlightSearch = () => {
 
                   <button className="md:hidden absolute -top-6 -right-6 w-6 h-6 bg-white rounded-full shadow-even " onClick={()=>{setShowFilter(false)}}>x</button>
 
-                  <div className="w-full h-full">
-
-                    <h3>Departure</h3>
-
-                  </div>
+                  <Filter flightsList={flightsList} setFlightsList= {setFlightsList}  filterValue = {filterValue} setFilterValue={setFilterValue}/>
 
                 
               </div>
