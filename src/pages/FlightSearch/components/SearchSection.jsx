@@ -3,7 +3,8 @@ import { RadioInput } from "../../../components";
 import { useFlightPassanger } from "../../../context/FlightContext/FlightPassengerProvider";
 import InputSection from "./InputSection";
 
-const SearchSection = ({journeyDetails, dispatchJourneyDetails}) => {
+const SearchSection = ({journeyDetails, dispatchJourneyDetails,flightsList,
+  setFlightsList}) => {
   
   
   return (
@@ -14,7 +15,8 @@ const SearchSection = ({journeyDetails, dispatchJourneyDetails}) => {
         labelClass="text-xs"
       />
 
-      <InputSection journeyDetails={journeyDetails}  dispatchJourneyDetails={dispatchJourneyDetails} />
+      <InputSection flightsList={flightsList}
+            setFlightsList={setFlightsList} journeyDetails={journeyDetails}  dispatchJourneyDetails={dispatchJourneyDetails} />
       
     </>
   );

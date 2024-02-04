@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { airlineData } from "../../../utils/constants";
-
+import FlightDetails from "./FlightDetails";
+import {DownOutlined
+} from '@ant-design/icons';
+import { FaAngleDown,FaAngleUp } from "react-icons/fa";
 const FlightCard = ({
+  _id,
   airline,
   source,
   destination,
@@ -11,8 +15,11 @@ const FlightCard = ({
   arrivalTime,
   departureTime,
 }) => {
+
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
-    <article className="card w-full border-2 rounded-xl h-fit py-4 px-2 hover:shadow-even transition-shadow bg-white">
+    <article className="card w-full border-2 relative rounded-xl h-fit py-4 px-2 hover:shadow-even transition-all bg-white  duration-500 scale-[98%] hover:scale-100">
       <div className=" ml-4 pb-3 flex gap-4">
         {" "}
         <img
@@ -33,7 +40,7 @@ const FlightCard = ({
           <div className="time font-semibold">{departureTime}</div>
         </div>
         <div className="duration basis-[23.3%] text-center">
-          <div className="stop text-xs truncate text-slate-500 capitalize">
+          <div className={`stop text-xs truncate text-slate-500  capitalize border-b-4 ${duration > 2 ? duration < 5 ? "border-yellow-300" : " border-red-300" :"border-green-300"} `}>
             {stops == 0 ? "Non-Stop" : stops == 1 ? "1 stop" : stops + " stops"}
           </div>
           <div className="duration font-semibold">{duration + " hrs"}</div>
@@ -52,7 +59,15 @@ const FlightCard = ({
             Book Ticket
           </button>
         </div>
+
       </div>
+
+      { showDetails && <FlightDetails flightId ={_id}  />}
+      
+      <div className="font-medium text-center text-xs text-blue-600 cursor-pointer select-none transition-all" onClick={()=>{
+        setShowDetails(prev=>!prev)
+      }}>{showDetails ?<>Hide Details <FaAngleUp className="inline"/></> :<>Show Details <FaAngleDown className="inline"/></>} </div>
+
     </article>
   );
 };

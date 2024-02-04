@@ -9,42 +9,19 @@ import Travellers from "./Travellers";
 import locale from "antd/es/date-picker/locale/en_US";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { fetchFlights } from "../../../apis/FetchFlights";
 
 // import 'dayjs/locale/zh-cn';
 
-const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
+const InputSection = ({ journeyDetails, dispatchJourneyDetails,flightsList,
+  setFlightsList }) => {
   console.log(journeyDetails);
 
   const { searchQuery } = useParams();
   const [location,date,counts] = searchQuery.split("--");
-  console.log(date);
+  // console.log(date);
   const [type,source,dest] = location.split("-");
   const [adult,child,infant] = counts.split("-");
-
-  // useEffect(()=>{
-  //   dispatchJourneyDetails({
-  //     type: "set_source_location",
-  //     payload: { value:source },
-  //   });
-
-  //   dispatchJourneyDetails({
-  //     type: "set_destination_location",
-  //     payload: { value:dest },
-  //   });
-
-  //   dispatchJourneyDetails({
-  //     type: "set_date_of_journey",
-  //     payload: { value: date },
-  //   });
-  //   dispatchJourneyDetails({
-  //     type: "set_travel_details_numbers",
-  //     payload: { value: {adult,child,infant} },
-  //   });
-
-    
-
-  // },[])
-
   
   const {
     source_location,
@@ -66,8 +43,18 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
       console.log("hello")
 
       const {adult,child,infant} = travel_details.numbers;
-
+      
       navigate(`/flight/air-${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`)
+      const day = dayjs(date).format("ddd");
+      fetchFlights(source, dest, day, 10, page,sortValue,filterValue).then((response) => {
+        console.log({ response });
+        // setFlightsList((prev) => [...prev, ...response]);
+        setTotal(response?.totalResults);
+        setResults(response?.results);
+        setFlightsList(response?.data?.flights);
+      });
+
+      fetchFlights();
 
   }
 
@@ -75,9 +62,7 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails }) => {
   return (
     <div className="flex flex-col pt-1 pb-6 md:flex-row w-full lg:w-10/11 justify-center">
       <div className="flex overflow-x-hidden px-2 my-2 w-full md:w-fit lg:w-fit justify-center ">
-        {/* <input type="text" className='h-8 rounded-lg bg-blue-800 font-medium px-4 py-2 text-white focus:outline-none w-48'
-            
-            /> */}
+        
 
         <InputBox
           className=""

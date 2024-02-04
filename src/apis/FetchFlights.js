@@ -35,3 +35,7 @@ export const fetchFlights = async (
   }
 };
 
+
+// filter
+
+// `/flight?search={"source":"${source}","destination":"${destination}"}&day=${day}&sort={${sort}}&limit=${limit}&page=${page}${filter ? `&filter={${filter.stop ? `` : ""}}`:""}`

@@ -12,6 +12,7 @@ import TabSwitcher from "./SmallComponents/Tabs/TabSwitcher";
 import PrimaryButton from "./SmallComponents/Buttons/PrimaryButton";
 import Inputbox from "./SmallComponents/BasicInputBox/Inputbox";
 import Counter from "./SmallComponents/Counter/Counter";
+import SelectButton from "./SmallComponents/SelectButton/SelectButton";
 
 export {
   SearchButton,
@@ -27,5 +28,6 @@ export {
   TabSwitcher,
   PrimaryButton,
   Inputbox,
-  Counter
+  Counter,
+  SelectButton
 };

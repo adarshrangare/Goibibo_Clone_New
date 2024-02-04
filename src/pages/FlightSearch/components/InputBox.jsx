@@ -57,23 +57,24 @@ const InputBox = ({
   }
 
   return (
-    <div className={` relative p-0 `}>
+    <div className={`p-0 `}>
       <input
         placeholder={placeholder ? placeholder : "Enter your text"}
         type={type}
         id={id}
         value={inputValue}
+        autoComplete="off"
         className="h-8 rounded-lg bg-blue-800 font-medium px-4 py-2 text-white focus:outline-none w-44 md:w-52"
         onChange={(e) => {
           console.log(e.target.value);
           handleInput(e.target.value);
-          autocomplete="off"
+          
         }}
       />
       
 
       {showSuggetion && (
-        <ul className="absolute w-fit min-w-full h-fit max-h-48 overflow-y-scroll bg-white border left-0 z-10 top-20 rounded-md ">
+        <ul className="relative max-md:absolute w-44 md:w-52  min-w-fit h-fit max-h-48 overflow-y-scroll bg-white border  z-20  rounded-md ">
           { airportsList.length > 0 ? airportsList?.map((airport) => (
             <li
               key={airport?._id}
@@ -87,13 +88,13 @@ const InputBox = ({
                 alt="flight Icon"
                 className="p-2 w-10 h-10"
               />
-              <p className="font-medium text-slate-700 ">
+              <div className="font-medium text-slate-700 ">
                 {airport?.city}, {airport?.country}{" "}
                 <span>({airport?.iata_code})</span>
                 <p className="font-normal text-xs text-slate-400 ">
                   {airport?.name}
                 </p>
-              </p>
+              </div>
             </li>
           )) : ( <div className="font-medium text-slate-300 text-lg py-4 text-center w-full h-full flex justify-center items-center">NO RESULT FOUND</div> ) }
         </ul>

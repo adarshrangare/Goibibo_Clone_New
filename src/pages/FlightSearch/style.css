@@ -18,3 +18,16 @@
   display: none !important;
 }
 
+.ant-slider-track{
+    background: coral !important;
+    
+}
+.ant-slider .ant-slider-handle::after{
+    width: 20px !important;
+    height: 20px !important;
+    inset-block-start: -5px !important;
+}
+.ant-slider .ant-slider-handle::before{
+    width: 24px !important;
+    height: 24px !important;
+}

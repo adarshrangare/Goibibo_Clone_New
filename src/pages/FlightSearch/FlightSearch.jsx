@@ -21,6 +21,9 @@ FilterTwoTone
 } from '@ant-design/icons';
 import "./style.css";
 import Filter from "./components/Filter";
+
+
+
 const FlightSearch = () => {
   useEffect(() => {
     document.querySelector(".bgSvg").style.display = "none";
@@ -60,14 +63,20 @@ const FlightSearch = () => {
     });
   }, []);
 
+  const {source_location,destination_location,date_of_journey} = journeyDetails
+
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(10);
   const [results, setResults] = useState(0);
   const [flightsList, setFlightsList] = useState([]);
   const [sortValue, setSortValue] = useState("");
   const [filterValue, setFilterValue] = useState("")
-  const [showFilter,setShowFilter] = useState("true");
+  const [showFilter,setShowFilter] = useState(false);
+
+  const [searchQuery2,setSearchQuery] = useState(useParams().searchQuery)
+
   useEffect(() => {
+
     const day = dayjs(date).format("ddd");
     fetchFlights(source, dest, day, 10, page,sortValue,filterValue).then((response) => {
       console.log({ response });
@@ -76,7 +85,7 @@ const FlightSearch = () => {
       setResults(response?.results);
       setFlightsList(response?.data?.flights);
     });
-  }, [page, source, dest, date,sortValue,filterValue]);
+  }, [searchQuery2,page, source_location, destination_location, date_of_journey,sortValue,filterValue]);
 
 
 
@@ -84,12 +93,15 @@ const FlightSearch = () => {
   return (
     <div className="mx-auto w-full">
       <div
-        className={`sticky p-0 m-0 top-0 left-0 right-0 z-10 bg-blue-500 w-screen h-fit`}
+        className={`sticky p-0 m-0 top-0 left-0 right-0 z-10 bg-blue-500 w-screen  h-48 md:h-32  `}
       >
         <ContentWrapper>
           <SearchSection
             journeyDetails={journeyDetails}
             dispatchJourneyDetails={dispatchJourneyDetails}
+            setResults={setResults}
+            setTotal={setTotal}
+            setFlightsList={setFlightsList}
           />
         </ContentWrapper>
       </div>
@@ -99,12 +111,12 @@ const FlightSearch = () => {
         <div className="filterSection basis-1/4 ">
 
             
-              <button className="px-4 md:hidden" onClick={()=>{
-                setShowFilter(true)
+              <button className="px-4 sm:hidden" onClick={()=>{
+                setShowFilter(prev=>!prev)
               }}> <FilterTwoTone /> Filter Flights</button>
-              <div className="px-4 max-md:hidden"> <FilterTwoTone /> Filter Flights</div>
+              <div className="px-4 max-sm:hidden"> <FilterTwoTone /> Filter Flights</div>
 
-            <div className={` ${showFilter ? 'scale-100' : 'scale-0'} w-10/12 md:w-full  bg-white md:h-[120vh] h-fit md:mt-4 rounded-xl border hover:shadow-even transition-all origin-top-left absolute left-8 md:left-auto md:relative p-4 z-[2] `}>
+            <div className={` ${showFilter ? 'max-sm:scale-100' : 'max-sm:scale-0'} w-10/12 md:w-full  bg-white md:h-[120vh] h-fit md:mt-4 rounded-xl border hover:shadow-even transition-all origin-top-left absolute left-8 md:left-auto md:relative p-4 z-[2] `}>
               
               <div className="w-full h-full relative">
 
