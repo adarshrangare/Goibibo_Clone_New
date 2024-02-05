@@ -21,6 +21,7 @@ export const fetchFlights = async (
         `/flight?search={"source":"${source}","destination":"${destination}"}&day=${day}&sort={${sort}}&filter={${filter}}&limit=${limit}&page=${page}`
       );
       //  console.log(res?.data);
+      
       return res?.data;
     } else {
       const res = await AxiosInstance.get(

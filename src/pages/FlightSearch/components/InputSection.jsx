@@ -15,14 +15,25 @@ import { fetchFlights } from "../../../apis/FetchFlights";
 
 const InputSection = ({ journeyDetails, dispatchJourneyDetails,flightsList,
   setFlightsList }) => {
-  console.log(journeyDetails);
 
   const { searchQuery } = useParams();
-  const [location,date,counts] = searchQuery.split("--");
-  // console.log(date);
-  const [type,source,dest] = location.split("-");
-  const [adult,child,infant] = counts.split("-");
+  console.log({searchQuery});
+
+  const encodedString = searchQuery ?? '' ;
+
+  const extractedEncodedPath = encodedString.replace('air-', '');
+  console.log(extractedEncodedPath);
+  // console.log(encoded);
+  const decodedPath = atob(extractedEncodedPath);
+
+  console.log(decodedPath);
+
+  const [location, date, counts] =  decodedPath?.split("--");
+  console.log(location,date,counts);
   
+  const [source, dest] = location?.split("-");
+
+  const [adult, child, infant] = counts?.split("-");
   const {
     source_location,
     destination_location,
@@ -45,16 +56,9 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails,flightsList,
       const {adult,child,infant} = travel_details.numbers;
       
       navigate(`/flight/air-${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`)
-      const day = dayjs(date).format("ddd");
-      fetchFlights(source, dest, day, 10, page,sortValue,filterValue).then((response) => {
-        console.log({ response });
-        // setFlightsList((prev) => [...prev, ...response]);
-        setTotal(response?.totalResults);
-        setResults(response?.results);
-        setFlightsList(response?.data?.flights);
-      });
+      
 
-      fetchFlights();
+      
 
   }
 

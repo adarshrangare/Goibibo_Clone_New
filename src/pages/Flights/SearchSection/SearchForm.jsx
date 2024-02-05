@@ -38,14 +38,18 @@ const SearchForm = () => {
       return;
     }
 
+    const encodedPath = btoa(`${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`)
 
     if (pathname.includes("flight")) {
+
+
+
       navigate(
-        `air-${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
+        `air-${encodedPath}`
       );
     } else {
       navigate(
-        `flight/air-${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
+        `flight/air-${encodedPath}`
       );
     }
   }
