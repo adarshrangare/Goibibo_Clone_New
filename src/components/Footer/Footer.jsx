@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer class="text-gray-400 body-font mt-10 mb-[65px] lg:mb-0 bg-white py-8 shadow-even">
+    <footer className="text-gray-400 body-font mt-10 mb-[65px] lg:mb-0 bg-white py-8 shadow-even">
       <ContentWrapper>
         <div className="flex flex-col px-10">
           <div className="flex items-center justify-between flex-col md:flex-row ">

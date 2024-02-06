@@ -1,21 +1,41 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { createContext } from "react";
 import { useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [loginOpen, setLoginOpen] = useState(false);
-
+  
   const [userDetail, setUserDetails] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(true);
 
-  // function toggleLoginModal() {
-  //   setLoginOpen((prev) => !prev);
-  // }
+  const [token,setToken] = useLocalStorage("token",null);
+
+  function logOutFunc(){
+    if(localStorage.getItem("token"))
+
+    localStorage.removeItem("token");
+
+    alert("user is Logged Out");
+
+    setIsLoggedIn(false);
+    setUserDetails({});
+  }
+
+  useEffect(()=>{
+    if(token){
+      setIsLoggedIn(true);
+      setLoginOpen(false)
+    }
+
+  },[token])
+
+
 
   return (
     <AuthContext.Provider
-      value={{ userDetail, isLoggedIn, loginOpen, setIsLoggedIn, setLoginOpen }}
+      value={{ setToken,userDetail, isLoggedIn, loginOpen, setIsLoggedIn, setLoginOpen,setUserDetails, logOutFunc }}
     >
       {children}
     </AuthContext.Provider>

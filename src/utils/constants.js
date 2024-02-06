@@ -27,7 +27,110 @@ export const airlineData = {
   },
 };
 
-export const airportData = [
+export const cityData = {
+  HYD: {
+    name: "Rajiv Gandhi International Airport",
+    city: "Hyderabad",
+    country: "India",
+  },
+  AMD: {
+    name: "Sardar Vallabhbhai Patel International Airport",
+    city: "Ahmedabad",
+    country: "India",
+  },
+  GOI: {
+    name: "Goa International Airport",
+    city: "Goa",
+    country: "India",
+  },
+  PNQ: {
+    name: "Pune Airport",
+    city: "Pune",
+    country: "India",
+  },
+  GAU: {
+    name: "Lokpriya Gopinath Bordoloi International Airport",
+    city: "Guwahati",
+    country: "India",
+  },
+  JAI: {
+    name: "Jaipur International Airport",
+    city: "Jaipur",
+    country: "India",
+  },
+  NAG: {
+    name: "Dr. Babasaheb Ambedkar International Airport",
+    city: "Nagpur",
+    country: "India",
+  },
+  DEL: {
+    name: "Indira Gandhi International Airport",
+    city: "Delhi",
+    country: "India",
+  },
+  BOM: {
+    name: "Chhatrapati Shivaji Maharaj International Airport",
+    city: "Mumbai",
+    country: "India",
+  },
+  BLR: {
+    name: "Kempegowda International Airport",
+    city: "Bengaluru",
+    country: "India",
+  },
+  CCU: {
+    name: "Netaji Subhas Chandra Bose International Airport",
+    city: "Kolkata",
+    country: "India",
+  },
+  MAA: {
+    name: "Chennai International Airport",
+    city: "Chennai",
+    country: "India",
+  },
+  COK: {
+    name: "Cochin International Airport",
+    city: "Kochi",
+    country: "India",
+  },
+  IXC: {
+    name: "Chandigarh International Airport",
+    city: "Chandigarh",
+    country: "India",
+  },
+  BBI: {
+    name: "Biju Patnaik International Airport",
+    city: "Bhubaneswar",
+    country: "India",
+  },
+  CJB: {
+    name: "Coimbatore International Airport",
+    city: "Coimbatore",
+    country: "India",
+  },
+  LKO: {
+    name: "Lucknow International Airport",
+    city: "Lucknow",
+    country: "India",
+  },
+  TRV: {
+    name: "Trivandrum International Airport",
+    city: "Thiruvananthapuram",
+    country: "India",
+  },
+  IXE: {
+    name: "Mangalore International Airport",
+    city: "Mangalore",
+    country: "India",
+  },
+  ATQ: {
+    name: "Amritsar International Airport",
+    city: "Amritsar",
+    country: "India",
+  },
+};
+
+const airportData = [
   {
     _id: "6514309e348f6fafa1b86600",
     name: "Rajiv Gandhi International Airport",

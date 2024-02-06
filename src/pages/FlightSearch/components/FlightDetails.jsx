@@ -11,7 +11,7 @@ import {
   MdLocalOffer,
   MdFlightTakeoff,
 } from "react-icons/md";
-import { airlineData } from "../../../utils/constants";
+import { airlineData, cityData } from "../../../utils/constants";
 import { GiDuffelBag } from "react-icons/gi";
 
 const FlightDetails = ({ flightId }) => {
@@ -53,7 +53,8 @@ const FlightDetails = ({ flightId }) => {
                   className="w-6 h-6 rounded-lg "
                 />
                 <div className="pt-2 truncate ">
-                  {airlineData[flightDetails.airline]?.airline_name}
+                  {airlineData[flightDetails?.airline]?.airline_name}
+                  
                 </div>
                 <div className="truncate text-ellipsis">
                   {flightName(flightDetails?.flightID)}
@@ -63,6 +64,7 @@ const FlightDetails = ({ flightId }) => {
               <div className="flightname flex items-center justify-center gap-1 h-full max-sm:flex-col max-sm:px-2 ">
                 <div className="inline-block font-medium">
                   {flightDetails?.source}
+                  {/* {cityData[flightDetails?.source]} */}
                 </div>
 
                 <div className="inline-block font-normal text-slate-400">

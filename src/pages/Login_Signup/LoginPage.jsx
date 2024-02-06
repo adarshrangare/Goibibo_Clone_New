@@ -1,8 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import loginAPI from "../../apis/Login";
 import { PrimaryButton, Inputbox } from "../../components";
+import { useAuth } from "../../context/AuthProvider";
 
 const LoginPage = () => {
+  const { setUserDetails, setToken } = useAuth();
+
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState(false);
 
@@ -11,7 +15,8 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-  const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+  const passwordRegex =
+    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
 
   const validateEmail = (email) => {
     return emailRegex.test(email);
@@ -34,32 +39,43 @@ const LoginPage = () => {
       return;
     }
 
-    if(!validateEmail(email)){
-        setErrorMessage("Enter Valid Email Address");
-        return;
+    if (!validateEmail(email)) {
+      setErrorMessage("Enter Valid Email Address");
+      return;
     }
-    if(!validatePassword(password)){
-        setErrorMessage("Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long");
-        return;
+    if (!validatePassword(password)) {
+      setErrorMessage(
+        "Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long"
+      );
+      return;
     }
 
-    alert("success")
+    loginAPI(email, password).then(
+      (res) => {
+        
+        if(res?.data){
+          console.log("responseLoginApi",res?.data);
 
 
+          setUserDetails(res?.data?.data);
+          setToken(res?.data?.token);
+        alert("success");
+        }
 
+        
+      }
+    );
 
-    setEmail('')
-    setPassword('')
-    setPasswordErr('')
-    setEmailErr('')
-    setErrorMessage('')
-
-
+    setEmail("");
+    setPassword("");
+    setPasswordErr("");
+    setEmailErr("");
+    setErrorMessage("");
   }
 
   return (
     <div className="container w-10/12 mx-auto">
-        <span className="errorMsg text-red-500 text-sm">{errorMessage} </span>
+      <span className="errorMsg text-red-500 text-sm">{errorMessage} </span>
       <form onSubmit={handleSignIn}>
         <Inputbox
           label={"Email"}
@@ -68,7 +84,6 @@ const LoginPage = () => {
           error={emailErr}
           value={email}
           onChange={(e) => {
-            
             setEmailErr(false);
             setEmail(e.target.value);
           }}

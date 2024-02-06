@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+src/test.java
+test.java
 
 # Editor directories and files
 .vscode/*

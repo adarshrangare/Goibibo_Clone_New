@@ -22,28 +22,17 @@ import Filter from "./components/Filter";
 import { endOfDay } from "date-fns";
 
 const FlightSearch = () => {
-  useEffect(() => {
-    document.querySelector(".bgSvg").style.display = "none";
-
-    return () => {
-      document.querySelector(".bgSvg").style.display = "block";
-    };
-  }, []);
-
+  
   const { searchQuery } = useParams();
-  console.log({searchQuery});
 
   const encodedString = searchQuery ?? '' ;
 
   const extractedEncodedPath = encodedString.replace('air-', '');
-  console.log(extractedEncodedPath);
-  // console.log(encoded);
+
   const decodedPath = atob(extractedEncodedPath);
 
-  console.log(decodedPath);
 
   const [location, date, counts] =  decodedPath?.split("--");
-  console.log(location,date,counts);
   
   const [source, dest] = location?.split("-");
 

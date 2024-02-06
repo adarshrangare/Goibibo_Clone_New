@@ -66,4 +66,11 @@
     --yDir: 56%;
 }
 
+.user .logout{
+  transform: translateX(-110%);
+  transition: all ease-in-out 0.2s;
+}
 
+.user:hover .logout{
+  transform: translateX(0%);
+}

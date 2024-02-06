@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import loginAPI from "../../apis/SignUp";
 import { Inputbox, PrimaryButton } from "../../components";
+import { useAuth } from "../../context/AuthProvider";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
@@ -27,9 +30,8 @@ const SignUpPage = () => {
   const validatePassword = (password) => {
     return passwordRegex.test(password);
   };
-  const validateFullName = (name) => {
-    return fullNameRegex.test(name);
-  };
+
+  const { setToken, setUserDetails } = useAuth();
 
   function handleSignUp(e) {
     e.preventDefault();
@@ -47,7 +49,7 @@ const SignUpPage = () => {
 
     if (password.trim().length == 0) {
       setPasswordErr(true);
-      
+
       setErrorMessage("Enter a Password");
       return;
     }
@@ -61,7 +63,6 @@ const SignUpPage = () => {
       return;
     }
     if (!validatePassword(password)) {
-      
       setErrorMessage(
         "Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long"
       );
@@ -75,9 +76,17 @@ const SignUpPage = () => {
       return;
     }
 
-    alert("success");
+    loginAPI(name, email, password).then((res) => {
+      console.log("signup", res);
+      // setToken(res);
+      if (res) {
+        setUserDetails(res?.data?.data?.user);
+        setToken(res?.data?.token);
+        alert("SignUp Success");
+      }
+    });
 
-    setName("")
+    setName("");
     setEmail("");
     setPassword("");
     setConfirmPassword("");
@@ -136,7 +145,7 @@ const SignUpPage = () => {
         />
 
         <PrimaryButton
-          label={"Log In"}
+          label={"Sign Up"}
           className="mt-2 px-12 py-4 bg-orange-500 hover:bg-orange-600 font-semibold text-white"
         />
       </form>
