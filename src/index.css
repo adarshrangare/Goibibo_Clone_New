@@ -33,7 +33,7 @@ body{
 }
 
 
-.bgSvg {
+.bgSvgFlight {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNDQwJyBoZWlnaHQ9JzI1NicgZmlsbD0nbm9uZSc+PHBhdGggZmlsbD0ndXJsKCNhKScgZmlsbC1ydWxlPSdldmVub2RkJyBkPSdNMTQ0MCAxNjcuMjA3QzEyMjQuNjIgMjIzLjY1NSA5ODAuNTczIDI1NS41IDcyMiAyNTUuNWMtMjYwLjE3NSAwLTUwNS42NDQtMzIuMjQxLTcyMi04OS4zNDVWMGgxNDQwdjE2Ny4yMDdaJyBjbGlwLXJ1bGU9J2V2ZW5vZGQnLz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9J2EnIHgxPScwJyB4Mj0nMTA0OC43MycgeTE9JzAnIHkyPSc3ODcuODM2JyBncmFkaWVudFVuaXRzPSd1c2VyU3BhY2VPblVzZSc+PHN0b3Agc3RvcC1jb2xvcj0nI0ZGNkQzOCcvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nI0RCN0EyMScvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==");
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,4 +44,51 @@ body{
   width: 100%;
   top: 0px;
   z-index: -1;
+}
+
+.bgSvgHotel{
+
+  width: 86rem;
+  height: 80rem;
+  background-image: linear-gradient(97.59deg, rgba(255, 109, 56,0.8) 0%, rgba(219, 122, 33,0.9) 100.53%);
+  border-radius: 50%;
+  position: fixed;
+  top: -53rem;
+  left: -69rem;
+  transform: translate(50%);
+  z-index: -2;
+  box-shadow: 2rem 2rem 1px 0 rgba(250, 192, 138, 0.4) ,5rem 3rem 1px 0 rgba(250, 192, 138, 0.4)  ;
+}
+
+.bgSvgTrain1{
+  position: fixed;
+  top: -20px;
+  width: 100%;
+  z-index: -1;
+  background: url(https://gos3.ibcdn.com/trains-bg-home-1698304355.png) 0 100% no-repeat;
+  height: 500px;
+  background-size: cover;
+}
+.bgSvgTrain2{
+  position: fixed;
+  z-index: -2;
+  top: 10px;
+  width: 100%;
+  background: url(https://gos3.ibcdn.com/bg_light-1668596646.svg) 0 100% no-repeat;
+  height: 500px;
+  background-size: cover;
+}
+
+.bgSvgBus{
+
+  width: 86rem;
+  height: 80rem;
+  background-image: linear-gradient(97.59deg, rgb(2, 161, 253) 0%, rgba(33, 132, 219, 0.9) 100.53%);
+  border-radius: 50%;
+  position: fixed;
+  top: -45rem;
+  left: -60rem;
+  transform: translate(50%);
+  z-index: -2;
+  box-shadow: 2.5rem 1rem 1px 0 rgba(68, 174, 255, 0.4) ;
 }

@@ -1,10 +1,16 @@
 import React from 'react'
+import { ContentWrapper } from '../../components'
 
 const Hotels = () => {
   return (
-    <div>
-      Hotels
-    </div>
+    <main>
+        <div className="bgSvgHotel"></div>
+        <ContentWrapper>
+
+             
+
+        </ContentWrapper>
+      </main>
   )
 }
 
