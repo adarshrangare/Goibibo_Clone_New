@@ -260,7 +260,7 @@ const FlightSearch = () => {
           <FlightsContainer flightsList={flightsList} />
 
           <Pagination
-            className=""
+            className="my-4 flex items-center justify-center"
             total={total}
             onChange={(page) => {
               setPage(page);

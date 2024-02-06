@@ -61,37 +61,45 @@ const FlightDetails = ({ flightId }) => {
                 </div>
               </div>
 
-              <div className="flightname flex items-center justify-center gap-1 h-full max-sm:flex-col max-sm:px-2 ">
-                <div className="inline-block font-medium">
-                  {flightDetails?.source}
-                  {/* {cityData[flightDetails?.source]} */}
+              <div className="flightname flex flex-col items-center justify-center h-full max-sm:flex-col max-sm:px-2 ">
+                <div className="flex items-center justify-center gap-1  max-sm:flex-col max-sm:px-2 ">
+                  <div className="inline-block font-medium">
+                    {flightDetails?.source}
+                  
+                  </div>
+                  <div className="inline-block font-normal text-slate-400">
+                    {flightDetails?.departureTime}
+                  </div>
                 </div>
-
-                <div className="inline-block font-normal text-slate-400">
-                  {flightDetails?.departureTime}
+                <div className="text-xs text-slate-400 w-9/12 font-normal text-center wrap max-sm:hidden ">
+                {cityData[flightDetails?.source]?.name} {", "} {cityData[flightDetails?.source]?.city}
                 </div>
               </div>
               <div className="h-full flex justify-center items-center text-slate-400 text-sm px-1">
                 {" "}
                 <span className="inline-block w-2 h-2 bg-blue-600 mt-[1px] rounded-full shrink-0"></span>{" "}
                 <span className="shrink-0">---</span>
-                <span className="hidden md:inline">-------</span>
+                <span className="hidden md:inline text-nowrap">-----</span>
                 <span className="text-slate-800 font-medium text-xs shrink-0">
                   {" "}
                   {flightDetails?.duration +
                     ` ${flightDetails?.duration > 1 ? "hrs" : "hr"}`}{" "}
                 </span>
-                <span className="hidden md:inline">-------</span>
+                <span className="hidden md:inline text-nowrap ">-----</span>
                 <span className="shrink-0">---</span>
                 <MdFlight className="rotate-90 text-2xl text-blue-600 mt-[3px] shrink-0" />
               </div>
-              <div className="flightname flex items-center justify-center gap-1 h-full max-sm:flex-col max-sm:px-2 ">
-                <div className="inline-block font-medium">
-                  {flightDetails?.destination}
+              <div className="flightname flex flex-col items-center justify-center h-full max-sm:flex-col max-sm:px-2 ">
+                <div className="flex items-center justify-center gap-1  max-sm:flex-col max-sm:px-2 ">
+                  <div className="inline-block font-medium">
+                    {flightDetails?.destination}
+                  </div>
+                  <div className="inline-block font-normal text-slate-400">
+                    {flightDetails?.arrivalTime}
+                  </div>
                 </div>
-
-                <div className="inline-block font-normal text-slate-400">
-                  {flightDetails?.arrivalTime}
+                <div className="text-xs text-slate-400 w-9/12 font-normal text-center wrap max-sm:hidden">
+                {cityData[flightDetails?.destination]?.name} {", "} {cityData[flightDetails?.destination]?.city}
                 </div>
               </div>
             </div>

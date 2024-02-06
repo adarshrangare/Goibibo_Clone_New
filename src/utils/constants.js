@@ -28,102 +28,102 @@ export const airlineData = {
 };
 
 export const cityData = {
-  HYD: {
+  "HYD": {
     name: "Rajiv Gandhi International Airport",
     city: "Hyderabad",
     country: "India",
   },
-  AMD: {
+  "AMD": {
     name: "Sardar Vallabhbhai Patel International Airport",
     city: "Ahmedabad",
     country: "India",
   },
-  GOI: {
+  "GOI": {
     name: "Goa International Airport",
     city: "Goa",
     country: "India",
   },
-  PNQ: {
+  "PNQ": {
     name: "Pune Airport",
     city: "Pune",
     country: "India",
   },
-  GAU: {
+  "GAU": {
     name: "Lokpriya Gopinath Bordoloi International Airport",
     city: "Guwahati",
     country: "India",
   },
-  JAI: {
+  "JAI": {
     name: "Jaipur International Airport",
     city: "Jaipur",
     country: "India",
   },
-  NAG: {
+  "NAG": {
     name: "Dr. Babasaheb Ambedkar International Airport",
     city: "Nagpur",
     country: "India",
   },
-  DEL: {
+  "DEL": {
     name: "Indira Gandhi International Airport",
     city: "Delhi",
     country: "India",
   },
-  BOM: {
+  "BOM": {
     name: "Chhatrapati Shivaji Maharaj International Airport",
     city: "Mumbai",
     country: "India",
   },
-  BLR: {
+  "BLR": {
     name: "Kempegowda International Airport",
     city: "Bengaluru",
     country: "India",
   },
-  CCU: {
+  "CCU": {
     name: "Netaji Subhas Chandra Bose International Airport",
     city: "Kolkata",
     country: "India",
   },
-  MAA: {
+  "MAA": {
     name: "Chennai International Airport",
     city: "Chennai",
     country: "India",
   },
-  COK: {
+  "COK": {
     name: "Cochin International Airport",
     city: "Kochi",
     country: "India",
   },
-  IXC: {
+  "IXC": {
     name: "Chandigarh International Airport",
     city: "Chandigarh",
     country: "India",
   },
-  BBI: {
+  "BBI": {
     name: "Biju Patnaik International Airport",
     city: "Bhubaneswar",
     country: "India",
   },
-  CJB: {
+  "CJB": {
     name: "Coimbatore International Airport",
     city: "Coimbatore",
     country: "India",
   },
-  LKO: {
+  "LKO": {
     name: "Lucknow International Airport",
     city: "Lucknow",
     country: "India",
   },
-  TRV: {
+  "TRV": {
     name: "Trivandrum International Airport",
     city: "Thiruvananthapuram",
     country: "India",
   },
-  IXE: {
+  "IXE": {
     name: "Mangalore International Airport",
     city: "Mangalore",
     country: "India",
   },
-  ATQ: {
+  "ATQ": {
     name: "Amritsar International Airport",
     city: "Amritsar",
     country: "India",
