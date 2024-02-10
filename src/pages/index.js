@@ -7,6 +7,8 @@ import MyTrip from "./MyTrip/MyTrip";
 import Profile from "./Profile/Profile";
 import Trains from "./Trains/Trains";
 import FlightSearch from "./FlightSearch/FlightSearch";
+import ProtectedRoute from "./ProtectedRoutes";
+import HotelSearch from "./HotelSearch/HotelSearch";
 
 export {Bus,
 Trains,
@@ -16,5 +18,7 @@ Hotels,
 Flights,
 FlightSearch,
 RootLayout,
+ProtectedRoute,
+HotelSearch,
 }
  

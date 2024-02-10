@@ -18,7 +18,7 @@ export const fetchFlights = async (
       return res?.data;
     } else if (filter) {
       const res = await AxiosInstance.get(
-        `/flight?search={"source":"${source}","destination":"${destination}"}&day=${day}&sort={${sort}}&filter={${filter}}&limit=${limit}&page=${page}`
+        `/flight?search={"source":"${source}","destination":"${destination}"}&day=${day}&sort={${sort}}&filter=${filter}&limit=${limit}&page=${page}`
       );
       //  console.log(res?.data);
       
@@ -37,6 +37,3 @@ export const fetchFlights = async (
 };
 
 
-// filter
-
-// `/flight?search={"source":"${source}","destination":"${destination}"}&day=${day}&sort={${sort}}&limit=${limit}&page=${page}${filter ? `&filter={${filter.stop ? `` : ""}}`:""}`

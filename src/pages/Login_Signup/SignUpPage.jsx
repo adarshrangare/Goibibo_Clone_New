@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import loginAPI from "../../apis/SignUp";
 import { Inputbox, PrimaryButton } from "../../components";
 import { useAuth } from "../../context/AuthProvider";
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [nameErr, setNameErr] = useState(false);
+
+  const location = useLocation();
 
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState(false);
@@ -77,12 +81,16 @@ const SignUpPage = () => {
     }
 
     loginAPI(name, email, password).then((res) => {
-      console.log("signup", res);
+      // console.log("signup", res);
       // setToken(res);
       if (res) {
         setUserDetails(res?.data?.data?.user);
         setToken(res?.data?.token);
         alert("SignUp Success");
+
+        setTimeout(() => {
+          navigate(location.state.previousPath.pathname);
+        }, 0);
       }
     });
 

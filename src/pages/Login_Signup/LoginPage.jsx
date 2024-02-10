@@ -1,11 +1,14 @@
+import { LayoutTwoTone } from "@ant-design/icons";
 import React from "react";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import loginAPI from "../../apis/Login";
 import { PrimaryButton, Inputbox } from "../../components";
 import { useAuth } from "../../context/AuthProvider";
 
 const LoginPage = () => {
-  const { setUserDetails, setToken } = useAuth();
+  const navigate = useNavigate();
+  const { setUserDetails, setToken, setIsLoggedIn } = useAuth();
 
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState(false);
@@ -17,6 +20,11 @@ const LoginPage = () => {
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const passwordRegex =
     /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+
+
+  const location = useLocation();
+
+  
 
   const validateEmail = (email) => {
     return emailRegex.test(email);
@@ -59,7 +67,15 @@ const LoginPage = () => {
 
           setUserDetails(res?.data?.data);
           setToken(res?.data?.token);
+          setIsLoggedIn(true)
         alert("success");
+        // console.log("login page",location.state.previousPath.pathname)
+          
+        setTimeout(()=>{
+          navigate(location.state.previousPath.pathname);
+
+        },0)
+
         }
 
         
@@ -102,6 +118,7 @@ const LoginPage = () => {
 
         <PrimaryButton
           label={"Log In"}
+          
           className="mt-2 px-12 py-4 bg-orange-500 hover:bg-orange-600 font-semibold text-white"
         />
       </form>

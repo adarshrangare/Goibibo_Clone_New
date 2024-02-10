@@ -50,7 +50,7 @@ body{
 
   width: 86rem;
   height: 80rem;
-  background-image: linear-gradient(97.59deg, rgba(255, 109, 56,0.8) 0%, rgba(219, 122, 33,0.9) 100.53%);
+  background-image: linear-gradient(97.59deg, #f47131 0%, rgba(219, 122, 33,0.9) 100.53%);
   border-radius: 50%;
   position: fixed;
   top: -53rem;

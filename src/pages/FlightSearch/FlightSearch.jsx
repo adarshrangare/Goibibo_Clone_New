@@ -93,6 +93,8 @@ const FlightSearch = () => {
     filterValue,
   ]);
 
+  const filter = {};
+
   return (
     <div className="mx-auto w-full">
       <div
@@ -112,7 +114,7 @@ const FlightSearch = () => {
       <div className=" w-full mx-auto mt-10 flex gap-4 flex-col md:flex-row md:w-11/12 lg:w-9/12">
         <div className="filterSection basis-1/4 ">
           <button
-            className="px-4 sm:hidden"
+            className="px-4 md:hidden"
             onClick={() => {
               setShowFilter((prev) => !prev);
             }}
@@ -120,20 +122,21 @@ const FlightSearch = () => {
             {" "}
             <FilterTwoTone /> Filter Flights
           </button>
-          <div className="px-4 max-sm:hidden">
+          <div className="px-4 max-md:hidden">
             {" "}
             <FilterTwoTone /> Filter Flights
           </div>
 
           <div
             className={` ${
-              showFilter ? "max-sm:scale-100" : "max-sm:scale-0"
+              showFilter ? "max-md:scale-100" : "max-md:scale-0"
             } w-10/12 md:w-full  bg-white md:h-[120vh] h-fit md:mt-4 rounded-xl border hover:shadow-even transition-all origin-top-left absolute left-8 md:left-auto md:relative p-4 z-[2] `}
           >
             <div className="w-full h-full relative">
               <button
                 className="md:hidden absolute -top-6 -right-6 w-6 h-6 bg-white rounded-full shadow-even "
                 onClick={() => {
+                  console.log('Clicked Cross')
                   setShowFilter(false);
                 }}
               >
@@ -145,6 +148,7 @@ const FlightSearch = () => {
                 setFlightsList={setFlightsList}
                 filterValue={filterValue}
                 setFilterValue={setFilterValue}
+                filter = {filter}
               />
             </div>
           </div>

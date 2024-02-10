@@ -13,6 +13,8 @@ const Inputbox = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef(null);
+ 
+
 
   return (
     <div className={`inputBox flex relative p-0 `}>
@@ -29,8 +31,6 @@ const Inputbox = ({
         onChange={onChange}
       />
 
-      
-
       <label
         htmlFor={id}
         className={`absolute select-none top-[2px] left-6 px-1 rounded bg-[#fff]  font-medium leading-[18px] text-sm ${
@@ -41,15 +41,21 @@ const Inputbox = ({
       </label>
 
       {label == "Password" && (
-        <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 text-2xl text-slate-400 transition-all" onClick={()=>{
-
-          setShowPassword(prev=>!prev);
-          inputRef.current.type = !showPassword ? "text" : "password";
-
-        }}>
+        <div
+          className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 text-2xl text-slate-400 transition-all"
+          onClick={() => {
+            setShowPassword((prev) => !prev);
+            inputRef.current.type = !showPassword ? "text" : "password";
+          }}
+        >
           {showPassword ? <BiHide /> : <BiShowAlt />}{" "}
         </div>
       )}
+
+      {/* // Suggestion List */}
+
+     
+
     </div>
   );
 };

@@ -2,7 +2,10 @@ import React from "react";
 
 const Counter = ({ name, desc, count, disabledNeg, disabledPos, handleClick }) => {
     
-    function handleIncrease(){
+
+  
+  function handleIncrease(){
+      console.log(count)
         
          handleClick("increase");       
 

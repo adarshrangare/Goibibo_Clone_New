@@ -1,0 +1,8 @@
+.hotel .ant-picker-focused {
+    background: #fff !important ;
+    color: rgb(62, 62, 62);
+  }
+  .ant-picker-suffix {
+    color: white !important;
+  }
+  

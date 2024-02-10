@@ -8,7 +8,7 @@ const OfferCard = ({lobDisplayText,newHeroOfferCardUrl,heroUrl,newHeroUrl ,hero,
         <div className=" max-w-full w-full h-4/5  flex">
             <img src={newHeroOfferCardUrl || newHeroUrl} alt={pTl}  className="m-2 rounded-md bg-red-800 flex-grow-0 aspect-square" />
             <div className="details p-2  text-left w-full text-ellipsis overflow-hidden ">
-                <h2 className='font-medium capitalize text-slate-400 text-base pb-1'>{lobDisplayText.toLowerCase()} </h2>
+                <h2 className='font-medium capitalize text-slate-400 text-base pb-1'>{lobDisplayText?.toLowerCase()} </h2>
                 <h3 className='font-medium text-lg text-wrap truncate pb-1 '>{pTl}</h3>
                 <p className=' text-slate-500 text-wrap text-clip pt-1'>{pTx}</p>
             </div>

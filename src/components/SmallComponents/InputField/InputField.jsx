@@ -47,10 +47,10 @@ const InputField = ({
     }
   }, [inputValue]);
 
-  function handleInput(label) {
-    setInputValue(label);
-
-    if (label.trim().length > 0) {
+  function handleInput(inputText) {
+    setInputValue(inputText);
+    console.log(inputText);
+    if (inputText.trim().length > 0) {
       setShowSuggetion(true);
     } else {
       setShowSuggetion(false);
