@@ -5,23 +5,22 @@ export const fetchHotels = async (
   limit,
   page,
   sort = "{}",
-  filter = "{}"
+  filter = "{}",
+  jwtToken
 ) => {
-    try {
-        const response = await AxiosInstance.get(
-          `city?search={"location": "${location}"}&sort=${sort}&filter=${filter}&limit=${limit}&page=${page}`,
-          
-          {
-            headers: {
-              Authorization: `Bearer ${jwtToken}`,
-            },
-          }
-        );
-        return response.data;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error; 
+  try {
+    const response = await AxiosInstance.get(
+      `hotel?search={"location": "${location}"}&sort=${sort}&filter=${filter}&limit=${limit}&page=${page}`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
       }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
 };
-
-

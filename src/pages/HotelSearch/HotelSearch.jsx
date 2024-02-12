@@ -5,9 +5,10 @@ import { FilterTwoTone } from "@ant-design/icons";
 import { ContentWrapper } from "../../components";
 import { Pagination } from "antd";
 import SearchArea from "./SearchArea";
-import HotelContainer from './HotelContainer';
+import HotelContainer from "./HotelContainer";
 
 import dayjs from "dayjs";
+import { fetchHotels } from "../../apis/fetchHotels";
 
 const HotelSearch = () => {
   const { hotelSearchQuery } = useParams();
@@ -31,17 +32,26 @@ const HotelSearch = () => {
   const [night, setNight] = useState(nightQuery);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(10);
-  
-  const [hotelsList, setHotelList] = useState(null)
+
+  const [hotelsList, setHotelList] = useState(null);
   const [results, setResults] = useState(0);
   const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
-
-      
-
-
-  }, [location,page]);
+    const token = localStorage.getItem("token");
+    console.log("fetching Hotels...");
+    fetchHotels(location, 10, page,token).then(
+      (res) => {
+        console.log(res);
+        setTotal(res?.totalResults);
+        setResults(res?.results);
+        setHotelList(res?.data?.hotels)
+      },
+      (rej) => {
+        console.log(rej);
+      }
+    );
+  }, [location, page]);
 
   return (
     <div className="mx-auto w-full">
@@ -213,7 +223,7 @@ const HotelSearch = () => {
             />
           </div> */}
 
-          <HotelContainer/>
+          <HotelContainer hotelsList={hotelsList}/>
 
           <Pagination
             className="my-4 flex items-center justify-center"

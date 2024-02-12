@@ -1,16 +1,13 @@
 import React from "react";
-import { SearchOutlined } from "@ant-design/icons";
 import { Calendar, DatePicker } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 
 import locale from "antd/es/date-picker/locale/en_US";
 import {
-  ContentWrapper,
-  Inputbox,
   RadioInput,
   SearchButton,
 } from "../../../components";
-import LocationInput from "../components/locationInput";
+import LocationInput from "../components/LocationInput";
 import { useAuth } from "../../../context/AuthProvider";
 
 import Gust_Room from "../components/Guest_Rooms";
