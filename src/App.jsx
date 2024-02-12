@@ -34,7 +34,15 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       />
-      <Route path="/hotels/:hotelSearchQuery" element={<HotelSearch />} />
+      <Route
+        path="/hotels/:hotelSearchQuery"
+        element={
+          <ProtectedRoute>
+            <HotelSearch  />
+          </ProtectedRoute>
+        }
+      />
+      
       <Route path="/trains" element={<Trains />} />
       <Route path="/bus" element={<Bus />} />
       <Route path="/login-signup" element={<LoginSignup />} />

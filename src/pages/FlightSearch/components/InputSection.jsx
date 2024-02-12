@@ -55,7 +55,9 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails,flightsList,
 
       const {adult,child,infant} = travel_details.numbers;
       
-      navigate(`/flight/air-${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`)
+    const encodedPath = btoa(`${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`)
+
+      navigate(`/flight/air-${encodedPath}`)
       
 
       

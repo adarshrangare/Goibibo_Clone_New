@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { Counter } from "../../../components";
 
-const Gust_Room = ({ value, handleValue }) => {
+const Gust_Room = ({ value, handleValue,className, classNamep }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   console.log(value);
 
   return (
     <div
-      className={`text-left  relative border-2 rounded-md p-0 m-3 min-w-[200px] w-fit h-[55.5px] hover:border-slate-500 cursor-pointer ${
+      className={`text-left  relative border-2 rounded-md p-0 m-3 min-w-[200px] w-fit   hover:border-slate-500 cursor-pointer ${className} ${
         showMenu ? "border-blue-500" : ""
       } `}
       onClick={() => {
         setShowMenu(true);
       }}
     >
-      <p className="font-medium leading-0 px-4 pt-2 m-0">
+      <p className={`font-medium leading-0 px-4 pt-2  m-0 ${classNamep}`}>
         {value?.numbers?.adult} {value?.numbers?.adult > 1 ? "Adults" : "Adult"}
         {value?.numbers?.child > 0
           ? value?.numbers?.child > 1
@@ -28,9 +28,7 @@ const Gust_Room = ({ value, handleValue }) => {
             : ", " + value?.numbers?.room + " Room"
           : ""}
       </p>
-      <span className="py-0 px-4 m-0 font-thin text-xs capitalize">
-        {value?.class}
-      </span>
+      
 
       <label
         htmlFor={"id"}
@@ -40,7 +38,7 @@ const Gust_Room = ({ value, handleValue }) => {
       </label>
 
       <div
-        className={`counter absolute top-20 -left-1 bg-white rounded shadow-all w-[250px] md:w-96 p-4 px-8 z-[2] flex flex-col  md:left-auto  transition-all duration-500 origin-top-left ${
+        className={`counter absolute top-16 -left-1 bg-white rounded shadow-all w-[250px] md:w-96 p-4 px-8 z-[2] flex flex-col  md:left-auto  transition-all duration-500 origin-top-left ${
           showMenu ? "scale-100 " : "scale-0"
         }`}
       >

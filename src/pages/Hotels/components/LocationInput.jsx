@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useEffect } from "react";
 import { BiHide, BiShowAlt } from "react-icons/bi";
 import { fetchCities } from "../../../apis/fetchCitiesList";
+import { FaHotel } from "react-icons/fa";
 const LocationInput = ({
   label,
   placeholder,
@@ -12,6 +13,7 @@ const LocationInput = ({
   value,
   setInputValue,
   error,
+  className
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef(null);
@@ -25,7 +27,7 @@ const LocationInput = ({
     const token = localStorage.getItem("token");
 
     fetchCities(localInputValue, token).then((res) => {
-      console.log(res?.data?.cities);
+      // console.log(res?.data?.cities);
 
       setCitiesList(res?.data?.cities);
     });
@@ -58,7 +60,7 @@ const LocationInput = ({
         ref={label == "Password" ? inputRef : null}
         value={value}
         autoComplete="off"
-        className={`w-full relative rounded-lg m-3 focus:outline-none  border-2 border-solid   focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 ${
+        className={`w-full relative rounded-lg m-3 focus:outline-none  border-2 border-solid   focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 ${className} ${
           error ? "border-red-500" : "border-slate-200 hover:border-slate-500"
         }`}
         onChange={(e) => {
@@ -90,7 +92,7 @@ const LocationInput = ({
       {/* // Suggestion List */}
 
       {showSuggetion && (
-        <ul className="absolute w-fit min-w-full h-fit max-h-48 overflow-y-scroll bg-white border left-0 z-10 top-20 rounded-md ">
+        <ul className="absolute w-fit min-w-full h-fit max-h-48 overflow-y-scroll bg-white border left-0 z-10 top-16 rounded-md ">
           {citiesList?.length > 0 ? (
             citiesList?.map((city) => (
               <li
@@ -98,13 +100,10 @@ const LocationInput = ({
                 onClick={() => {
                   handleSelect(city?.cityState);
                 }}
-                className="flex py-2 px-3 gap-3 hover:bg-sky-100 cursor-pointer"
+                className="flex items-center py-2 px-3 gap-3 hover:bg-sky-100 cursor-pointer"
               >
-                <img
-                  src="https://gos3.ibcdn.com/flightIcon-1675492260.png"
-                  alt="hotel Icon"
-                  className="p-2 w-10 h-10"
-                />
+                
+                <FaHotel className="p-2 w-10 h-10 text-slate-500"/>
                 <p className="font-medium text-slate-700 ">{city?.cityState}</p>
               </li>
             ))

@@ -16,20 +16,16 @@ import { useAuth } from "../../../context/AuthProvider";
 import Gust_Room from "../components/Guest_Rooms";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const initialRoomData = {
-  numbers: {
-    adult: 1,
-    child: 0,
-    room: 1,
-  },
-};
 
 const SearchSection = () => {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("Indore, Madhya Pradesh");
   const [checkIn, setCheckIn] = useState(dayjs(Date.now()));
   const [checkOut, setCheckOut] = useState(dayjs(checkIn.add(1, "day")));
   const [night, setNight] = useState(checkOut.diff(checkIn, "day"));
+
+  console.log({checkIn})
 
   const [roomData, setRoomData] = useState({
     numbers: {
@@ -71,6 +67,24 @@ const SearchSection = () => {
   useEffect(() => {
     setNight(checkOut.diff(checkIn, "day"));
   }, [checkIn, checkOut]);
+
+
+  const navigate = useNavigate();
+
+  function searchHotel(){
+     if(location.trim().length ==0){
+      alert("Please Enter Valid Input");
+      return;
+     }         
+
+     let query = location.replaceAll(" ","+")+"&"+ JSON.stringify(checkIn) +"&"+ JSON.stringify(checkOut) +"&"+ JSON.stringify(roomData)+"&"+night;
+     console.log(query);
+
+     navigate(`/hotels/${query}`)
+
+
+
+  }
 
   return (
     <>
@@ -128,10 +142,11 @@ const SearchSection = () => {
           </label>
         </div>
 
-        <Gust_Room value={roomData} handleValue={handleRoomData} />
+        <Gust_Room value={roomData} handleValue={handleRoomData} className="h-[55.5px]" />
 
         <SearchButton
           type={"Hotels"}
+          handleSubmit={searchHotel}
           className="px-12 py-4 rounded-full text-base md:text-lg font-semibold text-white bg-orange-500 w-fit self-center absolute bottom-[-25px] hover:bg-orange-600 "
         />
       </div>
