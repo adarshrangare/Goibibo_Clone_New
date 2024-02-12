@@ -2,7 +2,7 @@ import React from "react";
 import { DatePicker } from "antd";
 import locale from "antd/es/date-picker/locale/en_US";
 import dayjs, { Dayjs } from "dayjs";
-import LocationInput from "../Hotels/components/locationInput";
+import LocationInput from "../Hotels/components/LocationInput";
 import { useEffect } from "react";
 import Gust_Room from "../Hotels/components/Guest_Rooms";
 import { SearchButton } from "../../components";
