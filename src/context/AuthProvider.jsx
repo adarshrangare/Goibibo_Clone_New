@@ -23,6 +23,8 @@ const AuthProvider = ({ children }) => {
     setUserDetails({});
   }
 
+  console.log({token});
+
   useEffect(()=>{
     if(token){
       setIsLoggedIn(true);
