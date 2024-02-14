@@ -268,6 +268,8 @@ const FlightSearch = () => {
             total={total}
             onChange={(page) => {
               setPage(page);
+              window.scrollBy(0, -window.innerHeight);
+              document.getElementById("flightContainer").scrollTop = 0;
             }}
           />
         </div>

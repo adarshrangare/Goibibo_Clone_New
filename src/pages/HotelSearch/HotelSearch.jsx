@@ -10,6 +10,7 @@ import HotelContainer from "./HotelContainer";
 import dayjs from "dayjs";
 import { fetchHotels } from "../../apis/fetchHotels";
 import SortSection from "./SortSection";
+import { BiBody } from "react-icons/bi";
 
 const HotelSearch = () => {
   const { hotelSearchQuery } = useParams();
@@ -43,7 +44,7 @@ const HotelSearch = () => {
     console.log("fetching Hotels...");
     fetchHotels(location, 10, page,token).then(
       (res) => {
-        console.log(res);
+        // console.log(res);
         setTotal(res?.totalResults);
         setResults(res?.results);
         setHotelList(res?.data?.hotels)
@@ -55,7 +56,7 @@ const HotelSearch = () => {
   }, [location, page]);
 
   return (
-    <div className="mx-auto w-full">
+    <div id="container" className="mx-auto w-full">
       <div
         className={`sticky p-0 m-0 top-0 left-0 right-0 z-10 bg-blue-500 w-screen  h-48 md:h-32  `}
       >
@@ -127,6 +128,8 @@ const HotelSearch = () => {
             total={total}
             onChange={(page) => {
               setPage(page);
+              window.scrollBy(0, -window.innerHeight);
+              document.getElementById("hotelContainer").scrollTop = 0;
             }}
           />
         </div>

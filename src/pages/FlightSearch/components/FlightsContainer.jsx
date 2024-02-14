@@ -7,7 +7,7 @@ const FlightsContainer = ({flightsList}) => {
     
 
   return (
-    <div className="w-full rounded-md overflow-hidden border-b-2  mx-auto flex flex-col items-center justify-start h-[120vh] overflow-y-scroll gap-2 ">
+    <div id="flightContainer" className="w-full rounded-md overflow-hidden border-b-2  mx-auto flex flex-col items-center justify-start h-[120vh] overflow-y-scroll gap-2 ">
         
         {
             flightsList && flightsList.map(flight=>(<FlightCard key={flight?._id} {...flight} />))

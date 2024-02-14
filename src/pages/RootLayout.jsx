@@ -10,7 +10,7 @@ const RootLayout = () => {
 
         <div className="toast absolute z-50 "></div>
         <Header />
-        <main>
+        <main id="main">
           <Outlet />
         </main>
         <Footer/>
