@@ -18,7 +18,7 @@ const HotelCard = ({
 
 
   return (
-    <div className=" w-full min-h-60 md:min-h-72 flex bg-white rounded-md  transition-all border-white  hover:shadow-md border-2 hover:border-blue-600 ">
+    <div className=" w-full min-h-fit h-60 md:min-h-72 flex bg-white rounded-md  transition-all border-white  hover:shadow-md border-2 hover:border-blue-600 cursor-pointer ">
       <div className="image basis-[35%] md:basis-[30%] flex flex-col justify-between h-full p-2 ">
         <HotelCardImage images={images} />
       </div>
@@ -26,7 +26,7 @@ const HotelCard = ({
         
         <HotelCardDetail name={name} rating={rating} location={location} amenities={amenities} houseRules={houseRules}/>
 
-        <HotelCardPrice/>
+        <HotelCardPrice avgCostPerNight={avgCostPerNight} rooms={rooms}/>
         
       </div>
     </div>

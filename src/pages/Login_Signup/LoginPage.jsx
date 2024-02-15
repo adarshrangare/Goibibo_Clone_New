@@ -95,7 +95,7 @@ const LoginPage = () => {
       <form onSubmit={handleSignIn}>
         <Inputbox
           label={"Email"}
-          type="text"
+          type="email"
           placeholder={"Enter your email"}
           error={emailErr}
           value={email}

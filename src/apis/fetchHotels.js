@@ -4,9 +4,9 @@ export const fetchHotels = async (
   location,
   limit,
   page,
+  jwtToken,
   sort = "{}",
   filter = "{}",
-  jwtToken
 ) => {
   try {
     const response = await AxiosInstance.get(

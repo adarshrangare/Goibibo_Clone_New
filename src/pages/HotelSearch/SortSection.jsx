@@ -1,6 +1,6 @@
 import React from 'react'
 import { Select } from 'antd';
-const SortSection = ({results,setSort,total}) => {
+const SortSection = ({results,setSortValue,total}) => {
   return (
     <div className="sort mb-2">
             {results && (
@@ -11,13 +11,20 @@ const SortSection = ({results,setSort,total}) => {
 
             <Select
               defaultValue="Select to Sort"
+              className='min-w-32'
+              label="Sort"
+              onClear={()=>{
+                setSortValue("{}");
+              }}
+              allowClear = {true}
               onChange={(value) => {
                 console.log(value);
                 setSortValue(value);
               }}
+
               options={[
                 {
-                  value: `"ticketPrice":1`,
+                  value: `{"avgCostPerNight":-1}`,
                   label: (
                     <span className="font-medium">
                       Price{" "}
@@ -28,7 +35,7 @@ const SortSection = ({results,setSort,total}) => {
                   ),
                 },
                 {
-                  value: `"ticketPrice":-1`,
+                  value: `{"avgCostPerNight":1}`,
                   label: (
                     <span className="font-medium">
                       Price{" "}
@@ -39,71 +46,28 @@ const SortSection = ({results,setSort,total}) => {
                   ),
                 },
                 {
-                  value: `"duration":1`,
+                  value: `{"rating":1}`,
                   label: (
                     <span className="font-medium">
-                      Duration{" "}
+                      Rating{" "}
                       <span className="font-normal text-slate-400 text-xs">
-                        (Low to high)
+                        (Low to High)
                       </span>{" "}
                     </span>
                   ),
                 },
                 {
-                  value: `"duration":-1`,
+                  value: `{"rating":-1}`,
                   label: (
                     <span className="font-medium">
-                      Duration{" "}
+                      Rating{" "}
                       <span className="font-normal text-slate-400 text-xs">
                         (High to Low)
                       </span>{" "}
                     </span>
                   ),
                 },
-                {
-                  value: `"departureTime":1`,
-                  label: (
-                    <span className="font-medium">
-                      Departure{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (Low to high)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"departureTime":-1`,
-                  label: (
-                    <span className="font-medium">
-                      Departure{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (High to Low)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"arrivalTime":1`,
-                  label: (
-                    <span className="font-medium">
-                      Arrival{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (Low to high)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"arrivalTime":-1`,
-                  label: (
-                    <span className="font-medium">
-                      Arrival{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (High to Low)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
+                
               ]}
             />
           </div> 

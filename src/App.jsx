@@ -16,8 +16,9 @@ import {
   Profile,
   FlightSearch,
   ProtectedRoute,
-  HotelSearch
+  HotelSearch,
 } from "./pages";
+import HotelInformation from "./pages/HotelInformation/HotelInformation";
 import LoginSignup from "./pages/Login_Signup/LoginSignup";
 
 const router = createBrowserRouter(
@@ -26,29 +27,30 @@ const router = createBrowserRouter(
       <Route index element={<Flights />} />
       <Route path="/flight" element={<Flights />} />
       <Route path="/flight/:searchQuery" element={<FlightSearch />} />
-      <Route
-        path="/hotels"
-        element={
-          <ProtectedRoute>
-            <Hotels />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/hotels" element={<Hotels />} />
       <Route
         path="/hotels/:hotelSearchQuery"
         element={
           <ProtectedRoute>
-            <HotelSearch  />
+            <HotelSearch />
           </ProtectedRoute>
         }
       />
-      
+      <Route
+        path="/hotels/:hotelSearchQuery/:hotelId"
+        element={
+          <ProtectedRoute>
+            <HotelInformation/>
+          </ProtectedRoute>
+        }
+      />
+
       <Route path="/trains" element={<Trains />} />
       <Route path="/bus" element={<Bus />} />
       <Route path="/login-signup" element={<LoginSignup />} />
       <Route path="/mysupport/trips" element={<MyTrip />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={<Flights/>} />
+      <Route path="*" element={<Flights />} />
     </Route>
   )
 );

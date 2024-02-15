@@ -34,26 +34,32 @@ const HotelSearch = () => {
   const [night, setNight] = useState(nightQuery);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(10);
-
   const [hotelsList, setHotelList] = useState(null);
   const [results, setResults] = useState(0);
   const [showFilter, setShowFilter] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [sortValue, setSortValue] = useState("{}")
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log("fetching Hotels...");
-    fetchHotels(location, 10, page,token).then(
+    console.log(sortValue);
+    setIsLoading(true)
+    fetchHotels(location, 10, page,token,sortValue).then(
       (res) => {
         // console.log(res);
+
         setTotal(res?.totalResults);
         setResults(res?.results);
         setHotelList(res?.data?.hotels)
+        setIsLoading(false);
       },
       (rej) => {
         console.log(rej);
       }
     );
-  }, [location, page]);
+  }, [location, page,sortValue]);
 
   return (
     <div id="container" className="mx-auto w-full">
@@ -119,9 +125,9 @@ const HotelSearch = () => {
         </div>
 
         <div className="basis-3/4">
-          <SortSection results={results} total={total} setSort={""}/>
+          <SortSection results={results} total={total} setSortValue={(value)=>{setSortValue(value)}}/>
 
-          <HotelContainer hotelsList={hotelsList}/>
+          { isLoading ? "Loading" : <HotelContainer hotelsList={hotelsList}/>}
 
           <Pagination
             className="my-4 flex items-center justify-center"

@@ -7,10 +7,20 @@ const ProtectedRoute = ({ children }) => {
 
   const { isLoggedIn } = useAuth();
     // console.log({isLoggedIn});
-  let location = useLocation();
+    let location = useLocation();
+
+    // if(localStorage.getItem("token")){
+
+    //   return (
+    //     <Navigate to="/login-signup" state={{ previousPath: location }} replace />
+    //   );
+
+    // }
+
+
   // console.log({location});
 
-  if (!isLoggedIn) {
+  if (!(localStorage.getItem("token"))) {
     return (
       <Navigate to="/login-signup" state={{ previousPath: location }} replace />
     );

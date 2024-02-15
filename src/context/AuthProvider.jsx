@@ -25,6 +25,8 @@ const AuthProvider = ({ children }) => {
 
   console.log({token});
 
+  
+
   useEffect(()=>{
     if(token){
       setIsLoggedIn(true);
@@ -33,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
   },[token])
 
-
+  
 
   return (
     <AuthContext.Provider
