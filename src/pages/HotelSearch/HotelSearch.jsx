@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FilterTwoTone } from "@ant-design/icons";
 import { ContentWrapper } from "../../components";
-import { Pagination } from "antd";
+import { Pagination, Skeleton } from "antd";
 import SearchArea from "./SearchArea";
 import HotelContainer from "./HotelContainer";
 
@@ -11,6 +11,8 @@ import dayjs from "dayjs";
 import { fetchHotels } from "../../apis/fetchHotels";
 import SortSection from "./SortSection";
 import { BiBody } from "react-icons/bi";
+import SkeletonAvatar from "antd/es/skeleton/Avatar";
+import HotelCardSkeleton from "./HotelCardSkeleton";
 
 const HotelSearch = () => {
   const { hotelSearchQuery } = useParams();
@@ -127,7 +129,9 @@ const HotelSearch = () => {
         <div className="basis-3/4">
           <SortSection results={results} total={total} setSortValue={(value)=>{setSortValue(value)}}/>
 
-          { isLoading ? "Loading" : <HotelContainer hotelsList={hotelsList}/>}
+          <HotelContainer isLoading ={isLoading} hotelsList={hotelsList}/>
+          
+            
 
           <Pagination
             className="my-4 flex items-center justify-center"
