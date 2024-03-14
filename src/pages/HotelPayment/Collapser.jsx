@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import "./style.css";
@@ -6,12 +7,20 @@ import "./style.css";
 const CollapseWindow = ({heading, children,textClass}) => {
   const [visible, setVisible] = useState(true);
 
-  const toggleVisibility = () => {
-    setVisible((prev) => !prev);
-  };
-
   const contentEl = useRef(null);
 
+  const toggleVisibility = () => {
+    setVisible((prev) => !prev);
+    setEleHeight((prev)=>{
+      return visible ? contentEl.current?.scrollHeight : 0;
+    })
+  };
+
+  useEffect(()=>{
+    setEleHeight(contentEl.current?.scrollHeight);
+  })
+
+  const [eleHeight ,setEleHeight] = useState(contentEl.current?.scrollHeight );
   
   return (
     <section
@@ -31,11 +40,7 @@ const CollapseWindow = ({heading, children,textClass}) => {
       <div
         ref={contentEl}
         className="h-0 md:px-6 px-4 overflow-hidden transition-all border-t-2"
-        style={
-          visible
-            ? { height: contentEl.current?.scrollHeight }
-            : { height: "0px" }
-        }
+        style={{height: visible ? contentEl.current?.scrollHeight : 0 }}
       >
         {children}
       </div>
