@@ -14,9 +14,9 @@
   left: 10%;
   height: 100%;
   width: 9rem;
-  border-radius: 10px;
+  border-radius: 15px;
   
-  animation: loadingPaymentButton 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  animation: loadingPaymentButton 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
 }
 
 @keyframes loadingPaymentButton {

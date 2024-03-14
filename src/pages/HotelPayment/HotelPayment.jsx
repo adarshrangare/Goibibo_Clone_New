@@ -81,7 +81,7 @@ const HotelPayment = () => {
             <GuestDetails />
 
             <button
-              className=" relative hidden md:block w-full min-h-10 rounded-md text-lg md:text-xl text-white bg-orange-500 font-semibold px-6 py-3  overflow-hidden "
+              className=" relative hidden md:block w-full min-h-10 rounded-lg text-lg md:text-xl text-white bg-orange-500 font-semibold px-6 py-3  overflow-hidden "
               onClick={handleButton}
             >
               PROCEED TO PAYMENT
@@ -95,6 +95,12 @@ const HotelPayment = () => {
               checkOutQuery={checkOutQuery}
               roomDataQuery={roomDataQuery}
             />
+            <button
+              className=" relative md:hidden w-11/12 mx-4 my-3 min-h-10 rounded-lg text-lg md:text-xl text-white bg-orange-500 font-semibold px-6 py-3  overflow-hidden "
+              onClick={handleButton}
+            >
+              PROCEED TO PAYMENT
+            </button>
           </div>
         </div>
       </ContentWrapper>
