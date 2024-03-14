@@ -2,7 +2,7 @@ import React from "react";
 import { ContentWrapper } from "../../components";
 import CarouselAntD from "./Carousel";
 
-const OverviewSection = ({ hotelDetails, roomData }) => {
+const OverviewSection = ({ hotelDetails, roomData, roomListRef }) => {
   function getlowestPrice(rooms) {
     const newRoom = rooms.sort(
       (a, b) => a?.costDetails?.baseCost - b?.costDetails?.baseCost
@@ -123,8 +123,11 @@ const OverviewSection = ({ hotelDetails, roomData }) => {
                   </div>
                 </div>
               </div>
-              <button className="w-11/12 rounded-lg mx-auto px-6 py-3 text-xl font-semibold  bg-orange-600 text-white">
-                <a href="#roomSection">
+              <button className="w-11/12 rounded-lg mx-auto px-6 py-3 text-xl font-semibold  bg-orange-600 text-white"
+              onClick={()=>{
+               document.getElementById("roomSection").scrollIntoView({ behavior: 'smooth' });
+              }}>
+                <>
                   VIEW {hotelDetails.rooms.length} ROOM OPTIONS{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +146,7 @@ const OverviewSection = ({ hotelDetails, roomData }) => {
                       ></path>
                     </g>
                   </svg>{" "}
-                </a>
+                </>
               </button>
             </div>
           </div>

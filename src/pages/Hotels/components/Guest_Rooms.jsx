@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Counter } from "../../../components";
 
-const Gust_Room = ({ value, handleValue,className, classNamep }) => {
+const Gust_Room = ({ value, handleValue,className, classNamep,labelClass }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   console.log(value);
@@ -32,7 +32,7 @@ const Gust_Room = ({ value, handleValue,className, classNamep }) => {
 
       <label
         htmlFor={"id"}
-        className={`absolute -top-3 left-3 px-1 rounded bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm z-[2]`}
+        className={`absolute -top-3 left-3 px-1 rounded bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm z-[2] ${labelClass}`}
       >
         Guests & Rooms
       </label>

@@ -18,7 +18,7 @@ const SearchArea = ({
   setRoomData,
   roomData,
 }) => {
-  console.log(location);
+  // console.log(location);
 
   const handleRoomData = (type, secondType) => {
     // console.log({type,secondType});
@@ -60,14 +60,15 @@ const SearchArea = ({
         value={location}
         className="h-12 py-0 text-sm"
         label="Where"
+        labelClass="hidden"
         setInputValue={setLocation}
       />
-      <div className="flex flex-col items-center md:flex-row w-fit   mx-auto">
+      <div className="flex flex-col items-center md:flex-row w-fit -mt-4   mx-auto">
         <div className="flex w-11/12 ">
-          <div className="date relative h-12">
-            <label className="font-medium rounded-md px-1 text-sm text-slate-500 z-[1] bg-white absolute left-7">
+          <div className="date relative h-12 ">
+            {/* <label className="font-medium rounded-md px-1 text-sm text-slate-500 z-[1] bg-white absolute left-7">
               Check-in
-            </label>
+            </label> */}
             <DatePicker
               locale={locale}
               format={"DD-MM-YYYY"}
@@ -78,18 +79,19 @@ const SearchArea = ({
               onChange={(value) => {
                 setCheckIn(value);
               }}
+              allowClear={false}
               className="flex-1 w-11/12 relative rounded-lg m-3 focus:outline-none md:w-fit border-2 border-solid focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-1 px-4 md:py-2 md:px-4 border-slate-200 hover:border-slate-500
                     "
             />
           </div>
-          <label className="px-2 py-1 w-fit h-fit  self-center text-nowrap rounded-full text-blue-600 text-xs font-semibold bg-blue-100">
+          <label className="px-2 py-1 w-fit h-fit max-sm:ml-3 self-center text-nowrap rounded-full text-blue-600 text-xs font-semibold bg-blue-100">
             {night}
             {night == 1 ? " Night" : " Nights"}
           </label>
           <div className="date relative ">
-            <label className="font-medium rounded-md px-1 text-sm text-slate-500 z-[1] bg-white absolute left-7">
+            {/* <label className="font-medium rounded-md px-1 text-sm text-slate-500 z-[1] bg-white absolute left-7">
               Check-out
-            </label>
+            </label> */}
             <DatePicker
               locale={locale}
               format={"DD-MM-YYYY"}
@@ -111,6 +113,7 @@ const SearchArea = ({
           handleValue={handleRoomData}
           className="bg-white h-10  text-sm "
           classNamep="m-0 p-0"
+          labelClass="hidden"
         />
         <SearchButton
           type={"Hotels"}

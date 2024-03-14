@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import fetchHotelDetails from "../../apis/fetchHotelDetails";
@@ -9,7 +10,7 @@ import PropertyPolicies from "./PropertyPolicies";
 import RoomList from "./RoomList";
 const HotelInformation = () => {
   const { hotelId, hotelSearchQuery } = useParams();
-  
+
   const [hotelDetails, setHotelDetails] = useState(null);
   const [isloading, setIsLaoding] = useState(false);
 
@@ -21,9 +22,7 @@ const HotelInformation = () => {
   checkOutQuery = JSON.parse(checkOutQuery);
   roomDataQuery = JSON.parse(roomDataQuery);
 
-
   useEffect(() => {
-
     document.body.style.backgroundColor = "#e8f3ff";
 
     setIsLaoding(true);
@@ -37,39 +36,43 @@ const HotelInformation = () => {
     });
   }, []);
 
-  
- 
-
-
-
   return (
     <div className="hotelDetails scroll-smooth ">
-      
-        {hotelDetails && (
-          <>
+      {hotelDetails && (
+        <>
+          <div className="tabs w-full mx-auto  md:8/12 sticky top-16 h-12 bg-white z-10  justify-center  ">
+            {" "}
+            <ContentWrapper>
+              <div className="flex justify-between mx-auto md:w-8/12 px-2 h-10 items-center text-center">
+                <div className="h-full w-full text-center py-2 hover:shadow-even">
+                  <a href="#overviewSection">Overview</a>
+                </div>
+                <div className="h-full w-full text-center py-2 hover:shadow-even">
+                  <a href="#amentiesSection">Amenties</a>
+                </div>
+                <div className="h-full w-full text-center py-2 hover:shadow-even">
+                  <a href="#roomSection">Rooms</a>
+                </div>
+                <div className="h-full w-full text-center py-2 hover:shadow-even">
+                  <a href="#policiesSection">Policies</a>
+                </div>
+              </div>
+            </ContentWrapper>{" "}
+          </div>
 
-          <div className="tabs w-full mx-auto  md:8/12 sticky top-16 h-12 bg-white z-10  justify-center  "> <ContentWrapper>
+          <OverviewSection
+            
+            hotelDetails={hotelDetails}
+            roomData={roomDataQuery}
+          />
 
-            <div className="flex justify-between mx-auto md:w-8/12 px-2 h-10 items-center text-center">
-              <div className="h-full w-full text-center py-2 hover:shadow-even"><a href="#overviewSection">Overview</a></div>
-              <div className="h-full w-full text-center py-2 hover:shadow-even"><a href="#amentiesSection">Amenties</a></div>
-              <div className="h-full w-full text-center py-2 hover:shadow-even"><a href="#roomSection">Rooms</a></div>
-              <div className="h-full w-full text-center py-2 hover:shadow-even"><a href="#policiesSection">Policies</a></div>
-            </div>
+          <Amenties {...hotelDetails} />
 
-            </ContentWrapper> </div>
+          <RoomList {...hotelDetails} />
 
-          <OverviewSection hotelDetails={hotelDetails} roomData={roomDataQuery}/>
-          
-          <Amenties {...hotelDetails}/>
-
-          <RoomList {...hotelDetails}/>
-          
-          <PropertyPolicies {...hotelDetails}/>
-
-          </>
-        )}
-      
+          <PropertyPolicies {...hotelDetails} />
+        </>
+      )}
     </div>
   );
 };

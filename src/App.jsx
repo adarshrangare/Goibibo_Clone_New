@@ -17,6 +17,8 @@ import {
   FlightSearch,
   ProtectedRoute,
   HotelSearch,
+  HotelPayment,
+  HotelBookingPage,
 } from "./pages";
 import HotelInformation from "./pages/HotelInformation/HotelInformation";
 import LoginSignup from "./pages/Login_Signup/LoginSignup";
@@ -41,6 +43,22 @@ const router = createBrowserRouter(
         element={
           <ProtectedRoute>
             <HotelInformation/>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/hotels/:hotelSearchQuery/:hotelId/:roomDetails"
+        element={
+          <ProtectedRoute>
+            <HotelPayment/>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/hotels/:hotelSearchQuery/:hotelId/:roomDetails/payment"
+        element={
+          <ProtectedRoute>
+            <HotelBookingPage/>
           </ProtectedRoute>
         }
       />

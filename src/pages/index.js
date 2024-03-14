@@ -9,7 +9,9 @@ import Trains from "./Trains/Trains";
 import FlightSearch from "./FlightSearch/FlightSearch";
 import ProtectedRoute from "./ProtectedRoutes";
 import HotelSearch from "./HotelSearch/HotelSearch";
-
+import HotelInformation from "./HotelInformation/HotelInformation";
+import HotelPayment from "./HotelPayment/HotelPayment";
+import HotelBookingPage from "./BookingPage/HotelBookingPage";
 export {Bus,
 Trains,
 Profile,
@@ -20,5 +22,8 @@ FlightSearch,
 RootLayout,
 ProtectedRoute,
 HotelSearch,
+HotelInformation,
+HotelPayment,
+HotelBookingPage
 }
  

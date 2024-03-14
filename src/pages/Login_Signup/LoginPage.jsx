@@ -64,7 +64,6 @@ const LoginPage = () => {
         if(res?.data){
           console.log("responseLoginApi",res?.data);
 
-
           setUserDetails(res?.data?.data);
           setToken(res?.data?.token);
           setIsLoggedIn(true)

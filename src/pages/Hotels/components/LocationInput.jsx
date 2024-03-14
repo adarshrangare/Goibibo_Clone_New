@@ -13,7 +13,8 @@ const LocationInput = ({
   value,
   setInputValue,
   error,
-  className
+  className,
+  labelClass
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef(null);
@@ -72,7 +73,7 @@ const LocationInput = ({
         htmlFor={id}
         className={`absolute select-none top-[2px] left-6 px-1 rounded bg-[#fff]  font-medium leading-[18px] text-sm ${
           error ? "text-red-500" : "text-[rgb(119,119,119)]"
-        } `}
+        }  ${labelClass}`}
       >
         {label ? label : "Input"}
       </label>

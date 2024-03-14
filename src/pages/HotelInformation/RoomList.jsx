@@ -6,9 +6,12 @@ import RoomCard from "./RoomCard";
 
 
 
-const RoomList = ({ rooms, name, rating, location, amenities, houseRules,images }) => {
+const RoomList = ({ roomListRef,rooms, name, rating, location, amenities, houseRules,images }) => {
+  
+  
+  
   return (
-    <div className="rooms mx-auto bg-transparent my-8" id="roomSection">
+    <div  className="rooms mx-auto bg-transparent my-8" id="roomSection">
       <ContentWrapper>
         <div className="heading hidden md:flex flex-row md:w-9/12 mx-auto ">
           <div className="basis-[30%] bg-blue-200 h-14 border-l flex justify-center items-center"> 

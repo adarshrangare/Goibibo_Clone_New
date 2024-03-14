@@ -6,11 +6,12 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   
-  const [userDetail, setUserDetails] = useState({});
+  // const [userDetail, setUserDetails] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginOpen, setLoginOpen] = useState(true);
 
   const [token,setToken] = useLocalStorage("token",null);
+  const [userDetail,setUserDetails] = useLocalStorage("userDetail",null);
 
   function logOutFunc(){
     if(localStorage.getItem("token"))
