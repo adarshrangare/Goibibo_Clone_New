@@ -8,8 +8,8 @@ const GuestDetails = () => {
   console.log(userDetail);
 
   const [userValues, setUserValues] = useState({
-    name: userDetail.name,
-    email: userDetail.email,
+    name: userDetail?.name,
+    email: userDetail?.email,
   });
 
   return <CollapseWindow heading={"GUEST DETAILS"} textClass="my-3">
@@ -20,11 +20,11 @@ const GuestDetails = () => {
         
         <div>
           <label className="text-gray-600 text-sm px-1 ">Name</label>
-          <input disabled className="border block bg-transparent border-gray-200 rounded-md px-2 py-1 my-1 min-w-52" value={userValues.name}/>
+          <input disabled className="border block bg-transparent border-gray-200 rounded-md px-2 py-1 my-1 min-w-52" value={userValues?.name}/>
         </div>
         <div>
           <label className="text-gray-600  text-sm px-1">Email</label>
-          <input disabled className="border block bg-transparent border-gray-200 rounded-md px-2 py-1 my-1 min-w-52" value={userValues.email}/>
+          <input disabled className="border block bg-transparent border-gray-200 rounded-md px-2 py-1 my-1 min-w-52" value={userValues?.email}/>
          </div>
         <div className="text-sm text-slate-500 ">
         Your booking voucher will be sent to this email address

@@ -37,7 +37,10 @@ const HotelInfo = ({
 
   return (
     <CollapseWindow heading={"HOTEL INFO"} textClass="text-xl">
-      <div className="hotel flex my-4 gap-4">
+      {
+
+        hotelDetails && <>
+        <div className="hotel flex my-4 gap-4">
         <img
           src={hotelDetails?.images[0]}
           alt={hotelDetails?.name}
@@ -64,12 +67,16 @@ const HotelInfo = ({
         <CheckDetails name="Check Out" date={checkOutQuery} time="12PM" />
         <CheckDetails
           name="Guests"
-          guest={getRooms(roomDataQuery.numbers)}
+          guest={getRooms(roomDataQuery?.numbers)}
           time={
             getNight(checkInQuery,checkOutQuery)
           }
         />
       </div>
+        </>
+
+
+      }
       
       
     </CollapseWindow>
