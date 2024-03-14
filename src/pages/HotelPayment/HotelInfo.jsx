@@ -1,10 +1,9 @@
 import dayjs from "dayjs";
 import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
-import { toast } from "react-toastify";
-import CheckDetails from "./checkDetails";
+import CheckDetails from "./CheckDetails";
 import CollapseWindow from "./Collapser";
-import RoomCard from '../HotelInformation/RoomCard'
+
 
 import "./style.css";
 const HotelInfo = ({

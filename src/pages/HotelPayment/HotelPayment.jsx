@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ContentWrapper } from "../../components";
