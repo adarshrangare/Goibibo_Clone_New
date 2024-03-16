@@ -28,7 +28,7 @@ const HotelPayment = () => {
 
   const [hotelDetails, setHotelDetails] = useState(null);
   const [isloading, setIsLaoding] = useState(false);
-
+  const [priceDetails, setPriceDetails] = useState({});
   useEffect(() => {
     window.scrollBy(0, -window.innerHeight);
 
@@ -44,17 +44,19 @@ const HotelPayment = () => {
       }
     });
   }, []);
-  
-  
+
+  const handlePriceDetails = (data) => {
+    setPriceDetails(data);
+  };
+
   const navigate = useNavigate();
   const handleButton = (e) => {
     e.target.classList.add("paymentButton");
-    
-    setTimeout(()=>{
-      navigate('payment');
-    },3000)
-    
-  }
+    const encodedPrice = btoa(JSON.stringify(priceDetails));
+    setTimeout(() => {
+      navigate(`payment?${encodedPrice}`);
+    }, 3000);
+  };
 
   return (
     <main className="min-h-screen  ">
@@ -93,6 +95,7 @@ const HotelPayment = () => {
               checkInQuery={checkInQuery}
               checkOutQuery={checkOutQuery}
               roomDataQuery={roomDataQuery}
+              handlePriceDetails={handlePriceDetails}
             />
             <button
               className=" relative md:hidden w-11/12 mx-4 my-3 min-h-10 rounded-lg text-lg md:text-xl text-white bg-orange-500 font-semibold px-6 py-3  overflow-hidden "

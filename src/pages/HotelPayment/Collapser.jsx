@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import "./style.css";
 
-const CollapseWindow = ({heading, children,textClass}) => {
+const CollapseWindow = ({heading, children,textClass,className}) => {
   const [visible, setVisible] = useState(true);
 
   const contentEl = useRef(null);
@@ -24,7 +24,7 @@ const CollapseWindow = ({heading, children,textClass}) => {
   
   return (
     <section
-      className={`CollapseWindow bg-white rounded-md border overflow-hidden mb-4`}
+      className={`CollapseWindow bg-white rounded-md border overflow-hidden mb-4 ${className}`}
     >
       <div className="headContainer flex justify-between items-center">
         <h1 className={`font-medium p-2 md:px-6 px-4 ${textClass}`}>{heading}</h1>

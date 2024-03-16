@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 
 const PriceSection = ({
@@ -7,6 +8,7 @@ const PriceSection = ({
   checkInQuery,
   checkOutQuery,
   roomDataQuery,
+  handlePriceDetails
 }) => {
   const getRoomAndDuration = (guests, checkInQuery, checkOutQuery, costObj) => {
     const night = dayjs(checkOutQuery).diff(dayjs(checkInQuery), "day");
@@ -20,7 +22,9 @@ const PriceSection = ({
     const discountedPrice = totalBase - discount;
     const taxes = rooms * costObj?.taxesAndFees * night;
     const finalPrice = discountedPrice + taxes;
-    return {
+
+
+    const data = {
       night,
       rooms,
       totalBase,
@@ -29,6 +33,10 @@ const PriceSection = ({
       taxes,
       finalPrice,
     };
+
+    
+
+    return data;
   };
 
   const [info, setInfo] = useState(
@@ -39,6 +47,15 @@ const PriceSection = ({
       roomDetails?.costDetails
     )
   );
+
+      useEffect(()=>{
+        handlePriceDetails(getRoomAndDuration(
+          roomDataQuery.numbers,
+          checkInQuery,
+          checkOutQuery,
+          roomDetails?.costDetails
+        ));
+      },[])
 
   return (
     <div>
