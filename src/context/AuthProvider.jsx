@@ -1,6 +1,8 @@
 import { useContext, useEffect } from "react";
 import { createContext } from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { successToast } from "../components/Toasts/toast";
 import useLocalStorage from "../hooks/useLocalStorage";
 const AuthContext = createContext();
 
@@ -15,10 +17,13 @@ const AuthProvider = ({ children }) => {
 
   function logOutFunc(){
     if(localStorage.getItem("token"))
+    {
+      localStorage.removeItem("token");
+    }
 
-    localStorage.removeItem("token");
-
-    alert("user is Logged Out");
+    // alert("user is Logged Out");
+    
+    successToast("User is logged out successfully");
 
     setIsLoggedIn(false);
     setUserDetails({});

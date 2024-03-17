@@ -27,8 +27,9 @@ const HotelInformation = () => {
 
     setIsLaoding(true);
     const token = localStorage.getItem("token");
+    console.log({HIToken : token})
     fetchHotelDetails(hotelId, token).then((res) => {
-      // console.log(res);
+      console.log(res);
       if (res.message === "success") {
         setIsLaoding(false);
         setHotelDetails(res?.data);

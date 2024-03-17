@@ -2,12 +2,14 @@ import AxiosInstance from "./axios-instance";
 
 const confirmBooking = async (bookingType, bookingDetails, jwtToken) => {
   try {
+    console.log({jwtToken});
     const response = await AxiosInstance.post(
       "/booking",
       {
-        bookingType, 
-        bookingDetails, 
+        bookingType : bookingType,
+        bookingDetails : bookingDetails,
       },
+
       {
         headers: {
           Authorization: `Bearer ${jwtToken}`,

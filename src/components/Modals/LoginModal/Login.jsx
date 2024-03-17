@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import LoginSignup from "../../../pages/Login_Signup/LoginSignup";
 
-const Login = ({ toggleLoginModal }) => {
+const Login = ({ toggleLoginModal ,children}) => {
   const portalRoot = document.getElementById("modal");
 
   return createPortal(

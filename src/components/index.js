@@ -13,7 +13,8 @@ import PrimaryButton from "./SmallComponents/Buttons/PrimaryButton";
 import Inputbox from "./SmallComponents/BasicInputBox/Inputbox";
 import Counter from "./SmallComponents/Counter/Counter";
 import SelectButton from "./SmallComponents/SelectButton/SelectButton";
-
+import PaymentDone from "./Modals/PaymentDone";
+import PaymentLoading from "./Modals/PaymentLoading";
 export {
   SearchButton,
   DatePicker,
@@ -29,5 +30,7 @@ export {
   PrimaryButton,
   Inputbox,
   Counter,
-  SelectButton
+  SelectButton,
+  PaymentDone,
+  PaymentLoading
 };

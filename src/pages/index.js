@@ -12,6 +12,7 @@ import HotelSearch from "./HotelSearch/HotelSearch";
 import HotelInformation from "./HotelInformation/HotelInformation";
 import HotelPayment from "./HotelPayment/HotelPayment";
 import HotelBookingPage from "./BookingPage/HotelBookingPage";
+
 export {Bus,
 Trains,
 Profile,
