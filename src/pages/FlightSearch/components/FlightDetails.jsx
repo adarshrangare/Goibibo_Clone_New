@@ -45,16 +45,15 @@ const FlightDetails = ({ flightId }) => {
           </div>
 
           <div className="flex flex-col">
-            <div className="flex my-6 gap-2 justify-between h-32 mx-5 border-2 p-4 item-center rounded-xl border-dashed bg-slate-50 ">
+            <div className="flex my-6 gap-2 justify-between h-32 m-auto border-2 py-4 px-2 item-center rounded-xl border-dashed bg-gray-50 ">
               <div className="flightname flex items-center justify-center flex-col text-xs text-slate-500 h-full ">
                 <img
                   src={airlineData[flightDetails.airline]?.logo}
                   alt="airline logo"
                   className="w-6 h-6 rounded-lg "
                 />
-                <div className="pt-2 truncate ">
+                <div className="pt-2 text-center ">
                   {airlineData[flightDetails?.airline]?.airline_name}
-                  
                 </div>
                 <div className="truncate text-ellipsis">
                   {flightName(flightDetails?.flightID)}
@@ -65,14 +64,14 @@ const FlightDetails = ({ flightId }) => {
                 <div className="flex items-center justify-center gap-1  max-sm:flex-col max-sm:px-2 ">
                   <div className="inline-block font-medium">
                     {flightDetails?.source}
-                  
                   </div>
                   <div className="inline-block font-normal text-slate-400">
                     {flightDetails?.departureTime}
                   </div>
                 </div>
                 <div className="text-xs text-slate-400 w-9/12 font-normal text-center wrap max-sm:hidden ">
-                {cityData[flightDetails?.source]?.name} {", "} {cityData[flightDetails?.source]?.city}
+                  {cityData[flightDetails?.source]?.name} {", "}{" "}
+                  {cityData[flightDetails?.source]?.city}
                 </div>
               </div>
               <div className="h-full flex justify-center items-center text-slate-400 text-sm px-1">
@@ -99,7 +98,8 @@ const FlightDetails = ({ flightId }) => {
                   </div>
                 </div>
                 <div className="text-xs text-slate-400 w-9/12 font-normal text-center wrap max-sm:hidden">
-                {cityData[flightDetails?.destination]?.name} {", "} {cityData[flightDetails?.destination]?.city}
+                  {cityData[flightDetails?.destination]?.name} {", "}{" "}
+                  {cityData[flightDetails?.destination]?.city}
                 </div>
               </div>
             </div>
