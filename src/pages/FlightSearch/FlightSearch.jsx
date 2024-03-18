@@ -31,7 +31,7 @@ const FlightSearch = () => {
 
   const decodedPath = atob(extractedEncodedPath);
 
-
+  
   const [location, date, counts] =  decodedPath?.split("--");
   
   const [source, dest] = location?.split("-");

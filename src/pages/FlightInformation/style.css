@@ -1,0 +1,33 @@
+.rating {
+    @apply text-sm m-2 p-0.5 w-fit px-2 rounded-md font-medium text-white relative bg-lime-500 cursor-pointer before:cursor-pointer before:content-[''] before:w-[16px] before:h-[16px] before:block before:absolute before:-left-2 before:top-0 before:border-transparent before:border-t-lime-500 before:border-8 hover:after:content-['1234_Verified_Ratings'] hover:after:p-1 after:bottom-[-24.5px] after:rounded-md after:left-[0] hover:after:w-[130px] after:text-center after:h-fit hover:after:absolute  hover:after:bg-[rgba(0,0,0,0.5)] hover:after:font-thin  hover:after:text-xs;
+  }
+  /* .paymentButton{
+      @apply after:content-[' '] after:absolute after:top-0 after:w-40 after:h-full after:bg-orange-900 after:opacity-25;
+     
+  } */
+  
+  .paymentButton:after {
+    background-color: rgba(23, 23, 23, 0.2);  
+    content:' ';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    height: 100%;
+    width: 9rem;
+    border-radius: 15px;
+    
+    animation: loadingPaymentButton 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  }
+  
+  @keyframes loadingPaymentButton {
+    0% {
+      left: -10%;
+    }
+    50% {
+      left: 90%;
+    }
+    100% {
+      left: -10%;
+    }
+  }
+  

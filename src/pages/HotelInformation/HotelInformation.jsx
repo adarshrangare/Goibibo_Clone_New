@@ -27,9 +27,9 @@ const HotelInformation = () => {
 
     setIsLaoding(true);
     const token = localStorage.getItem("token");
-    console.log({HIToken : token})
+    // console.log({HIToken : token})
     fetchHotelDetails(hotelId, token).then((res) => {
-      console.log(res);
+      // console.log(res);
       if (res.message === "success") {
         setIsLaoding(false);
         setHotelDetails(res?.data);
@@ -42,7 +42,6 @@ const HotelInformation = () => {
       {hotelDetails && (
         <>
           <div className="tabs w-full mx-auto  md:8/12 sticky top-16 h-12 bg-white z-10  justify-center  ">
-            {" "}
             <ContentWrapper>
               <div className="flex justify-between mx-auto md:w-8/12 px-2 h-10 items-center text-center">
                 <div className="h-full w-full text-center py-2 hover:shadow-even">

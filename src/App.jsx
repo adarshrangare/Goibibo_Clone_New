@@ -19,6 +19,8 @@ import {
   HotelSearch,
   HotelPayment,
   HotelBookingPage,
+  FlightInformation,
+  FlightBooking,
 } from "./pages";
 import HotelInformation from "./pages/HotelInformation/HotelInformation";
 import LoginSignup from "./pages/Login_Signup/LoginSignup";
@@ -29,6 +31,25 @@ const router = createBrowserRouter(
       <Route index element={<Flights />} />
       <Route path="/flight" element={<Flights />} />
       <Route path="/flight/:searchQuery" element={<FlightSearch />} />
+      <Route
+        path="/flight/:searchQuery/:flightData"
+        element={
+          <ProtectedRoute>
+            <FlightInformation/>
+          </ProtectedRoute>
+        }
+      />
+
+<Route
+        path="/flight/:searchQuery/:flightData/payment"
+        element={
+          <ProtectedRoute>
+            <FlightBooking/>
+          </ProtectedRoute>
+        }
+      />
+
+
       <Route path="/hotels" element={<Hotels />} />
       <Route
         path="/hotels/:hotelSearchQuery"
@@ -42,7 +63,7 @@ const router = createBrowserRouter(
         path="/hotels/:hotelSearchQuery/:hotelId"
         element={
           <ProtectedRoute>
-            <HotelInformation/>
+            <HotelInformation />
           </ProtectedRoute>
         }
       />
@@ -50,7 +71,7 @@ const router = createBrowserRouter(
         path="/hotels/:hotelSearchQuery/:hotelId/:roomDetails"
         element={
           <ProtectedRoute>
-            <HotelPayment/>
+            <HotelPayment />
           </ProtectedRoute>
         }
       />
@@ -58,7 +79,7 @@ const router = createBrowserRouter(
         path="/hotels/:hotelSearchQuery/:hotelId/:roomDetails/payment"
         element={
           <ProtectedRoute>
-            <HotelBookingPage/>
+            <HotelBookingPage />
           </ProtectedRoute>
         }
       />

@@ -14,13 +14,18 @@ import {
 import { airlineData, cityData } from "../../../utils/constants";
 import { GiDuffelBag } from "react-icons/gi";
 
-const FlightDetails = ({ flightId }) => {
+const FlightDetails = ({ flightId,handleFlightPrice }) => {
   const [flightDetails, setFlightDetails] = useState({});
 
   useEffect(() => {
     fetchFlightDetails(flightId).then((res) => {
-      console.log(res?.data);
+      // console.log(res?.data);
       setFlightDetails(res?.data);
+      if(handleFlightPrice){
+
+        // handleFlightPrice(res?.data?.ticketPrice);
+      }
+
     });
   }, []);
 

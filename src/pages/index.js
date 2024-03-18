@@ -7,6 +7,8 @@ import MyTrip from "./MyTrip/MyTrip";
 import Profile from "./Profile/Profile";
 import Trains from "./Trains/Trains";
 import FlightSearch from "./FlightSearch/FlightSearch";
+import FlightInformation from "./FlightInformation/FlightInformation";
+import FlightBooking from "./BookingPage/FlightBooking";
 import ProtectedRoute from "./ProtectedRoutes";
 import HotelSearch from "./HotelSearch/HotelSearch";
 import HotelInformation from "./HotelInformation/HotelInformation";
@@ -25,6 +27,8 @@ ProtectedRoute,
 HotelSearch,
 HotelInformation,
 HotelPayment,
-HotelBookingPage
+HotelBookingPage,
+FlightInformation,
+FlightBooking
 }
  
