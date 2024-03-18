@@ -20,7 +20,7 @@ const PaymentDone = () => {
     }, 1000);
 
     setTimeout(() => {
-      navigate("/");
+      navigate("/", { replace: true });
     }, 10000);
 
     return () => {
@@ -37,14 +37,14 @@ const PaymentDone = () => {
           key="ok"
           type="primary"
           onClick={() => {
-            navigate("/");
+            navigate("/", { replace: true });
           }}
         >
           OK
         </Button>,
       ]}
       onCancel={() => {
-        navigate("/");
+        navigate("/", { replace: true });
       }}
     >
       <img src={paymentAnimation} alt="payment" />
