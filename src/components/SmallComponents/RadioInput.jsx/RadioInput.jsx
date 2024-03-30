@@ -6,8 +6,8 @@ const RadioInput = ({checked, id,name,label,className, labelClass}) => {
         <input
             type="radio"
             id={id}
-            checked={checked}
-            className="scale-125 cursor-pointer"
+            defaultChecked
+            className="scale-125 cursor-pointer accent-[rgb(34,118,227)]"
             name={name}
           />
           <label

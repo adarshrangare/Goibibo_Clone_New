@@ -312,3 +312,127 @@ const airportData = [
     __v: 0,
   },
 ];
+
+
+export const trainStations = [
+  "Delhi Junction",
+	"Salem Junction",
+	"Dhanbad Junction",
+	"Hubli Junction",
+	"Lucknow Charbhagh",
+	"Vijayawada Junction",
+	"Surat",
+	"Udaipur City",
+	"Thiruvananthapuram Central",
+	"Coimbatore Junction",
+	"Kanpur Central",
+	"Kharagpur Junction",
+	"Manmad Junction",
+	"Mughal Sarai Junction",
+	"Chandigarh",
+	"Gorakhpur Junction",
+	"Gwalior Junction",
+	"Ghaziabad Junction",
+	"Agra Cantonment",
+	"Allahabad Junction",
+	"Kiul Junction",
+	"Bhubaneshwar",
+	"Ambala Cantonment",
+	"Warangal",
+	"Bhusaval Junction",
+	"Howrah Junction",
+	"Thrissur",
+	"Yesvantpur Junction",
+	"Khurda Road Junction",
+	"Nagpur Junction",
+	"Ahmedabad Junction",
+	"Visakhapatnam Junction",
+	"Barddhaman Junction",
+	"Mysuru Junction",
+	"Bengaluru City Junction",
+	"Amritsar Junction",
+	"Kalyan Junction",
+	"Pune Junction",
+	"Raipur Junction",
+	"Erode Junction",
+	"New Delhi",
+	"Jhansi Junction",
+	"Jodhpur Junction",
+	"Varanasi Junction",
+	"Vadodara Junction",
+	"Asansol Junction",
+	"Katpadi Junction",
+	"Indore Junction",
+	"Itarsi Junction",
+	"Moradabad Junction",
+	"Anand Junction",
+	"Kollam Junction",
+	"Ludhiana Junction",
+	"Bengaluru Cantt.",
+	"Hazrat Nizamuddin",
+	"Mangalore Central",
+	"Bhopal Junction",
+	"Kota Junction",
+	"Secunderabad Junction",
+	"Nadiad Junction",
+	"Mathura Junction",
+	"Chennai Central",
+	"Vellore Katpadi",
+	"Patna Junction",
+	"Guwahati",
+	"Jaipur Junction",
+
+]
+
+export const trainFeatures = [
+  {
+    icon : "https://gos3.ibcdn.com/no_can_fee-1668596842.svg",
+    title : "No Cancellation Fee",
+    description :"You can opt for free cancellation & get full refund.",
+    link : {
+      alt : "Learn more about cancellation",
+      url : "https://www.goibibo.com/offers/free-train-cancellation/",
+    }
+  },
+  {
+    icon : "https://gos3.ibcdn.com/go_cnfrm-1668596688.svg",
+    title : "goConfirmed Trip",
+    description :"Guaranteed confirmed tickets or we give you 2x refund.",
+    link : {
+      alt : "Learn more about goConfirmed",
+      url : "https://www.goibibo.com/offers/go-confirmed-trip-2x/",
+    }
+  },
+  {
+    icon : "https://gos3.ibcdn.com/no_pg_fee_icon-1673341757.png",
+    title : "No PG Fee via UPI",
+    description :"Zero Payment Gateway Charges via UPI mode",
+    
+  },
+
+]
+
+export const daysObj = {
+  
+    'Mon': 'M',
+    'Tue': 'T',
+    'Wed': 'W',
+    'Thu': 'T',
+    'Fri': 'F',
+    'Sat': 'S',
+    'Sun': 'S'
+  
+}
+
+export const trainPricing = {
+
+  "2S" : 0.5,
+  "CC" : 0.7,
+  "SL" : 1,
+  "EA" : 1.2,
+  "3E" : 1.5,
+  "3A" : 2,
+  "2A" : 2.5,
+  "1A" : 3,
+
+}

@@ -1,0 +1,13 @@
+#container .ant-picker.ant-picker-focused {
+    background: #ea580c !important ;
+    color: rgb(255, 255, 255);
+    
+  }
+  .ant-picker-suffix {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  #container .ant-picker.ant-picker-focused:hover{
+    background: #ea580c !important ;
+    
+  }

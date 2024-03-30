@@ -10,6 +10,11 @@
 
     }
     
+    .inputBox input:focus + label.trainLabels{
+
+        @apply text-white;
+
+    }
     
 
 }
