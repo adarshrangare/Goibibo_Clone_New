@@ -22,6 +22,8 @@ import {
   FlightInformation,
   FlightBooking,
   TrainSearch,
+  TrainBooking,
+  Error404,
 } from "./pages";
 import HotelInformation from "./pages/HotelInformation/HotelInformation";
 import LoginSignup from "./pages/Login_Signup/LoginSignup";
@@ -93,11 +95,20 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/trains/booking"
+        element={
+          <ProtectedRoute>
+            <TrainBooking/>
+          </ProtectedRoute>
+        }
+      />
+
       <Route path="/bus" element={<Bus />} />
       <Route path="/login-signup" element={<LoginSignup />} />
       <Route path="/mysupport/trips" element={<MyTrip />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={<Flights />} />
+      <Route path="*" element={ <Error404/> } />
     </Route>
   )
 );

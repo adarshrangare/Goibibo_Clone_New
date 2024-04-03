@@ -1,5 +1,6 @@
 import React from 'react'
 import { ContentWrapper } from '../../components'
+import ComingSoon from '../ErrorPage/ComingSoon'
 
 const Bus = () => {
   return (
@@ -7,6 +8,7 @@ const Bus = () => {
     <div className="bgSvgBus"></div>
     <ContentWrapper>
 
+    <ComingSoon/>
          
 
     </ContentWrapper>

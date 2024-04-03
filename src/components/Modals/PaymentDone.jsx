@@ -1,30 +1,33 @@
 import { Modal, Button } from "antd";
 import React from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import paymentAnimation from "../../assets/paymentDone.gif";
 const PaymentDone = () => {
   const [timeLapse, setTimeLapse] = useState(10);
-
+  const timerRef = useRef(null)
+  const intervalRef = useRef(null)
   const navigate = useNavigate();
 
   
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setTimeLapse((prev) => prev - 1);
 
       if (timeLapse <= 0) {
-        clearInterval(intervalId);
+        clearInterval(intervalRef.current);
       }
     }, 1000);
 
-    setTimeout(() => {
+    timerRef.current = setTimeout(() => {
       navigate("/", { replace: true });
     }, 10000);
 
     return () => {
-      clearInterval(intervalId);
+      clearInterval(intervalRef.current);
+      clearTimeout(timerRef.current)
     };
   }, []);
 

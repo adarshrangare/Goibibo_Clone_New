@@ -16,6 +16,7 @@ const TrainCard = ({
   trainType,
   coaches,
   daysOfOperation,
+  departureDate,
 }) => {
   const calculateTime = (ogTime) => {
     let [hrs, minutes] = ogTime.split(":");
@@ -35,13 +36,11 @@ const TrainCard = ({
 
   const navigate = useNavigate();
 
-  const handleProceedPayment = ()=>{
-
-    navigate(`/book?train=${_id}`);
-
-  }
-
-
+  const handleProceedPayment = (fare) => {
+    navigate(`/trains/booking`, {
+      state: { trainId: _id, fare, departureDate },
+    });
+  };
 
   return (
     <div className=" w-full min-h-fit h-fit  px-2 md:px-4 py-3 flex flex-col bg-white rounded-md  transition-all border-white  hover:shadow-md border-2 hover:border-blue-600  gap-4 ">
@@ -53,17 +52,21 @@ const TrainCard = ({
         </div>
         <div className="runningDays mr-2 text-sm">
           <span className="text-slate-400">Runs On: </span>
-          { daysOfOperation.length==7 ? <span className="text-slate-600 md:font-medium">Everyday</span> :  Object.keys(daysObj)?.map((day) => (
-            <span
-              className={`md:mx-1 mx-0.5  ${
-                daysOfOperation.includes(day)
-                  ? "text-slate-600 md:font-medium"
-                  : "text-slate-400"
-              } `}
-            >
-              {daysObj[day]}
-            </span>
-          ))}
+          {daysOfOperation.length == 7 ? (
+            <span className="text-slate-600 md:font-medium">Everyday</span>
+          ) : (
+            Object.keys(daysObj)?.map((day) => (
+              <span
+                className={`md:mx-1 mx-0.5  ${
+                  daysOfOperation.includes(day)
+                    ? "text-slate-600 md:font-medium"
+                    : "text-slate-400"
+                } `}
+              >
+                {daysObj[day]}
+              </span>
+            ))
+          )}
         </div>
       </div>
 
@@ -92,7 +95,9 @@ const TrainCard = ({
           <div
             key={index}
             className=" rounded-md shrink-0 border m-1 shadow-md mb-4 hover:scale-105 hover:shadow-lg transition-all"
-            onClick={handleProceedPayment}
+            onClick={(e) => {
+              handleProceedPayment(getFare(coachType));
+            }}
           >
             <div className="flex justify-between items-center w-36 bg-[#f4faf4] p-2 rounded-t-md">
               <span className="text-left font-medium">{coachType}</span>

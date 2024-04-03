@@ -1,6 +1,8 @@
 import { Modal } from "antd";
 import dayjs from "dayjs";
 import React, { useState } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import confirmBooking from "../../apis/booking-post";
 import { ContentWrapper, PaymentDone, PaymentLoading } from "../../components";
@@ -8,75 +10,70 @@ import CollapseWindow from "../HotelPayment/Collapser";
 import CreditCard from "./CreditCard";
 import UPI from "./UPI";
 
-const FlightBooking = () => {
-  const { searchQuery,flightData: data } = useParams();
-  const [flightId, price] = data.split("--");
+const TrainBooking = () => {
+  const location = useLocation();
 
+  let { fare, trainId, departureDate } = location.state;
 
-
-  const routeLocation = useLocation()
-  let encodedPrice = routeLocation.search.slice(1);
-
-  encodedPrice = atob(encodedPrice);
-
-  encodedPrice = JSON.parse(encodedPrice);
-  const {adult,child,flightPrice,date} = encodedPrice; 
-  // console.log(encodedPrice)
-
-  let journeyDate = dayjs(date)
+  let journeyDate = dayjs(Date(departureDate));
   journeyDate = JSON.stringify(journeyDate);
-  // console.log(journeyDate.slice(1,journeyDate.length-1))
-  journeyDate = journeyDate.slice(1,journeyDate.length-1);
-  
-  const priceDetails = {
-    finalPrice : Math.round((flightPrice * (adult+child))*1.18) ,
-    discountedPrice:flightPrice * (adult+child),
-    discount:0,
-    taxes:  Math.round((flightPrice * (adult+child))*0.18)
-  }
 
+  journeyDate = journeyDate.slice(1, journeyDate.length - 1);
+
+  const timerRef = useRef(null);
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [paymentComplete, setPaymentComplete] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
-  function handlePaymentAndBooking() {
+  async function handlePaymentAndBooking() {
+    console.log({ departureDate });
     setPaymentLoading(true);
     const token = JSON.parse(localStorage.getItem("token"));
     confirmBooking(
-      "flight",
+      "train",
       {
-        flightId: flightId,
+        trainId: trainId,
         startDate: journeyDate,
         endDate: journeyDate,
       },
       token
     )
       .then((res) => {
-        
-          setBookingDetails(res?.data);
-          console.log({booking:res})
-          setTimeout(()=>{
-            console.log("payment");
-            setPaymentLoading(false);
-            setPaymentComplete(true);
-          },2000)
-        
+        setBookingDetails(res?.data);
+        console.log({ booking: res });
+        timerRef.current = setTimeout(() => {
+          console.log("payment");
+          setPaymentLoading(false);
+          setPaymentComplete(true);
+        }, 2000);
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
+  useEffect(() => {
+    return () => {
+      clearTimeout(timerRef.current);
+    };
+  }, []);
+
+  const priceDetails = {
+    finalPrice: Math.round(fare * 1.18),
+    discountedPrice: Math.round(fare * 1.18),
+    discount: 0,
+    taxes: Math.round(fare * 0.18),
+  };
 
   return (
     <div className="bg-blue-50 my-8 md:my-10 md:mx-auto md:w-9/12">
       <ContentWrapper>
-        {paymentComplete && <PaymentDone  />}
-        {paymentLoading &&  <PaymentLoading/> }
+        {paymentComplete && <PaymentDone />}
+        {paymentLoading && <PaymentLoading />}
 
         <h1 className="text-2xl md:text-3xl font-medium">
           Pay{" "}
-          <span className="text-orange-400">₹{priceDetails.finalPrice}</span> to
-          confirm booking
+          <span className="text-orange-400">₹{priceDetails?.finalPrice}</span>{" "}
+          to confirm booking
         </h1>
         <div className="md:flex w-full md:flex-row-reverse gap-4  ">
           <div className="w-full FairSummay h-fit my-4 bg-white rounded-lg border px-4">
@@ -90,7 +87,7 @@ const FlightBooking = () => {
                 </div>
               </div>
               <div className=" text-light basePrice flex justify-between gap-4 my-1">
-                <div className="tag text-left text-wrap">Flight Fair</div>
+                <div className="tag text-left text-wrap">Train Fair</div>
                 <div className="value text-right md:px-4">
                   ₹{priceDetails?.discountedPrice}
                 </div>
@@ -135,4 +132,4 @@ const FlightBooking = () => {
   );
 };
 
-export default FlightBooking;
+export default TrainBooking;

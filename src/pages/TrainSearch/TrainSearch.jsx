@@ -8,6 +8,7 @@ import { Pagination } from "antd";
 import MainSection from "./components/MainSection";
 import SearchArea from "./components/SearchArea";
 import "./style.css";
+import dayjs from "dayjs";
 const TrainSearch = () => {
   const location = useLocation();
 
@@ -31,20 +32,21 @@ const TrainSearch = () => {
   const [totalResults, setTotalResults] = useState(10);
 
 
-  useEffect(() => {}, [trainSearchData]);
+  const day = dayjs(Date(departureDate)).format("ddd")
+  console.log(day);
 
   useEffect(() => {
     setIsLoading(true);
     fetchTrains(
       trainSearchData.source,
       trainSearchData.destination,
-      "Mon",
+      day,
       sort,
       filter,
       10,
       page
     ).then((res) => {
-      console.log(res);
+      // console.log(res);
       setTrainsList(res?.data?.trains);
       setIsLoading(false);
       setTotalResults(res?.totalResults)
@@ -67,7 +69,7 @@ const TrainSearch = () => {
         </ContentWrapper>
       </div>
 
-      <MainSection setPage={setPage} totalResults={totalResults} trainsList={trainsList} />
+      <MainSection setPage={setPage} totalResults={totalResults} trainsList={trainsList} departureDate={departureDate} />
     </div>
   );
 };
