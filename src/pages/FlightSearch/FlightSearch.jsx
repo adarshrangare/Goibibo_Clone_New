@@ -20,20 +20,19 @@ import { FilterTwoTone } from "@ant-design/icons";
 import "./style.css";
 import Filter from "./components/Filter";
 import { endOfDay } from "date-fns";
+import SortSection from "./components/SortSection";
 
 const FlightSearch = () => {
-  
   const { searchQuery } = useParams();
 
-  const encodedString = searchQuery ?? '' ;
+  const encodedString = searchQuery ?? "";
 
-  const extractedEncodedPath = encodedString.replace('air-', '');
+  const extractedEncodedPath = encodedString.replace("air-", "");
 
   const decodedPath = atob(extractedEncodedPath);
 
-  
-  const [location, date, counts] =  decodedPath?.split("--");
-  
+  const [location, date, counts] = decodedPath?.split("--");
+
   const [source, dest] = location?.split("-");
 
   const [adult, child, infant] = counts?.split("-");
@@ -68,32 +67,68 @@ const FlightSearch = () => {
   const [total, setTotal] = useState(10);
   const [results, setResults] = useState(0);
   const [flightsList, setFlightsList] = useState([]);
-  const [sortValue, setSortValue] = useState("");
-  const [filterValue, setFilterValue] = useState("");
+  const [sort, setSort] = useState({});
+  const [filter, setFilter] = useState({});
   const [showFilter, setShowFilter] = useState(false);
+  const [filterChange,setFilterChange] = useState(false);
+
+  const [isLoading,setIsLoading] = useState(false);
+  const day = dayjs(Date(date)).format("ddd");
+  
+  useEffect(()=>{
+    setIsLoading(true)
+    console.log("api calling");
+    fetchFlights(source,dest,day,sort,filter,10,page).then((res)=>{
+      setIsLoading(false);
+      setResults(res?.results)
+      setTotal(res?.totalResults)
+      setFlightsList(res?.data?.flights)
+    })
+    console.log({source,dest,day,sort,filter,limit:10,page})
+
+  },[source,dest,day,sort,page,filter,filterChange])
 
 
-  useEffect(() => {
-    const day = dayjs(date).format("ddd");
-    fetchFlights(source, dest, day, 10, page, sortValue, filterValue).then(
-      (response) => {
+  const handleFilter = (type,value) => {
+    setFilterChange(prev=>!prev);
+    console.log("handleFilter called")
 
-        setTotal(response?.totalResults);
-        setResults(response?.results);
-        setFlightsList(response?.data?.flights);
-      }
-    );
-  }, [
-    searchQuery,
-    page,
-    source_location,
-    destination_location,
-    date_of_journey,
-    sortValue,
-    filterValue,
-  ]);
+    if (type == "stops") {
+      setFilter((prev) => {
+        console.log("inside setFilter")
+        if(value.length > 0){
+          prev["stops"] = value
+        } else{
+          delete prev["stops"]
+        }
+        return prev;
+      });
+    }
 
-  const filter = {};
+    if (type == "duration") {
+      setFilter((prev) => {
+        if(value.length > 0){
+          prev["duration"] = value
+        } else{
+          delete prev["duration"]
+        }
+        return prev;
+      });
+    }
+
+    if (type == "price") {
+      setFilter((prev) => {
+        if(value.length > 0){
+          prev["ticketPrice"] = {"$gte": parseInt(value[0]),"$lte": parseInt(value[1])}
+        } 
+        return prev;
+      });
+    }
+    
+    console.log(filter);
+
+  };
+  
 
   return (
     <div className="mx-auto w-full">
@@ -136,7 +171,7 @@ const FlightSearch = () => {
               <button
                 className="md:hidden absolute -top-6 -right-6 w-6 h-6 bg-white rounded-full shadow-even "
                 onClick={() => {
-                  console.log('Clicked Cross')
+                  console.log("Clicked Cross");
                   setShowFilter(false);
                 }}
               >
@@ -146,122 +181,26 @@ const FlightSearch = () => {
               <Filter
                 flightsList={flightsList}
                 setFlightsList={setFlightsList}
-                filterValue={filterValue}
-                setFilterValue={setFilterValue}
-                filter = {filter}
+                handleFilter={handleFilter}
+                filter={filter}
               />
             </div>
           </div>
         </div>
 
         <div className="basis-3/4">
-          <div className="sort mb-2">
-            {results && (
-              <span className="text-xs px-6 my-2 inline-block text-slate-400">
-                Showing {results} of {total}
-              </span>
-            )}
-
-            <Select
-              defaultValue="Select to Sort"
-              onChange={(value) => {
-                console.log(value);
-                setSortValue(value);
+          {
+            <SortSection
+              results={results}
+              total={total}
+              setSortValue={(value) => {
+                console.log({ value });
+                setSort(JSON.parse(value));
               }}
-              options={[
-                {
-                  value: `"ticketPrice":1`,
-                  label: (
-                    <span className="font-medium">
-                      Price{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (Low to High)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"ticketPrice":-1`,
-                  label: (
-                    <span className="font-medium">
-                      Price{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (High to Low)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"duration":1`,
-                  label: (
-                    <span className="font-medium">
-                      Duration{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (Low to high)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"duration":-1`,
-                  label: (
-                    <span className="font-medium">
-                      Duration{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (High to Low)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"departureTime":1`,
-                  label: (
-                    <span className="font-medium">
-                      Departure{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (Low to high)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"departureTime":-1`,
-                  label: (
-                    <span className="font-medium">
-                      Departure{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (High to Low)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"arrivalTime":1`,
-                  label: (
-                    <span className="font-medium">
-                      Arrival{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (Low to high)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-                {
-                  value: `"arrivalTime":-1`,
-                  label: (
-                    <span className="font-medium">
-                      Arrival{" "}
-                      <span className="font-normal text-slate-400 text-xs">
-                        (High to Low)
-                      </span>{" "}
-                    </span>
-                  ),
-                },
-              ]}
             />
-          </div>
+          }
 
-          <FlightsContainer flightsList={flightsList} />
+          <FlightsContainer flightsList={flightsList} isLoading={isLoading} />
 
           <Pagination
             className="my-4 flex items-center justify-center"

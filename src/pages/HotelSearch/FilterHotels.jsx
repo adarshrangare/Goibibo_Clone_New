@@ -1,74 +1,62 @@
-import { Checkbox, Select, Slider } from "antd";
+import { Checkbox, Rate, Slider } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { Md18UpRating } from "react-icons/md";
 
-const Filter = ({ setFilter, filter, handleFilter }) => {
+const FilterHotels = ({ setFilter, filter, handleFilter }) => {
   const [priceRange, setPriceRange] = useState([200, 4000]);
 
   return (
     <div className="w-full ">
       <div className="border-b mb-2 pb-4 py-2">
-        <h1 className="font-medium ">Stops</h1>
+        <h1 className="font-medium ">Couple Friendly</h1>
         <Checkbox.Group
-          className="px-4 flex flex-col gap-4 my-4 flex-wrap mx-auto justify-center items-start"
+          className="flex gap-4 my-4 flex-wrap mx-auto justify-start items-start px-4"
           onChange={(value) => {
-            console.log(value);
-            handleFilter("stops", value);
+            // console.log(value);
+            handleFilter("coupleFriendly", value);
           }}
           options={[
             {
-              label: "Non-Stop",
-              value: 0,
-            },
-            {
-              label: "1 Stop",
-              value: 1,
-            },
-            {
-              label: "2 Stop",
-              value: 2,
+              label: <span>Couple Friendly</span>,
+              value: true,
             },
           ]}
         ></Checkbox.Group>
       </div>
       <div className="border-b mb-2 pb-4 py-2">
-        <h1 className="font-medium ">Duration</h1>
+        <h1 className="font-medium ">Ratings</h1>
         <Checkbox.Group
-          className="px-4 flex flex-col gap-4 my-4 flex-wrap mx-auto justify-center items-start"
+          className="flex flex-col px-4 gap-4 my-4 flex-wrap mx-auto justify-center items-start"
           onChange={(value) => {
-            console.log(value);
-            handleFilter("duration", value);
+            // console.log(value);
+            handleFilter("rating", value);
           }}
           options={[
             {
-              label: "1 hour",
-              value: 1,
-            },
-            {
-              label: "2 hours",
-              value: 2,
-            },
-            {
-              label: "3 hours",
+              label: <Rate value={3} allowHalf  disabled/>,
               value: 3,
             },
             {
-              label: "4 hours",
+              label: <Rate value={3.5} allowHalf  disabled/>,
+              value: 3.5,
+            },
+            {
+              label: <Rate value={4} allowHalf  disabled/>,
               value: 4,
             },
             {
-              label: "5 hours",
-              value: 5,
+              label: <Rate value={4.5} allowHalf  disabled/>,
+              value: 4.5,
             },
             {
-              label: "6 hours",
-              value: 6,
+              label: <Rate value={5} allowHalf disabled/>,
+              value: 5,
             },
           ]}
         ></Checkbox.Group>
       </div>
-      
-      <div className="pb-4 mb-2 py-2">
+      {/* <div className="pb-4 mb-2 py-2">
         <h1 className="font-medium ">
           Price{" "}
           <span className="text-xs text-slate-500 font-normal">
@@ -96,9 +84,9 @@ const Filter = ({ setFilter, filter, handleFilter }) => {
             {priceRange[1]}
           </span>{" "}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default Filter;
+export default FilterHotels;

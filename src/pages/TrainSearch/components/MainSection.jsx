@@ -49,13 +49,7 @@ const MainSection = ({
               x
             </button>
 
-            {/* <Filter
-            flightsList={flightsList}
-            setFlightsList={setFlightsList}
-            filterValue={filterValue}
-            setFilterValue={setFilterValue}
-            filter = {filter}
-          /> */}
+          
             {
               <FilterTrains
                 filter={filter}

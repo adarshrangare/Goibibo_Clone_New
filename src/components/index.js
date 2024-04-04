@@ -16,6 +16,7 @@ import SelectButton from "./SmallComponents/SelectButton/SelectButton";
 import PaymentDone from "./Modals/PaymentDone";
 import PaymentLoading from "./Modals/PaymentLoading";
 import SortLabel from "./SmallComponents/SortLabel/SortLabel";
+import MyImageComponent from "./SmallComponents/MyImageComponents/MyImageComponent";
 export {
   SearchButton,
   DatePicker,
@@ -35,6 +36,5 @@ export {
   PaymentDone,
   PaymentLoading,
   SortLabel,
-  
-
+  MyImageComponent,
 };

@@ -13,6 +13,7 @@ import SortSection from "./SortSection";
 import { BiBody } from "react-icons/bi";
 import SkeletonAvatar from "antd/es/skeleton/Avatar";
 import HotelCardSkeleton from "./HotelCardSkeleton";
+import FilterHotels from "./FilterHotels";
 
 const HotelSearch = () => {
   const { hotelSearchQuery } = useParams();
@@ -40,28 +41,60 @@ const HotelSearch = () => {
   const [results, setResults] = useState(0);
   const [showFilter, setShowFilter] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortValue, setSortValue] = useState("{}")
-
+  const [filterChange, setFilterChange] = useState("{}");
+  const [sort, setSort] = useState({});
+  const [filter, setFilter] = useState({});
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("fetching Hotels...");
-    console.log(sortValue);
-    setIsLoading(true)
-    fetchHotels(location, 10, page,token,sortValue).then(
-      (res) => {
-        // console.log(res);
 
-        setTotal(res?.totalResults);
-        setResults(res?.results);
-        setHotelList(res?.data?.hotels)
-        setIsLoading(false);
-      },
-      (rej) => {
-        console.log(rej);
-      }
-    );
-  }, [location, page,sortValue]);
+    setIsLoading(true);
+
+    fetchHotels(location, sort, filter, 10, page, token).then((res) => {
+      console.log("res", res);
+      setTotal(res?.totalResults);
+      setResults(res?.results);
+      setHotelList(res?.data?.hotels);
+      setIsLoading(false);
+    });
+  }, [location, page, sort,filterChange]);
+
+  const handleFilter = (type, value) => {
+    setFilterChange((prev) => !prev);
+    // console.log("handleFilter called");
+
+    if (type == "coupleFriendly") {
+      setFilter((prev) => {
+        // console.log("inside setFilter");
+        if (value.length > 0) {
+          prev["houseRules.guestProfile.unmarriedCouplesAllowed"] = value;
+        } else {
+          delete prev["houseRules.guestProfile.unmarriedCouplesAllowed"];
+        }
+        return prev;
+      });
+    }
+
+    if (type == "rating") {
+      setFilter((prev) => {
+        if (value.length > 0) {
+          prev["rating"] = value;
+        } else {
+          delete prev["rating"];
+        }
+        return prev;
+      });
+    }
+
+    if (type == "price") {
+      setFilter((prev) => {
+        if (value.length > 0) {
+          prev["fare"] = { $gte: parseInt(value[0]), $lte: parseInt(value[1]) };
+        }
+        return prev;
+      });
+    }
+  };
 
   return (
     <div id="container" className="mx-auto w-full">
@@ -115,23 +148,27 @@ const HotelSearch = () => {
                 x
               </button>
 
-              {/* <Filter
-                flightsList={flightsList}
-                setFlightsList={setFlightsList}
-                filterValue={filterValue}
-                setFilterValue={setFilterValue}
-                filter = {filter}
-              /> */}
+              
+              <FilterHotels
+                filter={filter}
+                setFilter={setFilter}
+                handleFilter={handleFilter}
+              />
             </div>
           </div>
         </div>
 
         <div className="basis-3/4">
-          <SortSection results={results} total={total} setSortValue={(value)=>{setSortValue(value)}}/>
+          <SortSection
+            results={results}
+            total={total}
+            setSortValue={(value) => {
+              console.log({ value });
+              setSort(JSON.parse(value));
+            }}
+          />
 
-          <HotelContainer isLoading ={isLoading} hotelsList={hotelsList}/>
-          
-            
+          <HotelContainer isLoading={isLoading} hotelsList={hotelsList} />
 
           <Pagination
             className="my-4 flex items-center justify-center"

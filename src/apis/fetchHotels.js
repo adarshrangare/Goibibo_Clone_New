@@ -2,25 +2,29 @@ import AxiosInstance from "./axios-instance";
 
 export const fetchHotels = async (
   location,
-  limit,
-  page,
-  jwtToken,
-  sort = "{}",
-  filter = "{}",
+  sort = {},
+  filter = {},
+  limit = 10,
+  page = 1,
+  jwtToken
 ) => {
   try {
-    const response = await AxiosInstance.get(
-      `hotel?search={"location": "${location}"}&sort=${sort}&filter=${filter}&limit=${limit}&page=${page}`,
-
-      {
-        headers: {
-          Authorization: `Bearer ${jwtToken}`,
-        },
-      }
-    );
-    return response.data;
+    const res = await AxiosInstance.get(`/hotel`, {
+      params: {
+        search: JSON.stringify({ location }),
+        sort: JSON.stringify(sort),
+        filter: JSON.stringify(filter),
+        limit,
+        page,
+      },
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+    // console.log(res?.data);
+    return res?.data;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("There is Error", error);
     throw error;
   }
 };

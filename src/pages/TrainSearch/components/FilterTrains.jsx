@@ -5,18 +5,6 @@ import { useEffect } from "react";
 const FilterTrains = ({ setFilter, filter, handleFilter }) => {
   const [priceRange, setPriceRange] = useState([200, 4000]);
 
-  // useEffect(()=>{
-  //   console.log("useEffect")
-  //   setFilter((prev) => {
-  //     if(coachType.length > 0){
-  //       prev["coaches.coachType"] = coachType
-  //     } else{
-  //       delete prev["coaches.coachType"]
-  //     }
-  //     return prev;
-  //   });
-  //   console.log({filter})
-  // },[coachType])
 
   return (
     <div className="w-full ">
