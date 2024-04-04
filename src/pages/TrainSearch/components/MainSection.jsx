@@ -3,8 +3,20 @@ import { FilterTwoTone } from "@ant-design/icons";
 import { Pagination } from "antd";
 import SortSection from "./SortSection";
 import TrainContainer from "./TrainContainer";
-const MainSection = ({ trainsList, totalResults, setPage, departureDate }) => {
+import FilterTrains from "./FilterTrains";
+const MainSection = ({
+  trainsList,
+  totalResults,
+  setSort,
+  setPage,
+  departureDate,
+  filter,
+  setFilter,
+  handleFilter,
+  isLoading,
+}) => {
   const [showFilter, setShowFilter] = useState(false);
+  console.log(filter, "filter in Main");
   return (
     <div className=" w-full mx-auto mt-10 flex gap-4 flex-col md:flex-row md:w-11/12 lg:w-9/12">
       <div className="filterSection basis-1/4 ">
@@ -44,21 +56,33 @@ const MainSection = ({ trainsList, totalResults, setPage, departureDate }) => {
             setFilterValue={setFilterValue}
             filter = {filter}
           /> */}
+            {
+              <FilterTrains
+                filter={filter}
+                setFilter={setFilter}
+                handleFilter={handleFilter}
+              />
+            }
           </div>
         </div>
       </div>
 
       <div className="basis-3/4">
         <SortSection
-          results={"results"}
-          total={"total"}
+          results={trainsList?.length}
+          total={totalResults}
           setSortValue={(value) => {
-            "setSortValue(value)";
+            console.log({ value });
+            setSort(JSON.parse(value));
           }}
         />
 
-        {/* <HotelContainer isLoading ={isLoading} hotelsList={hotelsList}/> */}
-        <TrainContainer trainsList={trainsList} departureDate={departureDate} />
+       
+        <TrainContainer
+          trainsList={trainsList}
+          departureDate={departureDate}
+          isLoading={isLoading}
+        />
 
         <Pagination
           className="my-4 flex items-center justify-center"

@@ -26,16 +26,18 @@ const TrainSearch = () => {
     departureDate,
   });
 
+  
+
   const [trainsList, setTrainsList] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(10);
-
-
-  const day = dayjs(Date(departureDate)).format("ddd")
-  console.log(day);
-
+  
+  const day = dayjs(Date(departureDate)).format("ddd");
+  // console.log(day);
+  const [filterChange,setFilterChange]= useState(false);
   useEffect(() => {
+   
     setIsLoading(true);
     fetchTrains(
       trainSearchData.source,
@@ -49,10 +51,51 @@ const TrainSearch = () => {
       // console.log(res);
       setTrainsList(res?.data?.trains);
       setIsLoading(false);
-      setTotalResults(res?.totalResults)
-      
+      setTotalResults(res?.totalResults);
     });
-  }, [trainSearchData,page]);
+    // console.log("filter in TrainSearch", filter);
+  }, [trainSearchData, page, sort,filter,filterChange]);
+
+  const handleFilter = (type,value) => {
+    setFilterChange(prev=>!prev);
+    console.log("handleFilter called")
+
+    if (type == "coachType") {
+      setFilter((prev) => {
+        console.log("inside setFilter")
+        if(value.length > 0){
+          prev["coaches.coachType"] = value
+        } else{
+          delete prev["coaches.coachType"]
+        }
+        return prev;
+      });
+    }
+
+    if (type == "trainType") {
+      setFilter((prev) => {
+        if(value.length > 0){
+          prev["trainType"] = value
+        } else{
+          delete prev["trainType"]
+        }
+        return prev;
+      });
+    }
+
+    if (type == "price") {
+      setFilter((prev) => {
+        if(value.length > 0){
+          prev["fare"] = {"$gte": parseInt(value[0]),"$lte": parseInt(value[1])}
+        } 
+        return prev;
+      });
+    }
+    
+
+  };
+  
+
 
   return (
     <div id="container" className="mx-auto w-full">
@@ -69,7 +112,17 @@ const TrainSearch = () => {
         </ContentWrapper>
       </div>
 
-      <MainSection setPage={setPage} totalResults={totalResults} trainsList={trainsList} departureDate={departureDate} />
+      <MainSection
+        setPage={setPage}
+        setSort={setSort}
+        filter={filter}
+         setFilter = {setFilter}
+         handleFilter = {handleFilter}
+        totalResults={totalResults}
+        trainsList={trainsList}
+        departureDate={departureDate}
+        isLoading={isLoading}
+      />
     </div>
   );
 };
