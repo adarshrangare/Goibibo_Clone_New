@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BiCloset } from "react-icons/bi";
+import { MdClose } from "react-icons/md";
 import Counter from "../Counter/Counter";
 
 const TravellersCount = ({ value, handleValue }) => {
@@ -37,14 +39,14 @@ const TravellersCount = ({ value, handleValue }) => {
       </label>
 
       <div
-        className={`counter absolute top-20 -left-1 bg-white rounded shadow-all w-[250px] md:w-96 p-4 px-8 z-[2] flex flex-col md:right-0 md:left-auto  transition-all duration-500 origin-top-left ${
+        className={`counter absolute top-20 -left-1 bg-white rounded shadow-all w-[250px] md:w-96 p-4 px-8 z-[2] flex flex-col md:right-0 md:left-auto  transition-all duration-500 origin-top-left md:origin-top-right ${
           showMenu ? "scale-100 " : "scale-0"
         }`}
       >
         <button
-          className="close shadow-all text-center w-6 h-6 bg-white absolute -top-3 -right-3 rounded-full"
+          className="close shadow-all text-center flex items-center justify-center w-6 h-6 bg-white absolute -top-3 -right-3 rounded-full"
           onClick={() => {
-            console.log("clicked cross");
+            // console.log("clicked cross");
             setTimeout(() => {
               setShowMenu((prev) => {
                 console.log("click", prev);
@@ -53,7 +55,7 @@ const TravellersCount = ({ value, handleValue }) => {
             }, 0);
           }}
         >
-          x
+          <MdClose />
         </button>
         <Counter
           name="Adults"
@@ -61,7 +63,9 @@ const TravellersCount = ({ value, handleValue }) => {
           count={value?.numbers?.adult}
           disabledNeg={value?.numbers?.adult == 1}
           disabledPos={
-            value?.numbers?.adult + value?.numbers?.child + value?.numbers?.infant ===
+            value?.numbers?.adult +
+              value?.numbers?.child +
+              value?.numbers?.infant ===
             9
           }
           handleClick={(secondType) => {
@@ -74,7 +78,9 @@ const TravellersCount = ({ value, handleValue }) => {
           count={value?.numbers?.child}
           disabledNeg={value?.numbers?.child == 0}
           disabledPos={
-            value?.numbers?.adult + value?.numbers?.child + value?.numbers?.infant ==
+            value?.numbers?.adult +
+              value?.numbers?.child +
+              value?.numbers?.infant ==
             9
           }
           handleClick={(secondType) => {
@@ -88,7 +94,9 @@ const TravellersCount = ({ value, handleValue }) => {
           disabledNeg={value?.numbers?.infant == 0}
           disabledPos={
             value?.numbers?.adult <= value?.numbers?.infant ||
-            value?.numbers?.adult + value?.numbers?.child + value?.numbers?.infant ==
+            value?.numbers?.adult +
+              value?.numbers?.child +
+              value?.numbers?.infant ==
               9
           }
           handleClick={(secondType) => {
@@ -96,9 +104,6 @@ const TravellersCount = ({ value, handleValue }) => {
           }}
         />
       </div>
-      
-
-
     </div>
   );
 };

@@ -33,24 +33,19 @@ const SearchForm = () => {
   function handleSubmit(e) {
     const { adult, child, infant } = travel_details?.numbers;
 
-    if(source_location == destination_location){
+    if (source_location == destination_location) {
       alert("Both airports are the same, Please Select Different Airports");
       return;
     }
 
-    const encodedPath = btoa(`${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`)
+    const encodedPath = btoa(
+      `${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
+    );
 
     if (pathname.includes("flight")) {
-
-
-
-      navigate(
-        `air-${encodedPath}`
-      );
+      navigate(`air-${encodedPath}`);
     } else {
-      navigate(
-        `flight/air-${encodedPath}`
-      );
+      navigate(`flight/air-${encodedPath}`);
     }
   }
 

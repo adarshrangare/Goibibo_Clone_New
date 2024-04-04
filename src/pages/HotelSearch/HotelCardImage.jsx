@@ -10,19 +10,19 @@ const fallbackHotelImage =
     
   return (
     <>
-      {/* <img
+      <img
         loading="lazy"
         src={images[index] && fallbackHotelImage}
         width={400}
         height={300}
         className="h-full md:h-[75%] shrink-0 min-w-full rounded-md"
         alt="hotel"
-      /> */}
-      <MyImageComponent 
+      />
+      {/* <MyImageComponent 
         src={images[index]}
         className="h-full md:h-[75%] shrink-0 min-w-full rounded-md"
         
-      />
+      /> */}
 
 
       <div className="md:flex w-full h-[25%] gap-[2px] pt-2 hidden overflow-hidden overflow-x-scroll  shrink-0 justify-between">

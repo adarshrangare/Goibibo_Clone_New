@@ -9,7 +9,7 @@ const TrainContainer = ({ trainsList, departureDate, isLoading }) => {
       className="w-full rounded-md overflow-hidden border-b-2  mx-auto px-2 flex flex-col items-center justify-start h-[120vh] overflow-y-scroll gap-4 "
     >
       {!isLoading
-        ? trainsList.map((train) => (
+        ? trainsList?.map((train) => (
             <TrainCard
               key={train?._id}
               {...train}
