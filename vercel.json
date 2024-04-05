@@ -1,0 +1,19 @@
+{
+
+    "version": 2,
+    
+    "name": "Goibibo Clone",
+    
+    "builds": [
+    
+    { "src": "./src/main.jsx", "use": "@vercel/node" }
+    
+    ],
+    
+    "routes": [
+    
+    { "src": "/(.*)", "dest": "/index.js" }
+    
+    ]
+    
+    }
