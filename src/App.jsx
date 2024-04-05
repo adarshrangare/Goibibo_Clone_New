@@ -91,7 +91,7 @@ const router = createBrowserRouter(
         path="/trains/searchResults"
         element={
           <ProtectedRoute>
-            <TrainSearch/>
+            <TrainSearch />
           </ProtectedRoute>
         }
       />
@@ -99,16 +99,15 @@ const router = createBrowserRouter(
         path="/trains/booking"
         element={
           <ProtectedRoute>
-            <TrainBooking/>
+            <TrainBooking />
           </ProtectedRoute>
         }
       />
-
       <Route path="/bus" element={<Bus />} />
       <Route path="/login-signup" element={<LoginSignup />} />
       <Route path="/mysupport/trips" element={<MyTrip />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={ <Error404/> } />
+      <Route path="*" element={<Error404 />} />
     </Route>
   )
 );
