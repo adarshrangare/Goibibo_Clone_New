@@ -49,7 +49,7 @@ const InputField = ({
 
   function handleInput(inputText) {
     setInputValue(inputText);
-    console.log(inputText);
+    // console.log(inputText);
     if (inputText.trim().length > 0) {
       setShowSuggetion(true);
     } else {
@@ -58,7 +58,7 @@ const InputField = ({
   }
 
   function handleSelect(airport) {
-    console.log(airport);
+    // console.log(airport);
     setShowSuggetion(false);
     handleValue(airport?.iata_code);
     setInputValue(`${airport?.city}, (${airport?.iata_code})`);
@@ -74,7 +74,7 @@ const InputField = ({
         value={inputValue}        
         className="w-full relative rounded-lg m-3 focus:outline-none  border-2 border-solid border-slate-200 hover:border-slate-500 focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 "
         onChange={(e) => {
-          console.log(e.target.value);
+          // console.log(e.target.value);
           handleInput(e.target.value);
           
         }}

@@ -40,7 +40,7 @@ const Test = () => {
   }
 
   function handleSelect(airport) {
-    console.log(airport);
+    // console.log(airport);
     setShowSuggetion(false);
     setSelectedValue(airport?.iata_code);
     setInputValue(`${airport?.city}, (${airport?.iata_code})`);

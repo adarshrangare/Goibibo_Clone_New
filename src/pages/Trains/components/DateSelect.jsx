@@ -4,9 +4,8 @@ import dayjs from "dayjs";
 
 import locale from "antd/es/date-picker/locale/en_US";
 const DateSelect = ({value, handleDepartureDate,className, labelClass}) => {
-
-  
-
+  console.log(dayjs(value));
+  console.log(Date(value));
   return (
     <label className="date relative flex-1 hover:cursor-pointer ">
     <div className={`bg-white font-medium text-sm text-slate-500 z-[1]  absolute left-7 ${labelClass}`}>
@@ -15,7 +14,7 @@ const DateSelect = ({value, handleDepartureDate,className, labelClass}) => {
     <DatePicker
       locale={locale}
       format={"DD-MM-YYYY"}
-      value={dayjs(value)}
+      value={dayjs(value) }
       disabledDate={(current) =>
         current && current < dayjs().startOf("day")
       }

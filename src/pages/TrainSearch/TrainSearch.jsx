@@ -14,7 +14,7 @@ const TrainSearch = () => {
 
   const { source, destination, departureDate } = location.state;
 
-  console.log({ source, destination, departureDate });
+  // console.log({ source, destination, departureDate });
   const [sort, setSort] = useState({});
 
   const [fare, setFare] = useState({});
@@ -58,11 +58,11 @@ const TrainSearch = () => {
 
   const handleFilter = (type,value) => {
     setFilterChange(prev=>!prev);
-    console.log("handleFilter called")
+    // console.log("handleFilter called")
 
     if (type == "coachType") {
       setFilter((prev) => {
-        console.log("inside setFilter")
+        // console.log("inside setFilter")
         if(value.length > 0){
           prev["coaches.coachType"] = value
         } else{
@@ -92,7 +92,7 @@ const TrainSearch = () => {
       });
     }
     
-
+    setPage(1);
   };
   
 

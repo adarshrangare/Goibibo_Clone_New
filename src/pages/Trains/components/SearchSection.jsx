@@ -3,7 +3,7 @@ import { SearchButton } from "../../../components";
 import SearchForm from "./SearchForm";
 
 const SearchSection = ({ trainProp,onSubmitForm }) => {
-  console.log("re-render SearchForm");
+  // console.log("re-render SearchForm");
   return (
     <section className="md:w-10/12 relative   searchSection m-3  flex flex-col  items-center gap-5 lg:gap-8 lg:m-6  lg:mx-auto">
       <div className="flex gap-2 items-center justify-between w-full md:w-11/12 ">

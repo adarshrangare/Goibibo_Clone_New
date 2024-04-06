@@ -8,8 +8,6 @@ import dayjs from "dayjs";
 import Travellers from "./Travellers";
 import locale from "antd/es/date-picker/locale/en_US";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { fetchFlights } from "../../../apis/FetchFlights";
 
 // import 'dayjs/locale/zh-cn';
 
@@ -17,19 +15,19 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails,flightsList,
   setFlightsList }) => {
 
   const { searchQuery } = useParams();
-  console.log({searchQuery});
+  // console.log({searchQuery});
 
   const encodedString = searchQuery ?? '' ;
 
   const extractedEncodedPath = encodedString.replace('air-', '');
-  console.log(extractedEncodedPath);
+  // console.log(extractedEncodedPath);
   // console.log(encoded);
   const decodedPath = atob(extractedEncodedPath);
 
-  console.log(decodedPath);
+  // console.log(decodedPath);
 
   const [location, date, counts] =  decodedPath?.split("--");
-  console.log(location,date,counts);
+  // console.log(location,date,counts);
   
   const [source, dest] = location?.split("-");
 
@@ -51,7 +49,7 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails,flightsList,
   const navigate = useNavigate();
   function handleSearch(){
       
-      console.log("hello")
+      // console.log("hello")
 
       const {adult,child,infant} = travel_details.numbers;
       
@@ -121,7 +119,7 @@ const InputSection = ({ journeyDetails, dispatchJourneyDetails,flightsList,
           format={"DD-MM-YYYY"}
           value={dayjs(date_of_journey)}
           onChange={(value) => {
-            console.log("handleDate");
+            // console.log("handleDate");
             const date = dayjs(value.$d).format();
             const dateFormat = dayjs(date).format("YYYY-MM-DD");
             dispatchJourneyDetails({

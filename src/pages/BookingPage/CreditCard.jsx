@@ -46,7 +46,7 @@ const CreditCard = () => {
     }
 
     setTimeout(() => {
-      console.log("setTimeout");
+      // console.log("setTimeout");
       setCardDetails((prev) => {
         return {
           number: null,

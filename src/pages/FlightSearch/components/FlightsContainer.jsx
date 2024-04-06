@@ -22,6 +22,7 @@ const FlightsContainer = ({ flightsList, isLoading }) => {
       ) : (
         [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
           <Skeleton
+            key={item}
             active
             className="border bg-white shadow-lg p-4 rounded-md min-h-40"
           />

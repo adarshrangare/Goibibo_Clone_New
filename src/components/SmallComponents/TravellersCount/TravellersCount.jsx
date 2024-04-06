@@ -49,7 +49,7 @@ const TravellersCount = ({ value, handleValue }) => {
             // console.log("clicked cross");
             setTimeout(() => {
               setShowMenu((prev) => {
-                console.log("click", prev);
+                // console.log("click", prev);
                 return false;
               });
             }, 0);

@@ -32,7 +32,7 @@ const FlightDetails = ({ flightId,handleFlightPrice }) => {
   function flightName(string) {
     const flightnameArr = string?.split("-");
 
-    console.log(flightnameArr);
+    // console.log(flightnameArr);
 
     if (flightnameArr) {
       const [code, _, id] = flightnameArr;

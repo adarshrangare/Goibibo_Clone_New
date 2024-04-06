@@ -50,7 +50,7 @@ const InputBox = ({
   }
 
   function handleSelect(airport) {
-    console.log(airport);
+    // console.log(airport);
     setShowSuggetion(false);
     handleValue(airport?.iata_code);
     setInputValue(`${airport?.city}, (${airport?.iata_code})`);
@@ -66,7 +66,7 @@ const InputBox = ({
         autoComplete="off"
         className="h-8 rounded-lg bg-blue-800 font-medium px-4 py-2 text-white focus:outline-none w-44 md:w-52"
         onChange={(e) => {
-          console.log(e.target.value);
+          // console.log(e.target.value);
           handleInput(e.target.value);
           
         }}

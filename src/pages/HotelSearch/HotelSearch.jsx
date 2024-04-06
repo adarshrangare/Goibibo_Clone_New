@@ -51,7 +51,7 @@ const HotelSearch = () => {
     setIsLoading(true);
 
     fetchHotels(location, sort, filter, 10, page, token).then((res) => {
-      console.log("res", res);
+      // console.log("res", res);
       setTotal(res?.totalResults);
       setResults(res?.results);
       setHotelList(res?.data?.hotels);
@@ -94,6 +94,7 @@ const HotelSearch = () => {
         return prev;
       });
     }
+    setPage(1);
   };
 
   return (
@@ -141,7 +142,7 @@ const HotelSearch = () => {
               <button
                 className="md:hidden absolute -top-6 -right-6 w-6 h-6 bg-white rounded-full shadow-even "
                 onClick={() => {
-                  console.log("Clicked Cross");
+                  // console.log("Clicked Cross");
                   setShowFilter(false);
                 }}
               >
@@ -163,7 +164,7 @@ const HotelSearch = () => {
             results={results}
             total={total}
             setSortValue={(value) => {
-              console.log({ value });
+              // console.log({ value });
               setSort(JSON.parse(value));
             }}
           />

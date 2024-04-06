@@ -5,7 +5,7 @@ const Counter = ({ name, desc, count, disabledNeg, disabledPos, handleClick }) =
 
   
   function handleIncrease(){
-      console.log(count)
+      // console.log(count)
         
          handleClick("increase");       
 

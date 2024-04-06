@@ -25,7 +25,7 @@ const TrainBooking = () => {
   const [paymentComplete, setPaymentComplete] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
   async function handlePaymentAndBooking() {
-    console.log({ departureDate });
+    // console.log({ departureDate });
     setPaymentLoading(true);
     const token = JSON.parse(localStorage.getItem("token"));
     confirmBooking(
@@ -39,15 +39,16 @@ const TrainBooking = () => {
     )
       .then((res) => {
         setBookingDetails(res?.data);
-        console.log({ booking: res });
+        // console.log({ booking: res });
         timerRef.current = setTimeout(() => {
-          console.log("payment");
+          // console.log("payment");
           setPaymentLoading(false);
           setPaymentComplete(true);
         }, 2000);
       })
       .catch((err) => {
         console.log(err);
+        
       });
   }
 

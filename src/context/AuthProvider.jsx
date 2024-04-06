@@ -7,45 +7,51 @@ import useLocalStorage from "../hooks/useLocalStorage";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  
   // const [userDetail, setUserDetails] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginOpen, setLoginOpen] = useState(true);
 
-  const [token,setToken] = useLocalStorage("token",null);
-  const [userDetail,setUserDetails] = useLocalStorage("userDetail",null);
+  const [token, setToken] = useLocalStorage("token", null);
+  const [userDetail, setUserDetails] = useLocalStorage("userDetail", null);
 
-  function logOutFunc(){
-    if(localStorage.getItem("token"))
-    {
+  function logOutFunc() {
+    if (localStorage.getItem("token")) {
       localStorage.removeItem("token");
     }
-
+    if (localStorage.getItem("userDetail")) {
+      localStorage.removeItem("userDetail");
+    }
+    setIsLoggedIn(false);
+    setToken(null);
+    setUserDetails(null);
     // alert("user is Logged Out");
-    
+
     successToast("User is logged out successfully");
 
-    setIsLoggedIn(false);
-    setUserDetails({});
+    setUserDetails(null);
   }
 
-  console.log({token});
+  // console.log({ token });
 
-  
-
-  useEffect(()=>{
-    if(token){
+  useEffect(() => {
+    if (token) {
       setIsLoggedIn(true);
-      setLoginOpen(false)
+      setLoginOpen(false);
     }
-
-  },[token])
-
-  
+  }, [token]);
 
   return (
     <AuthContext.Provider
-      value={{ setToken,userDetail, isLoggedIn, loginOpen, setIsLoggedIn, setLoginOpen,setUserDetails, logOutFunc }}
+      value={{
+        setToken,
+        userDetail,
+        isLoggedIn,
+        loginOpen,
+        setIsLoggedIn,
+        setLoginOpen,
+        setUserDetails,
+        logOutFunc,
+      }}
     >
       {children}
     </AuthContext.Provider>

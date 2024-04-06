@@ -8,12 +8,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <FlightPassengerProvider>
-      <ToastContainer />
-      {/* <Router> */}
+  <>
+    <ToastContainer />
+    <AuthProvider>
+      <FlightPassengerProvider>
         <App />
-      {/* </Router> */}
-    </FlightPassengerProvider>
-  </AuthProvider>
+      </FlightPassengerProvider>
+    </AuthProvider>
+  </>
 );

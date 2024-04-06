@@ -1,7 +1,7 @@
 import React from 'react'
 
 const OfferCard = ({lobDisplayText,newHeroOfferCardUrl,heroUrl,newHeroUrl ,hero,pTl,pTx}) => {
-    console.log()
+    
   return (
     <article className=" max-w-[20rem] w-[20rem] md:w-[476px] md:max-w-[476px]  h-[220px]  m-2 border rounded-lg hover:shadow-all shrink-0 bg-white overflow-hidden cursor-pointer transition-all duration-300">
 

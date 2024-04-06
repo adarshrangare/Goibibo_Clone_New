@@ -77,25 +77,25 @@ const FlightSearch = () => {
   
   useEffect(()=>{
     setIsLoading(true)
-    console.log("api calling");
+    // console.log("api calling");
     fetchFlights(source,dest,day,sort,filter,10,page).then((res)=>{
       setIsLoading(false);
       setResults(res?.results)
       setTotal(res?.totalResults)
       setFlightsList(res?.data?.flights)
     })
-    console.log({source,dest,day,sort,filter,limit:10,page})
+    // console.log({source,dest,day,sort,filter,limit:10,page})
 
   },[source,dest,day,sort,page,filter,filterChange])
 
 
   const handleFilter = (type,value) => {
     setFilterChange(prev=>!prev);
-    console.log("handleFilter called")
+    // console.log("handleFilter called")
 
     if (type == "stops") {
       setFilter((prev) => {
-        console.log("inside setFilter")
+        // console.log("inside setFilter")
         if(value.length > 0){
           prev["stops"] = value
         } else{
@@ -125,8 +125,8 @@ const FlightSearch = () => {
       });
     }
     
-    console.log(filter);
-
+    // console.log(filter);
+    setPage(1);
   };
   
 
@@ -171,7 +171,7 @@ const FlightSearch = () => {
               <button
                 className="md:hidden absolute -top-6 -right-6 w-6 h-6 bg-white rounded-full shadow-even "
                 onClick={() => {
-                  console.log("Clicked Cross");
+                  // console.log("Clicked Cross");
                   setShowFilter(false);
                 }}
               >
@@ -194,7 +194,7 @@ const FlightSearch = () => {
               results={results}
               total={total}
               setSortValue={(value) => {
-                console.log({ value });
+                // console.log({ value });
                 setSort(JSON.parse(value));
               }}
             />

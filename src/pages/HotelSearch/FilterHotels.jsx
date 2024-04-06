@@ -71,7 +71,7 @@ const FilterHotels = ({ setFilter, filter, handleFilter }) => {
           max={4000}
           className="w-11/12 mx-auto"
           onChangeComplete={(value) => {
-            console.log(value);
+            // console.log(value);
             setPriceRange(value);
             handleFilter("price", value);
           }}

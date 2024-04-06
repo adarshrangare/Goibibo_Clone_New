@@ -62,7 +62,7 @@ export const fetchFlights = async (
     // console.log(res?.data);
     return res?.data;
   } catch (error) {
-    console.error("There is Error", error);
+    // console.error("There is Error", error);
     throw error;
   }
 };

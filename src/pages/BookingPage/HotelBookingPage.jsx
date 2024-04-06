@@ -51,16 +51,16 @@ const HotelBookingPage = () => {
       .then((res) => {
         
           setBookingDetails(res?.data);
-          console.log({booking:res})
+          // console.log({booking:res})
           setTimeout(()=>{
-            console.log("payment");
+            // console.log("payment");
             setPaymentLoading(false);
             setPaymentComplete(true);
           },2000)
         
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }
 

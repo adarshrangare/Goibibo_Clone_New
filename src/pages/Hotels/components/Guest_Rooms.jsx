@@ -4,7 +4,7 @@ import { Counter } from "../../../components";
 const Gust_Room = ({ value, handleValue,className, classNamep,labelClass }) => {
   const [showMenu, setShowMenu] = useState(false);
 
-  console.log(value);
+  // console.log(value);
 
   return (
     <div

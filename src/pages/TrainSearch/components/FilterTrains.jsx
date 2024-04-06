@@ -13,7 +13,7 @@ const FilterTrains = ({ setFilter, filter, handleFilter }) => {
         <Checkbox.Group
           className="flex gap-4 my-4 flex-wrap mx-auto justify-center items-center"
           onChange={(value) => {
-            console.log(value);
+            // console.log(value);
             handleFilter("coachType", value);
           }}
           options={["2S", "CC", "SL", "EA", "3E", "3A", "2A", "1A"]}
@@ -24,7 +24,7 @@ const FilterTrains = ({ setFilter, filter, handleFilter }) => {
         <Checkbox.Group
           className="flex gap-4 my-4 flex-wrap mx-auto justify-center items-center"
           onChange={(value) => {
-            console.log(value);
+            // console.log(value);
             handleFilter("trainType", value);
           }}
           options={["Shatabdi", "Express", "Rajdhani", "Superfast", "Duronto"]}
@@ -40,7 +40,7 @@ const FilterTrains = ({ setFilter, filter, handleFilter }) => {
           max={4000}
           className="w-11/12 mx-auto"
           onChangeComplete={(value) => {
-            console.log(value);
+            // console.log(value);
             setPriceRange(value);
             handleFilter("price", value);
           }}

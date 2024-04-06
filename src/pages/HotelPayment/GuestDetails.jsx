@@ -5,7 +5,7 @@ import CollapseWindow from "./Collapser";
 const GuestDetails = () => {
   const { userDetail } = useAuth();
 
-  console.log(userDetail);
+  // console.log(userDetail);
 
   const [userValues, setUserValues] = useState({
     name: userDetail?.name,

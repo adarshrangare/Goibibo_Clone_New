@@ -15,7 +15,7 @@ const LoginSignup = () => {
   // const navigate = useNavigate();
   // const navigation = useNavigation();
   const location = useLocation();
-  console.log(location.state?.previousPath);
+  // console.log(location.state?.previousPath);
   // console.log({navigate,navigation})
 
   return (

@@ -13,11 +13,11 @@ const HotelInfo = ({
   roomDataQuery,
   roomDetails
 }) => {
-  console.log({
-    checkInQuery,
-    checkOutQuery,
-    roomDataQuery,
-  });
+  // console.log({
+  //   checkInQuery,
+  //   checkOutQuery,
+  //   roomDataQuery,
+  // });
 
   function getRooms(guests){
     

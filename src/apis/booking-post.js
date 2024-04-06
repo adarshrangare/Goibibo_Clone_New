@@ -2,7 +2,7 @@ import AxiosInstance from "./axios-instance";
 
 const confirmBooking = async (bookingType, bookingDetails, jwtToken) => {
   try {
-    console.log({jwtToken});
+    // console.log({jwtToken});
     const response = await AxiosInstance.post(
       "/booking",
       {
@@ -18,7 +18,7 @@ const confirmBooking = async (bookingType, bookingDetails, jwtToken) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    // console.error("Error fetching data:", error);
     throw error;
   }
 };

@@ -12,7 +12,7 @@ const Filter = ({ setFilter, filter, handleFilter }) => {
         <Checkbox.Group
           className="px-4 flex flex-col gap-4 my-4 flex-wrap mx-auto justify-center items-start"
           onChange={(value) => {
-            console.log(value);
+            // console.log(value);
             handleFilter("stops", value);
           }}
           options={[
@@ -36,7 +36,7 @@ const Filter = ({ setFilter, filter, handleFilter }) => {
         <Checkbox.Group
           className="px-4 flex flex-col gap-4 my-4 flex-wrap mx-auto justify-center items-start"
           onChange={(value) => {
-            console.log(value);
+            // console.log(value);
             handleFilter("duration", value);
           }}
           options={[
@@ -83,7 +83,7 @@ const Filter = ({ setFilter, filter, handleFilter }) => {
           max={4000}
           className="w-11/12 mx-auto"
           onChangeComplete={(value) => {
-            console.log(value);
+            // console.log(value);
             setPriceRange(value);
             handleFilter("price", value);
           }}

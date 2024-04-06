@@ -1,4 +1,4 @@
-import { toast, Bounce } from "react-toastify";
+import { toast, Bounce,Flip } from "react-toastify";
 
 const errorToast = (message = "There is an Error") => {
     toast.dismiss();

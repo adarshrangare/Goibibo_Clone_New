@@ -16,7 +16,7 @@ const MainSection = ({
   isLoading,
 }) => {
   const [showFilter, setShowFilter] = useState(false);
-  console.log(filter, "filter in Main");
+  // console.log(filter, "filter in Main");
   return (
     <div className=" w-full mx-auto mt-10 flex gap-4 flex-col md:flex-row md:w-11/12 lg:w-9/12">
       <div className="filterSection basis-1/4 ">
@@ -42,7 +42,7 @@ const MainSection = ({
             <button
               className="md:hidden absolute -top-6 -right-6 w-6 h-6 bg-white rounded-full shadow-even "
               onClick={() => {
-                console.log("Clicked Cross");
+                // console.log("Clicked Cross");
                 setShowFilter(false);
               }}
             >
@@ -64,9 +64,9 @@ const MainSection = ({
       <div className="basis-3/4">
         <SortSection
           results={trainsList?.length}
-          total={totalResults}
+          total={totalResults < 10 ? totalResults : 10}
           setSortValue={(value) => {
-            console.log({ value });
+            // console.log({ value });
             setSort(JSON.parse(value));
           }}
         />
@@ -80,7 +80,7 @@ const MainSection = ({
 
         <Pagination
           className="my-4 flex items-center justify-center"
-          total={20}
+          total={totalResults > 10 ? totalResults : 10}
           onChange={(page) => {
             setPage(page);
             window.scrollBy(0, -window.innerHeight);

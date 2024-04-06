@@ -19,7 +19,7 @@ const PriceSection = ({flightPrice,priceDetails}) => {
 
 const [finalPrice, setFinalPrice] = useState((flightPrice));
     
-    console.log({finalPrice,adult,child})
+    // console.log({finalPrice,adult,child})
 
   return (
     <div>

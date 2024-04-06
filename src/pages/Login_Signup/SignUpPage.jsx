@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import loginAPI from "../../apis/SignUp";
 import { Inputbox, PrimaryButton } from "../../components";
+import { successToast } from "../../components/Toasts/toast";
 import { useAuth } from "../../context/AuthProvider";
 
 const SignUpPage = () => {
@@ -86,8 +87,7 @@ const SignUpPage = () => {
       if (res) {
         setUserDetails(res?.data?.data?.user);
         setToken(res?.data?.token);
-        alert("SignUp Success");
-
+        successToast("Account is created successfully");
         setTimeout(() => {
           navigate(location.state.previousPath.pathname);
         }, 0);

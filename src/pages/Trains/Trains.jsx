@@ -51,7 +51,7 @@ const Trains = () => {
   const navigate = useNavigate();
 
   const  onSubmitForm = () => {
-    console.log("clicked");
+    // console.log("clicked");
     if(!source || !destination){
       errorToast("Please enter both Source and Destination");
       

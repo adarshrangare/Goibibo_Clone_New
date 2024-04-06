@@ -32,10 +32,10 @@ const Travellers = ({ value, handleValue }) => {
         <button
           className="close shadow-all text-center w-6 h-6 bg-white absolute -top-3 -right-3 rounded-full"
           onClick={() => {
-            console.log("clicked cross");
+            // console.log("clicked cross");
             setTimeout(() => {
               setShowMenu((prev) => {
-                console.log("click", prev);
+                // console.log("click", prev);
                 return false;
               });
             }, 0);

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import loginAPI from "../../apis/Login";
 import { PrimaryButton, Inputbox } from "../../components";
+import { errorToast, successToast } from "../../components/Toasts/toast";
 import { useAuth } from "../../context/AuthProvider";
 
 const LoginPage = () => {
@@ -62,12 +63,12 @@ const LoginPage = () => {
       (res) => {
         
         if(res?.data){
-          console.log("responseLoginApi",res?.data);
+          // console.log("responseLoginApi",res?.data);
 
           setUserDetails(res?.data?.data);
           setToken(res?.data?.token);
           setIsLoggedIn(true)
-        alert("success");
+        successToast("User is Logged In successfully");
         // console.log("login page",location.state.previousPath.pathname)
           
         setTimeout(()=>{

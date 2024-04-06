@@ -7,7 +7,7 @@ export const fetchAirports = async () => {
     // console.log(res?.data?.data?.airports);
     return res?.data?.data?.airports;
   } catch (error) {
-    console.error("There is Error", error);
+    // console.error("There is Error", error);
     throw error;
   }
 };

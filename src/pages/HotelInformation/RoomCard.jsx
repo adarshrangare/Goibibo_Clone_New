@@ -39,7 +39,7 @@ const RoomCard = ({ room, images }) => {
     navigate(query);
   }
   
-  console.log();
+ 
 
   return (
     <div className="RoomContainer bg-white border shadow-lg rounded-lg w-full p-2 my-4 flex flex-col md:flex-row md:w-9/12 mx-auto overflow-x-hidden">

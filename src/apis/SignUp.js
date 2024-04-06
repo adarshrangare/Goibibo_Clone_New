@@ -1,4 +1,5 @@
 "use strict";
+import { errorToast } from "../components/Toasts/toast";
 import AxiosInstance from "./axios-instance";
 
 const signUp = async (name, email, password) => {
@@ -11,9 +12,9 @@ const signUp = async (name, email, password) => {
     });
     return response;
   } catch (error) {
-    console.log("Something Went Wrong", error);
+    // console.log("Something Went Wrong", error);
 
-    alert("User is already Exist...")
+    errorToast("User is already Exist...")
   }
 };
 

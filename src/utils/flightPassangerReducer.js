@@ -4,7 +4,7 @@ export function reducerFunction(state, action) {
       return { ...state, destination_location: action.payload.value };
     }
     case "set_source_location": {
-      console.log("setting...");
+      // console.log("setting...");
       return { ...state, source_location: action.payload.value };
     }
     case "set_date_of_journey": {

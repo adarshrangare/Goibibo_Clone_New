@@ -4,9 +4,9 @@ import { SortLabel } from "../../../components";
 const SortSection = ({ results, setSortValue, total }) => {
   return (
     <div className="sort mb-2">
-      {results && (
+      {    (
         <span className="text-xs px-6 my-2 inline-block text-slate-400">
-          Showing {results} of {total}
+          { results ?  `Showing ${results} of ${total}` : "No Results Found" }
         </span>
       )}
 
@@ -19,7 +19,7 @@ const SortSection = ({ results, setSortValue, total }) => {
         }}
         allowClear={true}
         onChange={(value) => {
-          console.log(value);
+          // console.log(value);
           setSortValue(value);
         }}
         options={[

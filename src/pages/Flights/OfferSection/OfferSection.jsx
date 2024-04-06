@@ -12,7 +12,7 @@ const OfferSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("type:", type);
+    // console.log("type:", type);
     fetchOffers(type).then((res) => {
       setOffers(res);
       setLoading(false);

@@ -10,6 +10,7 @@ import {
   SwapButton,
   TravellersCount,
 } from "../../../components";
+import { errorToast } from "../../../components/Toasts/toast";
 import { useFlightPassanger } from "../../../context/";
 
 const SearchForm = () => {
@@ -32,9 +33,19 @@ const SearchForm = () => {
   const navigate = useNavigate();
   function handleSubmit(e) {
     const { adult, child, infant } = travel_details?.numbers;
+    if(source_location==""){
+      errorToast("Please Enter Source Location");
+      return;
+    }
+    if(destination_location==""){
+      errorToast("Please Enter Destination Location");
+      return;
+    }
+
+    
 
     if (source_location == destination_location) {
-      alert("Both airports are the same, Please Select Different Airports");
+      errorToast("Both airports are the same, Please Select Different Airports");
       return;
     }
 
@@ -108,14 +119,14 @@ const SearchForm = () => {
           />
         </div>
         <DatePicker
-          className=""
+          className="cursor-pointer"
           label="Departure"
           placeholder="Enter date of journey"
           id="date_of_journey"
           min={dayjs(Date.now()).format("YYYY-MM-DD")}
           inputValue={date_of_journey}
           handleInput={(value) => {
-            console.log("handleDate");
+            // console.log("handleDate");
             dispatchJourneyDetails({
               type: "set_date_of_journey",
               payload: { value },

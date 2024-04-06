@@ -14,6 +14,7 @@ import Gust_Room from "../components/Guest_Rooms";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { errorToast } from "../../../components/Toasts/toast";
 
 
 const SearchSection = () => {
@@ -22,7 +23,7 @@ const SearchSection = () => {
   const [checkOut, setCheckOut] = useState(dayjs(checkIn.add(1, "day")));
   const [night, setNight] = useState(checkOut.diff(checkIn, "day"));
 
-  console.log({checkIn})
+  // console.log({checkIn})
 
   const [roomData, setRoomData] = useState({
     numbers: {
@@ -70,12 +71,12 @@ const SearchSection = () => {
 
   function searchHotel(){
      if(location.trim().length ==0){
-      alert("Please Enter Valid Input");
+      errorToast("Please Enter Valid Input");
       return;
      }         
 
      let query = location.replaceAll(" ","+")+"&"+ JSON.stringify(checkIn) +"&"+ JSON.stringify(checkOut) +"&"+ JSON.stringify(roomData)+"&"+night;
-     console.log(query);
+    //  console.log(query);
 
      navigate(`/hotels/${query}`)
 

@@ -7,7 +7,7 @@ const InputArrays = ({trainProp}) => {
   
   const {source,destination,handleDestination,handleSource,handleSwap} = trainProp
 
-  console.log("render");
+  // console.log("render");
   
   return (
     <div className="flex inputArea flex-col md:flex-row items-center  md:px-4 gap-2">
