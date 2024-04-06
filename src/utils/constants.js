@@ -28,102 +28,102 @@ export const airlineData = {
 };
 
 export const cityData = {
-  "HYD": {
+  HYD: {
     name: "Rajiv Gandhi International Airport",
     city: "Hyderabad",
     country: "India",
   },
-  "AMD": {
+  AMD: {
     name: "Sardar Vallabhbhai Patel International Airport",
     city: "Ahmedabad",
     country: "India",
   },
-  "GOI": {
+  GOI: {
     name: "Goa International Airport",
     city: "Goa",
     country: "India",
   },
-  "PNQ": {
+  PNQ: {
     name: "Pune Airport",
     city: "Pune",
     country: "India",
   },
-  "GAU": {
+  GAU: {
     name: "Lokpriya Gopinath Bordoloi International Airport",
     city: "Guwahati",
     country: "India",
   },
-  "JAI": {
+  JAI: {
     name: "Jaipur International Airport",
     city: "Jaipur",
     country: "India",
   },
-  "NAG": {
+  NAG: {
     name: "Dr. Babasaheb Ambedkar International Airport",
     city: "Nagpur",
     country: "India",
   },
-  "DEL": {
+  DEL: {
     name: "Indira Gandhi International Airport",
     city: "Delhi",
     country: "India",
   },
-  "BOM": {
+  BOM: {
     name: "Chhatrapati Shivaji Maharaj International Airport",
     city: "Mumbai",
     country: "India",
   },
-  "BLR": {
+  BLR: {
     name: "Kempegowda International Airport",
     city: "Bengaluru",
     country: "India",
   },
-  "CCU": {
+  CCU: {
     name: "Netaji Subhas Chandra Bose International Airport",
     city: "Kolkata",
     country: "India",
   },
-  "MAA": {
+  MAA: {
     name: "Chennai International Airport",
     city: "Chennai",
     country: "India",
   },
-  "COK": {
+  COK: {
     name: "Cochin International Airport",
     city: "Kochi",
     country: "India",
   },
-  "IXC": {
+  IXC: {
     name: "Chandigarh International Airport",
     city: "Chandigarh",
     country: "India",
   },
-  "BBI": {
+  BBI: {
     name: "Biju Patnaik International Airport",
     city: "Bhubaneswar",
     country: "India",
   },
-  "CJB": {
+  CJB: {
     name: "Coimbatore International Airport",
     city: "Coimbatore",
     country: "India",
   },
-  "LKO": {
+  LKO: {
     name: "Lucknow International Airport",
     city: "Lucknow",
     country: "India",
   },
-  "TRV": {
+  TRV: {
     name: "Trivandrum International Airport",
     city: "Thiruvananthapuram",
     country: "India",
   },
-  "IXE": {
+  IXE: {
     name: "Mangalore International Airport",
     city: "Mangalore",
     country: "India",
   },
-  "ATQ": {
+  ATQ: {
     name: "Amritsar International Airport",
     city: "Amritsar",
     country: "India",
@@ -313,126 +313,163 @@ const airportData = [
   },
 ];
 
-
 export const trainStations = [
   "Delhi Junction",
-	"Salem Junction",
-	"Dhanbad Junction",
-	"Hubli Junction",
-	"Lucknow Charbhagh",
-	"Vijayawada Junction",
-	"Surat",
-	"Udaipur City",
-	"Thiruvananthapuram Central",
-	"Coimbatore Junction",
-	"Kanpur Central",
-	"Kharagpur Junction",
-	"Manmad Junction",
-	"Mughal Sarai Junction",
-	"Chandigarh",
-	"Gorakhpur Junction",
-	"Gwalior Junction",
-	"Ghaziabad Junction",
-	"Agra Cantonment",
-	"Allahabad Junction",
-	"Kiul Junction",
-	"Bhubaneshwar",
-	"Ambala Cantonment",
-	"Warangal",
-	"Bhusaval Junction",
-	"Howrah Junction",
-	"Thrissur",
-	"Yesvantpur Junction",
-	"Khurda Road Junction",
-	"Nagpur Junction",
-	"Ahmedabad Junction",
-	"Visakhapatnam Junction",
-	"Barddhaman Junction",
-	"Mysuru Junction",
-	"Bengaluru City Junction",
-	"Amritsar Junction",
-	"Kalyan Junction",
-	"Pune Junction",
-	"Raipur Junction",
-	"Erode Junction",
-	"New Delhi",
-	"Jhansi Junction",
-	"Jodhpur Junction",
-	"Varanasi Junction",
-	"Vadodara Junction",
-	"Asansol Junction",
-	"Katpadi Junction",
-	"Indore Junction",
-	"Itarsi Junction",
-	"Moradabad Junction",
-	"Anand Junction",
-	"Kollam Junction",
-	"Ludhiana Junction",
-	"Bengaluru Cantt.",
-	"Hazrat Nizamuddin",
-	"Mangalore Central",
-	"Bhopal Junction",
-	"Kota Junction",
-	"Secunderabad Junction",
-	"Nadiad Junction",
-	"Mathura Junction",
-	"Chennai Central",
-	"Vellore Katpadi",
-	"Patna Junction",
-	"Guwahati",
-	"Jaipur Junction",
-
-]
+  "Salem Junction",
+  "Dhanbad Junction",
+  "Hubli Junction",
+  "Lucknow Charbhagh",
+  "Vijayawada Junction",
+  "Surat",
+  "Udaipur City",
+  "Thiruvananthapuram Central",
+  "Coimbatore Junction",
+  "Kanpur Central",
+  "Kharagpur Junction",
+  "Manmad Junction",
+  "Mughal Sarai Junction",
+  "Chandigarh",
+  "Gorakhpur Junction",
+  "Gwalior Junction",
+  "Ghaziabad Junction",
+  "Agra Cantonment",
+  "Allahabad Junction",
+  "Kiul Junction",
+  "Bhubaneshwar",
+  "Ambala Cantonment",
+  "Warangal",
+  "Bhusaval Junction",
+  "Howrah Junction",
+  "Thrissur",
+  "Yesvantpur Junction",
+  "Khurda Road Junction",
+  "Nagpur Junction",
+  "Ahmedabad Junction",
+  "Visakhapatnam Junction",
+  "Barddhaman Junction",
+  "Mysuru Junction",
+  "Bengaluru City Junction",
+  "Amritsar Junction",
+  "Kalyan Junction",
+  "Pune Junction",
+  "Raipur Junction",
+  "Erode Junction",
+  "New Delhi",
+  "Jhansi Junction",
+  "Jodhpur Junction",
+  "Varanasi Junction",
+  "Vadodara Junction",
+  "Asansol Junction",
+  "Katpadi Junction",
+  "Indore Junction",
+  "Itarsi Junction",
+  "Moradabad Junction",
+  "Anand Junction",
+  "Kollam Junction",
+  "Ludhiana Junction",
+  "Bengaluru Cantt.",
+  "Hazrat Nizamuddin",
+  "Mangalore Central",
+  "Bhopal Junction",
+  "Kota Junction",
+  "Secunderabad Junction",
+  "Nadiad Junction",
+  "Mathura Junction",
+  "Chennai Central",
+  "Vellore Katpadi",
+  "Patna Junction",
+  "Guwahati",
+  "Jaipur Junction",
+];
 
 export const trainFeatures = [
   {
-    icon : "https://gos3.ibcdn.com/no_can_fee-1668596842.svg",
-    title : "No Cancellation Fee",
-    description :"You can opt for free cancellation & get full refund.",
-    link : {
-      alt : "Learn more about cancellation",
-      url : "https://www.goibibo.com/offers/free-train-cancellation/",
-    }
+    icon: "https://gos3.ibcdn.com/no_can_fee-1668596842.svg",
+    title: "No Cancellation Fee",
+    description: "You can opt for free cancellation & get full refund.",
+    link: {
+      alt: "Learn more about cancellation",
+      url: "https://www.goibibo.com/offers/free-train-cancellation/",
+    },
   },
   {
-    icon : "https://gos3.ibcdn.com/go_cnfrm-1668596688.svg",
-    title : "goConfirmed Trip",
-    description :"Guaranteed confirmed tickets or we give you 2x refund.",
-    link : {
-      alt : "Learn more about goConfirmed",
-      url : "https://www.goibibo.com/offers/go-confirmed-trip-2x/",
-    }
+    icon: "https://gos3.ibcdn.com/go_cnfrm-1668596688.svg",
+    title: "goConfirmed Trip",
+    description: "Guaranteed confirmed tickets or we give you 2x refund.",
+    link: {
+      alt: "Learn more about goConfirmed",
+      url: "https://www.goibibo.com/offers/go-confirmed-trip-2x/",
+    },
   },
   {
-    icon : "https://gos3.ibcdn.com/no_pg_fee_icon-1673341757.png",
-    title : "No PG Fee via UPI",
-    description :"Zero Payment Gateway Charges via UPI mode",
-    
+    icon: "https://gos3.ibcdn.com/no_pg_fee_icon-1673341757.png",
+    title: "No PG Fee via UPI",
+    description: "Zero Payment Gateway Charges via UPI mode",
   },
-
-]
+];
 
 export const daysObj = {
-  
-    'Mon': 'M',
-    'Tue': 'T',
-    'Wed': 'W',
-    'Thu': 'T',
-    'Fri': 'F',
-    'Sat': 'S',
-    'Sun': 'S'
-  
-}
+  Mon: "M",
+  Tue: "T",
+  Wed: "W",
+  Thu: "T",
+  Fri: "F",
+  Sat: "S",
+  Sun: "S",
+};
 
 export const trainPricing = {
+  "2S": 0.5,
+  CC: 0.7,
+  SL: 1,
+  EA: 1.2,
+  "3E": 1.5,
+  "3A": 2,
+  "2A": 2.5,
+  "1A": 3,
+};
 
-  "2S" : 0.5,
-  "CC" : 0.7,
-  "SL" : 1,
-  "EA" : 1.2,
-  "3E" : 1.5,
-  "3A" : 2,
-  "2A" : 2.5,
-  "1A" : 3,
+export const busStations = [
+  "Mumbai, Maharashtra",
+  "Delhi, National Capital Territory of Delhi",
+  "Bangalore, Karnataka",
+  "Kolkata, West Bengal",
+  "Chennai, Tamil Nadu",
+  "Hyderabad, Telangana",
+  "Pune, Maharashtra",
+  "Ahmedabad, Gujarat",
+  "Surat, Gujarat",
+  "Jaipur, Rajasthan",
+  "Lucknow, Uttar Pradesh",
+  "Kanpur, Uttar Pradesh",
+  "Nagpur, Maharashtra",
+  "Indore, Madhya Pradesh",
+  "Thane, Maharashtra",
+  "Bhopal, Madhya Pradesh",
+  "Visakhapatnam, Andhra Pradesh",
+  "Pimpri-Chinchwad, Maharashtra",
+  "Patna, Bihar",
+  "Vadodara, Gujarat",
+  "Ghaziabad, Uttar Pradesh",
+  "Ludhiana, Punjab",
+  "Agra, Uttar Pradesh",
+  "Nashik, Maharashtra",
+  "Faridabad, Haryana",
+  "Meerut, Uttar Pradesh",
+  "Rajkot, Gujarat",
+  "Kalyan-Dombivali, Maharashtra",
+  "Vasai-Virar, Maharashtra",
+  "Varanasi, Uttar Pradesh",
+  "Srinagar, Jammu and Kashmir",
+  "Dhanbad, Jharkhand",
+  "Jodhpur, Rajasthan",
+  "Amritsar, Punjab",
+  "Raipur, Chhattisgarh",
+  "Allahabad, Uttar Pradesh",
+  "Coimbatore, Tamil Nadu",
+  "Jabalpur, Madhya Pradesh",
+  "Gwalior, Madhya Pradesh",
+  "Vijayawada, Andhra Pradesh",
+];
 
-}
+

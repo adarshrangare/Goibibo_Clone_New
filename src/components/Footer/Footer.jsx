@@ -6,12 +6,14 @@ import "./style.css";
 
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import { Link } from "react-router-dom";
+import FooterContents from "./FooterContents";
 
 const Footer = () => {
   return (
     <footer className="text-gray-400 body-font mt-10 mb-[65px] lg:mb-0 bg-white py-8 shadow-even">
       <ContentWrapper>
-        <div className="flex flex-col px-10">
+        <FooterContents/>
+        <div className="flex flex-col  px-10">
           <div className="flex items-center justify-between flex-col md:flex-row ">
             <div className="media pb-4">
               <div className="font-medium text-lg text-slate-600">

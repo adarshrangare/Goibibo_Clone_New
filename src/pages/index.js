@@ -1,4 +1,3 @@
-
 import RootLayout from "./RootLayout";
 import Bus from "./Bus/Bus";
 import Flights from "./Flights/Flights";
@@ -18,24 +17,27 @@ import TrainSearch from "./TrainSearch/TrainSearch";
 import TrainBooking from "./BookingPage/TrainBooking";
 import Error404 from "./ErrorPage/Error404";
 import ComingSoon from "./ErrorPage/ComingSoon";
+import BusSearch from "./BusSearch/BusSearch";
 
-export {Bus,
-Trains,
-Profile,
-MyTrip,
-Hotels,
-Flights,
-FlightSearch,
-RootLayout,
-ProtectedRoute,
-HotelSearch,
-HotelInformation,
-HotelPayment,
-HotelBookingPage,
-FlightInformation,
-FlightBooking,
-TrainSearch,
-TrainBooking,
-Error404,
-ComingSoon
-}
+export {
+  Bus,
+  Trains,
+  Profile,
+  MyTrip,
+  Hotels,
+  Flights,
+  FlightSearch,
+  RootLayout,
+  ProtectedRoute,
+  HotelSearch,
+  HotelInformation,
+  HotelPayment,
+  HotelBookingPage,
+  FlightInformation,
+  FlightBooking,
+  TrainSearch,
+  TrainBooking,
+  BusSearch,
+  Error404,
+  ComingSoon,
+};
