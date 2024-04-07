@@ -1,16 +1,25 @@
+import { Modal } from "antd";
 import dayjs from "dayjs";
 import React from "react";
-import { BiBus, BiBusSchool, BiSolidBlanket } from "react-icons/bi";
-import { FaWifi, FaChargingStation } from "react-icons/fa";
+import { useRef } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { BiBus, BiBusSchool, BiLoader, BiSolidBlanket } from "react-icons/bi";
+import { FaWifi, FaChargingStation, FaSadTear } from "react-icons/fa";
 import { FaBottleWater } from "react-icons/fa6";
 import { GiFrenchFries } from "react-icons/gi";
+import { RiSteering2Fill } from "react-icons/ri";
 import {
   TbAirConditioning,
   TbAirConditioningDisabled,
   TbBus,
 } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
+import { OpenSeat } from "../../../assets/svgs";
+
 
 const BusCard = ({
+  _id,
   name,
   type,
   departureTime,
@@ -21,7 +30,10 @@ const BusCard = ({
   fare,
   amenities,
   available,
+  departureDate,
 }) => {
+  const [showSelectSeat, setShowSelectSeat] = useState(false);
+  const [count, setCount] = useState(0);
   const calculateTime = (ogTime) => {
     let [hrs, minutes] = ogTime.split(":");
 
@@ -66,6 +78,34 @@ const BusCard = ({
     }
   };
 
+  const tempArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  const handleCount = (type) => {
+    if (type == "add") {
+      if (count == 48) {
+        return;
+      } else {
+        setCount((prev) => prev + 1);
+      }
+    } else if (type == "remove") {
+      if (count == 0) {
+        return;
+      } else {
+        setCount((prev) => prev - 1);
+      }
+    }
+  };
+
+  const totalFare = (count > 0 ? count : 1) * fare;
+  const navigate = useNavigate();
+  const handleProceedPayment = (fare) => {
+      
+      navigate(`/bus/booking`, {
+        state: { busId: _id, fare, departureDate },
+      });
+    
+  };
+
   return (
     <div
       className={` w-full min-h-fit h-fit  px-2 md:px-4 py-3 flex flex-col bg-white rounded-md  transition-all border-white  hover:shadow-md border-2 hover:border-blue-600  gap-4`}
@@ -98,7 +138,7 @@ const BusCard = ({
           <span className="line-through text-sm">----</span>
           <span className="hidden line-through md:inline text-sm">-----</span>
           {/* <span className="inline-block h-2 w-2 bg-slate-400 rounded-full"></span> */}
-          <TbBus className="absolute left-full bottom-1" />
+          <TbBus className="absolute left-full top-1" />
         </div>
         <div className="departure flex flex-col md:flex-row items-center md:gap-2">
           <span className="font-medium">{calculateTime(arrivalTime)}</span>
@@ -117,8 +157,13 @@ const BusCard = ({
             ₹{fare}{" "}
           </span>
         </h1>
-        <button className="px-6 py-2 bg-orange-600 text-white rounded-full text-base font-semibold text-nowrap ">
-          Book Bus
+        <button
+          onClick={() => {
+            setShowSelectSeat((prev) => !prev);
+          }}
+          className="px-4 py-2 w-32 md:px-6 md:py-3 md:w-40 bg-orange-600 transition-all hover:bg-orange-700 active:bg-orange-700 text-white rounded-full text-base font-semibold text-nowrap "
+        >
+          {showSelectSeat ? "Hide Seats" : "Select Seats"}
         </button>
       </div>
 
@@ -139,6 +184,92 @@ const BusCard = ({
           "N/A"
         )}
       </div>
+
+      {
+        <div
+          className={`fifthRow selectSeats w-full transition-transform origin-top ${
+            showSelectSeat ? "scale-y-100" : "scale-y-0 h-0"
+          }`}
+        >
+          <div className="w-full gap-4 flex p-4 max-md:flex-col ">
+            <div className="departure max-md:w-full mx-auto border rounded-md">
+              <div className="px-4 py-2 rounded-t-md bg-blue-600 text-center font-medium text-white md:text-lg">
+                Boarding Point
+              </div>
+              <div className="time m-3 text-lg md:text-xl font-medium leading-3 ">
+                {departureTime}
+              </div>
+              <div className="source m-3 text-sm md:text-base leading-3">
+                {source}
+              </div>
+            </div>
+            <div className="arrival max-md:w-full mx-auto border rounded-md ">
+              <div className="px-4 py-2 rounded-t-md bg-blue-600 text-center font-medium text-white md:text-lg">
+                Dropping Point
+              </div>
+              <div className="time m-3 text-lg md:text-xl font-medium leading-3">
+                {arrivalTime}
+              </div>
+              <div className="source m-3 text-sm md:text-base leading-3">
+                {destination}
+              </div>
+            </div>
+            <div className="seatSelector w-full min-h-fit max-h-full border">
+              <h1 className="text-center p-2 text-lg h-[20%] font-semibold text-slate-800 ">
+                Select Your Seat
+              </h1>
+
+              <div className="bus w-[94%] border h-[160px] m-4 flex justify-between overflow-x-auto">
+                <div className="engine w-6 h-full bg-slate-200 relative max-md:hidden">
+                  <RiSteering2Fill className="absolute -rotate-90 top-4 left-1 text-slate-700 " />
+                </div>
+
+                <div
+                  className={
+                    "seating p-4 relative flex flex-col justify-between " + _id
+                  }
+                >
+                  <div className="leftSeats flex gap-2 ">
+                    {tempArr.map((item) => (
+                      <div key={item} className="space-y-2">
+                        <OpenSeat count={count} handleCount={handleCount} />{" "}
+                        <OpenSeat count={count} handleCount={handleCount} />{" "}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="rightSeats  flex gap-2 ">
+                    {tempArr.map((item) => (
+                      <div key={item} className="space-y-2">
+                        <OpenSeat count={count} handleCount={handleCount} />{" "}
+                        <OpenSeat count={count} handleCount={handleCount} />{" "}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full">
+            <h1 className="text-right mr-5 text-slate-800">
+              Total Fare :{" "}
+              <span className="font-semibold text-lg"> ₹{totalFare} </span>{" "}
+            </h1>
+          </div>
+
+          <div className="flex w-full justify-end my-2 ">
+            <button
+              onClick={() => {
+                handleProceedPayment(totalFare);
+              }}
+              className="bg-blue-500 px-6 py-2 mr-4 font-medium text-white text-lg rounded-full active:bg-blue-700 hover:bg-blue-700 hover:text-slate-100 active:text-slate-100  transition-all"
+            >
+              Proceed to Payment
+            </button>
+          </div>
+        </div>
+      }
     </div>
   );
 };

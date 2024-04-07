@@ -25,6 +25,7 @@ import {
   TrainBooking,
   Error404,
   BusSearch,
+  BusBooking,
 } from "./pages";
 import HotelInformation from "./pages/HotelInformation/HotelInformation";
 import LoginSignup from "./pages/Login_Signup/LoginSignup";
@@ -109,7 +110,15 @@ const router = createBrowserRouter(
         path="/bus/searchResults"
         element={
           <ProtectedRoute>
-            <BusSearch/>
+            <BusSearch />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/bus/booking"
+        element={
+          <ProtectedRoute>
+            <BusBooking />
           </ProtectedRoute>
         }
       />

@@ -30,7 +30,7 @@ const SearchArea = ({ busSearchData, setBusSearchData }) => {
 
     setBusSearchData(localInputData);
   };
-  console.log(busSearchData);
+  // console.log(busSearchData);
   return (
     <div className=" flex item-center md:flex-row flex-col md:gap-4 mx-auto ">
       <div className="locationInputs flex flex-col md:flex-row items-center ">
@@ -69,7 +69,7 @@ const SearchArea = ({ busSearchData, setBusSearchData }) => {
         <DateSelect
           className="h-12 bg-blue-700 border-none max-w-fit  text-white hover:bg-blue-700"
           labelClass=" hidden"
-          // value={localInputData?.departureDate}
+          value={localInputData?.departureDate}
           handleDepartureDate={(value) => {
             console.log("handleDepartureDate");
             setLocalInputData((prev) => {

@@ -61,30 +61,21 @@ const BusSearch = () => {
     setFilterChange(prev=>!prev);
     // console.log("handleFilter called")
 
-    if (type == "coachType") {
-      setFilter((prev) => {
-        // console.log("inside setFilter")
-        if(value.length > 0){
-          prev["coaches.coachType"] = value
-        } else{
-          delete prev["coaches.coachType"]
-        }
-        return prev;
-      });
-    }
+    
 
-    if (type == "trainType") {
+    if (type == "busType") {
       setFilter((prev) => {
         if(value.length > 0){
-          prev["trainType"] = value
+          prev["type"] = value
         } else{
-          delete prev["trainType"]
+          delete prev["type"]
         }
         return prev;
       });
     }
 
     if (type == "price") {
+      console.log(filter);
       setFilter((prev) => {
         if(value.length > 0){
           prev["fare"] = {"$gte": parseInt(value[0]),"$lte": parseInt(value[1])}

@@ -23,11 +23,10 @@ const FlightBooking = () => {
   const {adult,child,flightPrice,date} = encodedPrice; 
   // console.log(encodedPrice)
 
-  let journeyDate = dayjs(date)
-  journeyDate = JSON.stringify(journeyDate);
-  // console.log(journeyDate.slice(1,journeyDate.length-1))
-  journeyDate = journeyDate.slice(1,journeyDate.length-1);
-  
+  let journeyDate = dayjs(date);
+
+  journeyDate = journeyDate.format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+
   const priceDetails = {
     finalPrice : Math.round((flightPrice * (adult+child))*1.18) ,
     discountedPrice:flightPrice * (adult+child),

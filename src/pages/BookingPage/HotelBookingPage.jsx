@@ -17,9 +17,7 @@ const HotelBookingPage = () => {
   let priceDetails = encryptedPrice.slice(1);
   priceDetails = atob(priceDetails);
   priceDetails = JSON.parse(priceDetails);
-  // console.log(priceDetails);
 
-  // hotelSearchQuery = JSON.parse(hotelSearchQuery)
   roomDetails = roomDetails.replaceAll("+", " ");
   roomDetails = JSON.parse(roomDetails);
 
@@ -31,7 +29,7 @@ const HotelBookingPage = () => {
   checkOutQuery = JSON.parse(checkOutQuery);
   roomDataQuery = JSON.parse(roomDataQuery);
 
-  // console.log({ checkInQuery, checkOutQuery });
+  
 
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [paymentComplete, setPaymentComplete] = useState(false);

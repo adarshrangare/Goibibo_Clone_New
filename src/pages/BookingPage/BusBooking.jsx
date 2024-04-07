@@ -10,14 +10,15 @@ import CollapseWindow from "../HotelPayment/Collapser";
 import CreditCard from "./CreditCard";
 import UPI from "./UPI";
 
-const TrainBooking = () => {
+const BusBooking = () => {
   const location = useLocation();
 
-  let { fare, trainId, departureDate } = location.state;
+  let { fare, busId, departureDate } = location.state;
 
   let journeyDate = dayjs(departureDate);
 
   journeyDate = journeyDate.format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+
 
   const timerRef = useRef(null);
   const [paymentLoading, setPaymentLoading] = useState(false);
@@ -28,9 +29,9 @@ const TrainBooking = () => {
     setPaymentLoading(true);
     const token = JSON.parse(localStorage.getItem("token"));
     confirmBooking(
-      "train",
+      "bus",
       {
-        trainId: trainId,
+        busId: busId,
         startDate: journeyDate,
         endDate: journeyDate,
       },
@@ -87,9 +88,9 @@ const TrainBooking = () => {
                 </div>
               </div>
               <div className=" text-light basePrice flex justify-between gap-4 my-1">
-                <div className="tag text-left text-wrap">Train Fair</div>
+                <div className="tag text-left text-wrap">Bus Fair</div>
                 <div className="value text-right md:px-4">
-                  ₹{priceDetails?.discountedPrice}
+                  ₹{fare}
                 </div>
               </div>
               <div className=" text-light base flex justify-between gap-4 my-1 ">
@@ -132,4 +133,4 @@ const TrainBooking = () => {
   );
 };
 
-export default TrainBooking;
+export default BusBooking;

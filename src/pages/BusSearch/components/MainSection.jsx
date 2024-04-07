@@ -26,11 +26,11 @@ const MainSection = ({
             setShowFilter((prev) => !prev);
           }}
         >
-          <FilterTwoTone /> Filter Hotels
+          <FilterTwoTone /> Filter Buses
         </button>
         <div className="px-4 max-md:hidden">
           {" "}
-          <FilterTwoTone /> Filter Hotels
+          <FilterTwoTone /> Filter Buses
         </div>
 
         <div

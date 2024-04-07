@@ -18,6 +18,7 @@ import TrainBooking from "./BookingPage/TrainBooking";
 import Error404 from "./ErrorPage/Error404";
 import ComingSoon from "./ErrorPage/ComingSoon";
 import BusSearch from "./BusSearch/BusSearch";
+import BusBooking from "./BookingPage/BusBooking";
 
 export {
   Bus,
@@ -40,4 +41,5 @@ export {
   BusSearch,
   Error404,
   ComingSoon,
+  BusBooking,
 };
