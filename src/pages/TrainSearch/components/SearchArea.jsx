@@ -30,7 +30,7 @@ const SearchArea = ({ trainSearchData, setTrainSearchData }) => {
 
     setTrainSearchData(localInputData);
   };
-  console.log(trainSearchData);
+  // console.log(trainSearchData);
   return (
     <div className=" flex item-center md:flex-row flex-col md:gap-4 mx-auto ">
       <div className="locationInputs flex flex-col md:flex-row items-center ">
@@ -69,14 +69,14 @@ const SearchArea = ({ trainSearchData, setTrainSearchData }) => {
         <DateSelect
           className="h-12 bg-orange-600 border-none max-w-fit  text-white hover:bg-orange-600"
           labelClass=" hidden"
-          value={localInputData?.departureDate}
+          value={localInputData?.departureDate || dayjs()}
           handleDepartureDate = {
             (value)=>{
-              console.log("handleDepartureDate")
+              // console.log("handleDepartureDate")
               setLocalInputData(prev=>{
                 return {...prev, departureDate : value}
               })
-              console.log({localInputData});
+              // console.log({localInputData});
             }
           }
         />

@@ -6,6 +6,7 @@ import LocationInput from "../Hotels/components/LocationInput";
 import { useEffect } from "react";
 import Gust_Room from "../Hotels/components/Guest_Rooms";
 import { SearchButton } from "../../components";
+import { useNavigate } from "react-router-dom";
 const SearchArea = ({
   location,
   checkIn,
@@ -51,7 +52,26 @@ const SearchArea = ({
     setNight(checkOut.diff(checkIn, "day"));
   }, [checkIn, checkOut]);
 
-  function updateHotel() {}
+
+  const navigate = useNavigate();
+
+  function updateHotel() {
+
+    if(location.trim().length ==0){
+      errorToast("Please Enter Valid Input");
+      return;
+     }         
+
+    //  console.log({checkIn,checkOut})
+
+     let query = location.replaceAll(" ","+")+"&"+ JSON.stringify(checkIn) +"&"+ JSON.stringify(checkOut) +"&"+ JSON.stringify(roomData)+"&"+night;
+    //  console.log(query);
+    //  console.log("clicked");
+     navigate(`/hotels/${query}`)
+
+
+
+  }
 
   return (
     <div className="flex flex-col  md:w-10/12 px-4 ">
@@ -78,6 +98,7 @@ const SearchArea = ({
               }
               onChange={(value) => {
                 setCheckIn(value);
+                setCheckOut(value.add(1, "day"));
               }}
               allowClear={false}
               className="flex-1 w-11/12 relative rounded-lg m-3 focus:outline-none md:w-fit border-2 border-solid focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-1 px-4 md:py-2 md:px-4 border-slate-200 hover:border-slate-500
@@ -96,9 +117,9 @@ const SearchArea = ({
               locale={locale}
               format={"DD-MM-YYYY"}
               value={checkOut}
-              disabledDate={(current) =>
-                current && current < dayjs().startOf("day")
-              }
+              disabledDate={(current) => {
+                return current < checkOut;
+              }}
               onChange={(value) => {
                 setCheckOut(value);
               }}

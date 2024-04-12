@@ -77,7 +77,7 @@ const SearchSection = () => {
 
      let query = location.replaceAll(" ","+")+"&"+ JSON.stringify(checkIn) +"&"+ JSON.stringify(checkOut) +"&"+ JSON.stringify(roomData)+"&"+night;
     //  console.log(query);
-
+    //  console.log("clicked");
      navigate(`/hotels/${query}`)
 
 
@@ -110,6 +110,7 @@ const SearchSection = () => {
               }
               onChange={(value) => {
                 setCheckIn(value);
+                setCheckOut(value.add(1,'day'))
               }}
               className="flex-1 w-11/12 relative rounded-lg m-3 focus:outline-none  border-2 border-solid focus:border-[rgb(34,118,227)] font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 border-slate-200 hover:border-slate-500
                 "
@@ -128,9 +129,9 @@ const SearchSection = () => {
               locale={locale}
               format={"DD-MM-YYYY"}
               value={checkOut}
-              disabledDate={(current) =>
-                current && current < dayjs().startOf("day")
-              }
+              disabledDate={(current) => {
+                return current < checkOut;
+              }}
               onChange={(value) => {
                 setCheckOut(value);
               }}

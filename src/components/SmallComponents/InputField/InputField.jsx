@@ -105,13 +105,13 @@ const InputField = ({
                   alt="flight Icon"
                   className="p-2 w-10 h-10"
                 />
-                <p className="font-medium text-slate-700 ">
+                <div className="font-medium text-slate-700 ">
                   {airport?.city}, {airport?.country}{" "}
                   <span>({airport?.iata_code})</span>
                   <p className="font-normal text-xs text-slate-400 ">
                     {airport?.name}
                   </p>
-                </p>
+                </div>
               </li>
             ))
           ) : (

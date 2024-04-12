@@ -1,3 +1,5 @@
+import { Alert } from "antd";
+const {ErrorBoundary} = Alert;
 import React from "react";
 import {
   createBrowserRouter,
@@ -27,12 +29,14 @@ import {
   BusSearch,
   BusBooking,
 } from "./pages";
+import ErrorElement from "./pages/ErrorPage/ErrorElement";
+import TestPage from "./pages/ErrorPage/ErrorElement";
 import HotelInformation from "./pages/HotelInformation/HotelInformation";
 import LoginSignup from "./pages/Login_Signup/LoginSignup";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route path="/" element={ <RootLayout /> } errorElement={<ErrorElement/>}   >
       <Route index element={<Flights />} />
       <Route path="/flight" element={<Flights />} />
       <Route path="/flight/:searchQuery" element={<FlightSearch />} />
@@ -122,6 +126,7 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       />
+      <Route path="/testPage" element={<TestPage />} />
       <Route path="/login-signup" element={<LoginSignup />} />
       <Route path="/mysupport/trips" element={<MyTrip />} />
       <Route path="/profile" element={<Profile />} />

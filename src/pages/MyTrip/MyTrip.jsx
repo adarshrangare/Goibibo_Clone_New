@@ -1,8 +1,12 @@
 import React from 'react'
+import ComingSoon from '../ErrorPage/ComingSoon'
 
 const MyTrip = () => {
   return (
-    <div>MyTrip</div>
+    <div>
+<ComingSoon/>
+
+    </div>
   )
 }
 

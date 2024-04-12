@@ -19,7 +19,7 @@ import SearchSection from "./components/SearchSection";
 import { FilterTwoTone } from "@ant-design/icons";
 import "./style.css";
 import Filter from "./components/Filter";
-import { endOfDay } from "date-fns";
+
 import SortSection from "./components/SortSection";
 
 const FlightSearch = () => {

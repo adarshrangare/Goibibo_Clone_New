@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { errorToast } from "../../components/Toasts/toast";
 
-const CreditCard = () => {
+const CreditCard = ({finalPrice}) => {
   const [cardDetails, setCardDetails] = useState({
     number: null,
     expiry: "",
@@ -132,7 +132,7 @@ const CreditCard = () => {
         className="px-6 py-3 my-4 text-nowrap text-white bg-blue-600 rounded-md active:bg-blue-700 active:text-slate-50 transition-all "
         onClick={handleCard}
       >
-        Pay ₹{"1201"} Securly
+        Pay ₹{finalPrice} Securly
       </button>
     </div>
   );

@@ -4,8 +4,8 @@ import dayjs, { Dayjs, locale } from "dayjs";
 
 
 const DateSelect = ({value, handleDepartureDate,className, labelClass}) => {
-    
- 
+    // console.log("Date Select");
+  // console.log({date: dayjs(value)});
 
   return (
     <label className="date relative flex-1 hover:cursor-pointer ">
@@ -13,9 +13,9 @@ const DateSelect = ({value, handleDepartureDate,className, labelClass}) => {
       Departure
     </div>
     <DatePicker
-      locale={locale}
+      // locale={locale}
       format={"DD-MM-YYYY"}
-      value={dayjs(value)}
+      value={dayjs(value) || dayjs()}
       disabledDate={(current) =>
         current && current < dayjs().startOf("day")
       }

@@ -47,7 +47,7 @@ const BusCard = ({
   };
 
   const getDuration = (start, end) => {
-    console.log({ start, end });
+    // console.log({ start, end });
     const [startH, startMin] = start.split(":");
     const [endH, endMin] = end.split(":");
 
@@ -60,7 +60,7 @@ const BusCard = ({
 
     let diff = endDate - startDate;
     diff = Math.floor(diff / 1000 / 60 / 60);
-    console.log(diff);
+    // console.log(diff);
     return `${diff}hrs`;
   };
 
@@ -251,14 +251,14 @@ const BusCard = ({
             </div>
           </div>
 
-          <div className="w-full">
+          <div className="w-full select-none">
             <h1 className="text-right mr-5 text-slate-800">
               Total Fare :{" "}
               <span className="font-semibold text-lg"> ₹{totalFare} </span>{" "}
             </h1>
           </div>
 
-          <div className="flex w-full justify-end my-2 ">
+          <div className="flex w-full justify-end my-2 select-none ">
             <button
               onClick={() => {
                 handleProceedPayment(totalFare);

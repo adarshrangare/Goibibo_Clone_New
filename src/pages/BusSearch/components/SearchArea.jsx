@@ -71,11 +71,11 @@ const SearchArea = ({ busSearchData, setBusSearchData }) => {
           labelClass=" hidden"
           value={localInputData?.departureDate}
           handleDepartureDate={(value) => {
-            console.log("handleDepartureDate");
+            // console.log("handleDepartureDate");
             setLocalInputData((prev) => {
               return { ...prev, departureDate: value };
             });
-            console.log({ localInputData });
+            // console.log({ localInputData });
           }}
         />
       </div>

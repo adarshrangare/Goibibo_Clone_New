@@ -26,18 +26,15 @@ const TrainSearch = () => {
     departureDate,
   });
 
-  
-
   const [trainsList, setTrainsList] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(10);
-  
+
   const day = dayjs(Date(departureDate)).format("ddd");
   // console.log(day);
-  const [filterChange,setFilterChange]= useState(false);
+  const [filterChange, setFilterChange] = useState(false);
   useEffect(() => {
-   
     setIsLoading(true);
     fetchTrains(
       trainSearchData.source,
@@ -54,19 +51,19 @@ const TrainSearch = () => {
       setTotalResults(res?.totalResults);
     });
     // console.log("filter in TrainSearch", filter);
-  }, [trainSearchData, page, sort,filter,filterChange]);
+  }, [trainSearchData, page, sort, filter, filterChange]);
 
-  const handleFilter = (type,value) => {
-    setFilterChange(prev=>!prev);
+  const handleFilter = (type, value) => {
+    setFilterChange((prev) => !prev);
     // console.log("handleFilter called")
 
     if (type == "coachType") {
       setFilter((prev) => {
         // console.log("inside setFilter")
-        if(value.length > 0){
-          prev["coaches.coachType"] = value
-        } else{
-          delete prev["coaches.coachType"]
+        if (value.length > 0) {
+          prev["coaches.coachType"] = value;
+        } else {
+          delete prev["coaches.coachType"];
         }
         return prev;
       });
@@ -74,10 +71,10 @@ const TrainSearch = () => {
 
     if (type == "trainType") {
       setFilter((prev) => {
-        if(value.length > 0){
-          prev["trainType"] = value
-        } else{
-          delete prev["trainType"]
+        if (value.length > 0) {
+          prev["trainType"] = value;
+        } else {
+          delete prev["trainType"];
         }
         return prev;
       });
@@ -85,17 +82,15 @@ const TrainSearch = () => {
 
     if (type == "price") {
       setFilter((prev) => {
-        if(value.length > 0){
-          prev["fare"] = {"$gte": parseInt(value[0]),"$lte": parseInt(value[1])}
-        } 
+        if (value.length > 0) {
+          prev["fare"] = { $gte: parseInt(value[0]), $lte: parseInt(value[1]) };
+        }
         return prev;
       });
     }
-    
+
     setPage(1);
   };
-  
-
 
   return (
     <div id="container" className="mx-auto w-full">
@@ -116,8 +111,8 @@ const TrainSearch = () => {
         setPage={setPage}
         setSort={setSort}
         filter={filter}
-         setFilter = {setFilter}
-         handleFilter = {handleFilter}
+        setFilter={setFilter}
+        handleFilter={handleFilter}
         totalResults={totalResults}
         trainsList={trainsList}
         departureDate={departureDate}

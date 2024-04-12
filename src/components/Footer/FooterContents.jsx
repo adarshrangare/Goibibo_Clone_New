@@ -12,13 +12,13 @@ const FooterContents = () => {
 
     (async () => {
       const response = await AxiosInstance.get(`city?limit=40`);
-      console.log(response?.data?.data?.cities);
+      // console.log(response?.data?.data?.cities);
       setCities(response?.data?.data?.cities);
     })();
 
     (async () => {
       const response = await AxiosInstance.get(`airport?limit=40`);
-      console.log(response?.data?.data);
+      // console.log(response?.data?.data);
       setAirports(response?.data?.data?.airports);
     })();
   }, []);
@@ -29,8 +29,8 @@ const FooterContents = () => {
         <li className=" md:leading-3 leading-[0.4rem] font-bold">
           Top Hotels in Cities:
         </li>
-        {cities?.map((city) => (
-          <li key={city.cityState} className=" md:leading-3 leading-[0.4rem]  ">
+        {cities?.map((city,index) => (
+          <li key={city.cityState+index} className=" md:leading-3 leading-[0.4rem]  ">
             <span className="mx-1">|</span> {city.cityState}
           </li>
         ))}
@@ -41,8 +41,8 @@ const FooterContents = () => {
         <li className=" md:leading-3 leading-[0.4rem] font-bold">
           Top Flights in Cities:
         </li>
-        {airports?.map((airport) => (
-          <li key={""} className=" md:leading-3 leading-[0.4rem]  ">
+        {airports?.map((airport,index) => (
+          <li key={airport.city+index} className=" md:leading-3 leading-[0.4rem]  ">
             <span className="mx-1">|</span>{" "}
             {`${airport.city} to
             ${airports[Math.round(Math.random() * 29)]?.city}`}
@@ -54,8 +54,8 @@ const FooterContents = () => {
         <li className=" md:leading-3 leading-[0.4rem] font-bold">
           Top Trains from Junctions:
         </li>
-        {trainStations?.map((junction) => (
-          <li key={""} className=" md:leading-3 leading-[0.4rem]  ">
+        {trainStations?.map((junction,index) => (
+          <li key={junction+index} className=" md:leading-3 leading-[0.4rem]  ">
             <span className="mx-1">|</span>{" "}
             {`${junction} to
             ${
@@ -72,8 +72,8 @@ const FooterContents = () => {
         <li className=" md:leading-3 leading-[0.4rem] font-bold">
           Top Buses in Cities:
         </li>
-        {cities?.map((city) => (
-          <li key={city.cityState} className=" md:leading-3 leading-[0.4rem]  ">
+        {cities?.map((city,index) => (
+          <li key={city.cityState+index} className=" md:leading-3 leading-[0.4rem]  ">
             <span className="mx-1">|</span>{" "}
             {`${city?.cityState.split(" ")[0]} to
             ${

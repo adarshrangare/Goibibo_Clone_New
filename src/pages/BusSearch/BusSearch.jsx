@@ -49,7 +49,7 @@ const BusSearch = () => {
       10,
       page
     ).then((res) => {
-      console.log(res);
+      // console.log(res);
       setBusesList(res?.data?.buses);
       setIsLoading(false);
       setTotalResults(res?.totalResults);

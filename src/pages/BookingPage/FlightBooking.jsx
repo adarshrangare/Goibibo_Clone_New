@@ -126,7 +126,7 @@ const FlightBooking = () => {
               heading="Credit Card/Debit Card"
               textClass="font-normal p-1"
             >
-              <CreditCard handlePaymentAndBooking={handlePaymentAndBooking} />
+              <CreditCard handlePaymentAndBooking={handlePaymentAndBooking} finalPrice={priceDetails.finalPrice} />
             </CollapseWindow>
           </div>
         </div>
