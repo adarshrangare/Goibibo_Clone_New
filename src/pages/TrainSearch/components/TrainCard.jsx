@@ -57,6 +57,7 @@ const TrainCard = ({
           ) : (
             Object.keys(daysObj)?.map((day) => (
               <span
+              key={day}
                 className={`md:mx-1 mx-0.5  ${
                   daysOfOperation.includes(day)
                     ? "text-slate-600 md:font-medium"

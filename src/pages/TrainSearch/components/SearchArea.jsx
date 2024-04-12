@@ -2,6 +2,7 @@ import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { SwapButton } from "../../../components";
 import { errorToast } from "../../../components/Toasts/toast";
 import DateSelect from "../../Trains/components/DateSelect";
@@ -9,7 +10,7 @@ import InputArrays from "../../Trains/components/InputArrays";
 import StationInput from "../../Trains/components/StationInput";
 
 const SearchArea = ({ trainSearchData, setTrainSearchData }) => {
-//   console.log(trainSearchData.departureDate);
+  //   console.log(trainSearchData.departureDate);
   const [localInputData, setLocalInputData] = useState(trainSearchData);
   const [swap, setSwap] = useState(false);
 
@@ -21,7 +22,8 @@ const SearchArea = ({ trainSearchData, setTrainSearchData }) => {
       return prev;
     });
   }, [swap]);
-  
+
+  const navigate = useNavigate();
   const handleSubmit = () => {
     if (localInputData.source === localInputData.destination) {
       errorToast("FROM and TO can not be the same");
@@ -29,6 +31,16 @@ const SearchArea = ({ trainSearchData, setTrainSearchData }) => {
     }
 
     setTrainSearchData(localInputData);
+
+    const dateParam = dayjs(localInputData?.departureDate).format(
+      "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+    );
+
+    setTimeout(() => {
+      navigate(`/trains/searchResults/${dateParam}`, {
+        state: { ...trainSearchData },
+      });
+    }, 200);
   };
   // console.log(trainSearchData);
   return (
@@ -70,15 +82,13 @@ const SearchArea = ({ trainSearchData, setTrainSearchData }) => {
           className="h-12 bg-orange-600 border-none max-w-fit  text-white hover:bg-orange-600"
           labelClass=" hidden"
           value={localInputData?.departureDate || dayjs()}
-          handleDepartureDate = {
-            (value)=>{
-              // console.log("handleDepartureDate")
-              setLocalInputData(prev=>{
-                return {...prev, departureDate : value}
-              })
-              // console.log({localInputData});
-            }
-          }
+          handleDepartureDate={(value) => {
+            // console.log("handleDepartureDate")
+            setLocalInputData((prev) => {
+              return { ...prev, departureDate: value };
+            });
+            // console.log({localInputData});
+          }}
         />
       </div>
       <div className="submit flex max-md:mx-auto items-center justify-center ">

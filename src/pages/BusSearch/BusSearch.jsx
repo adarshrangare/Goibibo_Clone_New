@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ContentWrapper } from "../../components";
 import { FilterTwoTone } from "@ant-design/icons";
 import { Pagination } from "antd";
@@ -13,7 +13,9 @@ import { fetchBuses } from "../../apis/fetchBuses";
 const BusSearch = () => {
   const location = useLocation();
 
-  const { source, destination, departureDate } = location.state;
+  const { source, destination } = location.state;
+
+  const {departureDate} = useParams();
 
   // console.log({ source, destination, departureDate });
   const [sort, setSort] = useState({});
@@ -24,7 +26,7 @@ const BusSearch = () => {
   const [busSearchData, setBusSearchData] = useState({
     source,
     destination,
-    departureDate,
+    departureDate : dayjs(departureDate),
   });
 
   

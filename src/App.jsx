@@ -94,7 +94,7 @@ const router = createBrowserRouter(
 
       <Route path="/trains" element={<Trains />} />
       <Route
-        path="/trains/searchResults"
+        path="/trains/searchResults/:departureDate"
         element={
           <ProtectedRoute>
             <TrainSearch />
@@ -111,7 +111,7 @@ const router = createBrowserRouter(
       />
       <Route path="/bus" element={<Bus />} />
       <Route
-        path="/bus/searchResults"
+        path="/bus/searchResults/:departureDate"
         element={
           <ProtectedRoute>
             <BusSearch />

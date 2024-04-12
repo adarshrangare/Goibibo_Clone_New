@@ -10,11 +10,13 @@ const TrainContainer = ({ trainsList, departureDate, isLoading }) => {
     >
       {!isLoading
         ? trainsList?.map((train,index) => (
-            <TrainCard
-              key={train?._id +index}
-              {...train}
-              departureDate={departureDate}
-            />
+            
+              <TrainCard
+              key={train?._id}
+                {...train}
+                departureDate={departureDate}
+              />
+            
           ))
         : [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
             <Skeleton key={item} active className="border bg-white shadow-lg p-4 rounded-md min-h-40" />

@@ -58,19 +58,8 @@ const SortSection = ({ results, setSortValue, total }) => {
             label: (
               <SortLabel heading="Arrival Time" subheading="High to Low"/>
             ),
-          },
-          {
-            value: JSON.stringify({ travelDuration: 1 }),
-            label: (
-              <SortLabel heading="Duration" subheading="Low to High"/>
-            ),
-          },
-          {
-            value: JSON.stringify({ travelDuration: -1 }),
-            label: (
-              <SortLabel heading="Duration" subheading="High to Low"/>
-            ),
-          },
+          }
+          
         ]}
       />
     </div>

@@ -7,6 +7,7 @@ import { errorToast } from "../../../components/Toasts/toast";
 import DateSelect from "../../Bus/components/DateSelect";
 import InputArrays from "../../Bus/components/InputArrays";
 import BusStationInput from "../../Bus/components/BusStationInput";
+import { useNavigate } from "react-router-dom";
 
 const SearchArea = ({ busSearchData, setBusSearchData }) => {
   //   console.log(busSearchData.departureDate);
@@ -22,6 +23,7 @@ const SearchArea = ({ busSearchData, setBusSearchData }) => {
     });
   }, [swap]);
 
+  const navigate = useNavigate();
   const handleSubmit = () => {
     if (localInputData.source === localInputData.destination) {
       errorToast("FROM and TO can not be the same");
@@ -29,6 +31,14 @@ const SearchArea = ({ busSearchData, setBusSearchData }) => {
     }
 
     setBusSearchData(localInputData);
+
+    const dateParam = dayjs(localInputData?.departureDate).format(
+      "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+    );
+
+    setTimeout(() => {
+      navigate(`/bus/searchResults/${dateParam}`, { state: { ...busSearchData } });
+    }, 200);
   };
   // console.log(busSearchData);
   return (

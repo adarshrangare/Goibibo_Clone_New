@@ -110,9 +110,7 @@ const SearchArea = ({
             {night == 1 ? " Night" : " Nights"}
           </label>
           <div className="date relative ">
-            {/* <label className="font-medium rounded-md px-1 text-sm text-slate-500 z-[1] bg-white absolute left-7">
-              Check-out
-            </label> */}
+            
             <DatePicker
               locale={locale}
               format={"DD-MM-YYYY"}

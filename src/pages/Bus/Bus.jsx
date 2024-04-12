@@ -59,7 +59,10 @@ const Bus = () => {
       errorToast("Source and Destination cannot be the same. Please enter different Junction.");
     } else {
       
-      navigate(`searchResults`, { state: {source,destination,departureDate} });
+      const dateParam = dayjs(departureDate).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+      
+
+      navigate(`searchResults/${dateParam}`, { state: {source,destination,departureDate} });
     }
   }
 

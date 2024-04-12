@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchTrains } from "../../apis/fetchTrains";
 import { ContentWrapper } from "../../components";
 import { FilterTwoTone } from "@ant-design/icons";
@@ -12,7 +12,7 @@ import dayjs from "dayjs";
 const TrainSearch = () => {
   const location = useLocation();
 
-  const { source, destination, departureDate } = location.state;
+  const { source, destination } = location.state;
 
   // console.log({ source, destination, departureDate });
   const [sort, setSort] = useState({});
@@ -20,10 +20,13 @@ const TrainSearch = () => {
   const [fare, setFare] = useState({});
   const [filter, setFilter] = useState({});
 
+  const {departureDate} = useParams();
+  
+
   const [trainSearchData, setTrainSearchData] = useState({
     source,
     destination,
-    departureDate,
+    departureDate : dayjs(departureDate),
   });
 
   const [trainsList, setTrainsList] = useState(null);
