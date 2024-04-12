@@ -117,6 +117,7 @@ const SearchArea = ({
               locale={locale}
               format={"DD-MM-YYYY"}
               value={checkOut}
+              allowClear={false}
               disabledDate={(current) => {
                 return current < checkOut;
               }}

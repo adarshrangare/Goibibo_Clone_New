@@ -104,6 +104,7 @@ const SearchSection = () => {
             <DatePicker
               locale={locale}
               format={"DD-MM-YYYY"}
+              allowClear= {false}
               value={checkIn}
               disabledDate={(current) =>
                 current && current < dayjs().startOf("day")
@@ -129,6 +130,7 @@ const SearchSection = () => {
               locale={locale}
               format={"DD-MM-YYYY"}
               value={checkOut}
+              allowClear= {false}
               disabledDate={(current) => {
                 return current < checkOut;
               }}
