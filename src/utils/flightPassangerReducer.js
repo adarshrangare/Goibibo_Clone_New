@@ -1,4 +1,7 @@
 export function reducerFunction(state, action) {
+
+  console.log({state,action})
+
   switch (action.type) {
     case "set_destination_location": {
       return { ...state, destination_location: action.payload.value };

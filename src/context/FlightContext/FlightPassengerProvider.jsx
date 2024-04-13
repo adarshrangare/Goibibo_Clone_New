@@ -3,8 +3,6 @@ import React, { useReducer } from "react";
 import { createContext, useContext } from "react";
 // import { reducerFunction } from "../../utils/flightPassangerReducer";
 
-
-
 function reducerFunction(state, action) {
   switch (action.type) {
     case "set_destination_location": {
@@ -15,7 +13,6 @@ function reducerFunction(state, action) {
       return { ...state, source_location: action.payload.value };
     }
     case "set_date_of_journey": {
-        
       return { ...state, date_of_journey: action.payload.value };
     }
 
@@ -34,7 +31,7 @@ function reducerFunction(state, action) {
       const { numbers } = travel_details;
 
       if (action.secondType == "increase") {
-        numbers[action.target] += 1;
+        numbers[action.target] = numbers[action.target] * 1 + 1;
 
         travel_details.numbers = { ...numbers };
       } else if (action.secondType == "decrease") {
@@ -45,18 +42,20 @@ function reducerFunction(state, action) {
 
       return { ...state, travel_details };
     }
-    case "set_travel_details_numbers":{
-
-      return {...state, numbers : action.payload.value }
-
+    case "set_travel_details_numbers": {
+      return {
+        ...state,
+        travel_details: {
+          ...state.travel_details,
+          numbers: action.payload.value,
+        },
+      };
     }
 
     default:
       return state;
   }
 }
-
-
 
 const initialState = {
   source_location: "",
@@ -70,15 +69,12 @@ const initialState = {
     },
     class: "economy",
   },
-  date_of_journey: dayjs().format("YYYY-MM-DD") ,
+  date_of_journey: dayjs().format("YYYY-MM-DD"),
 };
 
 const FlightPassengerContext = createContext();
 
 const FlightPassengerProvider = ({ children }) => {
-
-  
-
   const [journeyDetails, dispatchJourneyDetails] = useReducer(
     reducerFunction,
     initialState
