@@ -93,7 +93,7 @@ const SearchArea = ({ trainSearchData, setTrainSearchData }) => {
       </div>
       <div className="submit flex max-md:mx-auto items-center justify-center ">
         <button
-          className="bg-blue-500 h-12 px-8 mx-4 max-md:mb-4 font-medium text-slate-100 rounded-full active:bg-blue-600 outline-none"
+          className="bg-blue-500 text-nowrap h-12 px-8 mx-4 max-md:mb-4 font-medium text-slate-100 rounded-full active:bg-blue-600 outline-none"
           onClick={handleSubmit}
         >
           UPDATE SEARCH

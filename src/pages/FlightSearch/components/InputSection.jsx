@@ -162,9 +162,9 @@ const InputSection = ({
       </div>
 
       <button
-        type={"UPDATE"}
+        
         onClick={handleSearch}
-        className="px-8 py-2 mt-1 bg-orange-500 w-fit mx-auto rounded-full font-medium text-base text-white hover:bg-orange-600 outline-none focus:outline-none absolute -bottom-6 left-[50%] translate-x-[-50%]  uppercase transition-all"
+        className="px-8 py-2 text-nowrap mt-1 bg-orange-500 w-fit mx-auto rounded-full font-medium text-base text-white hover:bg-orange-600 outline-none focus:outline-none absolute -bottom-6 left-[50%] translate-x-[-50%]  uppercase transition-all"
       >
         {" "}
         {pageLoad ? <LoadingOutlined /> : "UPDATE SEARCH"}
