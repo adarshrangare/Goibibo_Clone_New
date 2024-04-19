@@ -21,7 +21,7 @@ const BookingCard = ({ type }) => {
   }, []);
   const current = dayjs()
   return (
-    <div className={`border rounded-lg transition-all overflow-hidden ${current > dayjs(start_date) ? "border-green-300 " : " shadow-md hover:scale-[1.005] hover:shadow-xl"  }`}>
+    <div className={`shrink-0 min-h-fit border rounded-lg transition-all overflow-hidden ${current > dayjs(start_date) ? "border-green-300 " : " shadow-md hover:scale-[1.005] hover:shadow-xl"  }`}>
         <div
           className={` relative w-full min-h-fit h-fit  flex flex-col bg-white  rounded-lg  transition-all  gap-4 `}
         >

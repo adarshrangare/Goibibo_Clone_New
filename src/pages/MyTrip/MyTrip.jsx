@@ -18,17 +18,16 @@ const MyTrip = () => {
       .then((res) => {
         // console.log("in compo", res);
         setOgBookingList(res.data);
-        if(res.data){
-          setTimeout(()=>{
+        if (res.data) {
+          setTimeout(() => {
             setIsLoading(false);
-          },500)
+          }, 500);
         }
         setOgBookingList((prev) => {
           prev.sort((a, b) => dayjs(b.start_date) - dayjs(a.start_date));
-          
+
           return prev;
         });
-       
       })
       .catch((err) => {
         console.log(err);
@@ -43,15 +42,18 @@ const MyTrip = () => {
         <div className="absolute bg-sky-600 h-[500px] w-[500px] -bottom-[200px] -right-[100px] rounded-full rounded-ee-md -z-10"></div>
         <h1 className="font-semibold text-xl text-white my-2">Your Bookings</h1>
 
-        <div className="px-2 md:px-4 py-3 flex flex-col bg-white bg-opacity-75 text-slate-800 rounded-md  transition-all border-white  hover:shadow-md border-2  gap-4">
-          {!isLoading ? ogBookingList?.map((item) => (
-            <BookingCard key={item._id} type={item} />
-          )) :
-          [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Skeleton key={item} active className="border bg-white shadow-lg p-4 rounded-md min-h-40" />
-          ))
-          }
-          
+        <div className="max-h-screen px-2 md:px-4 py-3 flex flex-col bg-white bg-opacity-75 text-slate-800 rounded-md  transition-all    border-2  gap-4 overflow-y-scroll ">
+          {!isLoading
+            ? ogBookingList?.map((item) => (
+                <BookingCard key={item._id} type={item} />
+              ))
+            : [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                <Skeleton
+                  key={item}
+                  active
+                  className="border bg-white shadow-lg p-4 rounded-md min-h-40"
+                />
+              ))}
         </div>
       </ContentWrapper>
     </main>
