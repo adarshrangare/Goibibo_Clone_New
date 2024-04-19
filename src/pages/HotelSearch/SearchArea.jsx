@@ -117,7 +117,7 @@ const SearchArea = ({
               value={checkOut}
               allowClear={false}
               disabledDate={(current) => {
-                return current < checkOut;
+                return current < checkIn.add(1,'day');
               }}
               onChange={(value) => {
                 setCheckOut(value);

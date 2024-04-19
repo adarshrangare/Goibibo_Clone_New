@@ -1,8 +1,8 @@
 import { Rate } from "antd";
 import React from "react";
 
-const HotelCardDetail = ({ rating, name, amenities, location, houseRules }) => {
-  // const randomUserCount = Math.round(name.length*11  * rating).toString();
+const HotelCardDetail = ({ rating, name, amenities, location, houseRules}) => {
+  // const randomUserCount = Math.round(name.length*11 * rating).toString();
 
   return (
     <div className="details basis-[60%] py-2 border-r  flex flex-col items-start justify-between ">
@@ -16,7 +16,7 @@ const HotelCardDetail = ({ rating, name, amenities, location, houseRules }) => {
               disabled
               className="scale-75 -ml-4 md:ml-auto md:scale-[.85]  inline-block"
             />
-            <span className=" text-sm font-medium text-slate-300  border rounded-sm px-1">
+            <span className=" text-sm font-medium text-slate-300  rounded-sm px-1">
               HOTEL
             </span>
           </div>

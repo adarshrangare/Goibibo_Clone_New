@@ -1,3 +1,4 @@
+import { CloseCircleFilled, CloseCircleOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
 import dayjs from "dayjs";
 import React from "react";
@@ -146,8 +147,8 @@ const BusCard = ({
         </div>
       </div>
 
-      <div className="thirdRowCoaches w-full justify-between  items-center flex gap-8  mt-4 text-sm md:px-4 ">
-        <h1 className="bg-lime-200 text-lime-600 px-2 py-1 rounded-full md:font-medium  text-xs ">
+      <div className="thirdRowCoaches w-full  justify-between  items-center flex gap-8  mt-4 text-sm md:px-4 ">
+        <h1 className="bg-lime-200 shrink-0 text-lime-600 px-2 py-1 rounded-full md:font-medium  text-xs ">
           Seats Left : <span>{seats}</span>{" "}
         </h1>
         <h1 className="price text-sm flex items-center gap-1 text-gray-400">
@@ -181,7 +182,7 @@ const BusCard = ({
             ))}
           </div>
         ) : (
-          "N/A"
+          <span className="text-slate-700 space-x-1"><CloseCircleOutlined/> <span>Not included</span></span>
         )}
       </div>
 

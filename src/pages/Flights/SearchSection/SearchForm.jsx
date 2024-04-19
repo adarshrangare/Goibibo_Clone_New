@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
-import React, { useReducer, useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchAirports } from "../../../apis/FetchAirports";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   DatePicker,
   InputField,
@@ -33,19 +32,19 @@ const SearchForm = () => {
   const navigate = useNavigate();
   function handleSubmit(e) {
     const { adult, child, infant } = travel_details?.numbers;
-    if(source_location==""){
+    if (source_location == "") {
       errorToast("Please Enter Source Location");
       return;
     }
-    if(destination_location==""){
+    if (destination_location == "") {
       errorToast("Please Enter Destination Location");
       return;
     }
 
-    
-
     if (source_location == destination_location) {
-      errorToast("Both airports are the same, Please Select Different Airports");
+      errorToast(
+        "Both airports are the same, Please Select Different Airports"
+      );
       return;
     }
 

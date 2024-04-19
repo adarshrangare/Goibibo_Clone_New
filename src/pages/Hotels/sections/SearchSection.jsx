@@ -117,7 +117,7 @@ const SearchSection = () => {
                 "
             />
           </label>
-          <label className="px-2 py-1 w-fit h-fit self-center rounded-full text-blue-600 text-xs font-semibold bg-blue-100">
+          <label className="px-2 py-1 ml-2 shrink-0 text-nowrap w-fit h-fit self-center rounded-full text-blue-600 text-xs font-semibold bg-blue-100">
             {night}
             {night == 1 ? " Night" : " Nights"}
           </label>
@@ -132,7 +132,7 @@ const SearchSection = () => {
               value={checkOut}
               allowClear= {false}
               disabledDate={(current) => {
-                return current < checkOut;
+                return current < checkIn.add(1,'day');
               }}
               onChange={(value) => {
                 setCheckOut(value);
@@ -148,7 +148,7 @@ const SearchSection = () => {
         <SearchButton
           type={"Hotels"}
           handleSubmit={searchHotel}
-          className="px-12 py-4 rounded-full text-base md:text-lg font-semibold text-white bg-orange-500 w-fit self-center absolute bottom-[-25px] hover:bg-orange-600 "
+          className="px-8 py-3 md:px-12 md:py-4 rounded-full text-base md:text-lg font-semibold text-white bg-orange-500 w-fit self-center absolute bottom-[-25px] hover:bg-orange-600 "
         />
       </div>
     </>

@@ -43,7 +43,8 @@ const Inputbox = ({
       {label == "Password" && (
         <div
           className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 text-2xl text-slate-400 transition-all"
-          onClick={() => {
+          onClick={(e) => {
+            
             setShowPassword((prev) => !prev);
             inputRef.current.type = !showPassword ? "text" : "password";
           }}

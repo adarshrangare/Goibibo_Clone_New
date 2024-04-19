@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { ContentWrapper } from "../../../components";
 import SearchForm from "./SearchForm";
 const SearchSection = () => {
