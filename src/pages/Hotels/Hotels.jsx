@@ -8,7 +8,7 @@ import HotelOfferCard from "./components/HotelOfferCard";
 
 const Hotels = () => {
   return (
-    <main className="hotel">
+    <main>
       <div className="bgSvgHotel"></div>
       <ContentWrapper>
         <h1

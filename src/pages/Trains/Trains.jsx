@@ -72,7 +72,7 @@ const Trains = () => {
 
   
   return (
-    <main className="train">
+    <main >
       <div className="bgSvgTrain1"></div>
       <div className="bgSvgTrain2"></div>
       <ContentWrapper>
