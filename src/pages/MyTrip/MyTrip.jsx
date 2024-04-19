@@ -16,7 +16,7 @@ const MyTrip = () => {
     const jwtToken = JSON.parse(localStorage.getItem("token"));
     fetchBookings(jwtToken)
       .then((res) => {
-        console.log("in compo", res);
+        // console.log("in compo", res);
         setOgBookingList(res.data);
         if(res.data){
           setTimeout(()=>{
@@ -37,12 +37,13 @@ const MyTrip = () => {
   }, []);
 
   return (
-    <main className="relative w-11/12 mt-4 sm:w-10/12 md:w-8/12 mx-auto min-h-fit h-fit  ">
+    <main className=" w-11/12 mt-4 sm:w-10/12 md:w-7/12 mx-auto min-h-fit  ">
       <ContentWrapper>
         <div className="absolute bg-orange-600 h-[500px] w-[500px] -top-[200px] -left-[100px] rounded-full rounded-ss-md -z-10"></div>
+        <div className="absolute bg-sky-600 h-[500px] w-[500px] -bottom-[200px] -right-[100px] rounded-full rounded-ee-md -z-10"></div>
         <h1 className="font-semibold text-xl text-white my-2">Your Bookings</h1>
 
-        <div className="px-2 md:px-4 py-3 flex flex-col bg-white text-slate-800 rounded-md  transition-all border-white  hover:shadow-md border-2  gap-4">
+        <div className="px-2 md:px-4 py-3 flex flex-col bg-white bg-opacity-50 text-slate-800 rounded-md  transition-all border-white  hover:shadow-md border-2  gap-4">
           {!isLoading ? ogBookingList?.map((item) => (
             <BookingCard key={item._id} type={item} />
           )) :

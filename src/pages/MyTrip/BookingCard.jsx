@@ -21,13 +21,13 @@ const BookingCard = ({ type }) => {
   }, []);
   const current = dayjs()
   return (
-    <div className={`border rounded-lg ${current > dayjs(start_date) ? "border-green-300" : ""  }`}>
+    <div className={`border rounded-lg transition-all ${current > dayjs(start_date) ? "border-green-300 " : " shadow-md hover:scale-[1.005] hover:shadow-xl"  }`}>
         <div
-          className={` relative w-full min-h-fit h-fit  flex flex-col bg-white border rounded-lg  transition-all  gap-4 `}
+          className={` relative w-full min-h-fit h-fit  flex flex-col bg-white  rounded-lg  transition-all  gap-4 `}
         >
             { current > dayjs(start_date) && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md  text-green font-bold text-4xl bg-green-50  px-4 py-2   text-green-100 text-center w-full h-full"></div>}
           <div
-            className={`min-h-6 border-b grid gap-x-2  px-4 pt-2   overflow-auto ${current > dayjs(start_date) ? "opacity-40" : ""  } ${
+            className={`min-h-6 border-b grid gap-x-2  px-4 pt-2   overflow-auto ${current > dayjs(start_date) ? "opacity-20" : ""  } ${
               booking_type == "hotel"
                 ? "bg-amber-50"
                 : booking_type == "flight"
@@ -51,7 +51,7 @@ const BookingCard = ({ type }) => {
               {current > dayjs(start_date) ?  "Completed" : status}
             </span>
           </div>
-          <div className={`${current > dayjs(start_date) ? "opacity-40" : ""  }`}>
+          <div className={`${current > dayjs(start_date) ? "opacity-20" : ""  }`}>
             <h1 className="mx-4 mb-2 text-gray-400 text-nowrap text-sm">
               Booked On: {dayjs(created_at).format("ddd, DD-MMM-YYYY")}
             </h1>
@@ -68,7 +68,7 @@ const BookingCard = ({ type }) => {
                     </div>
                   </div>
                   <div className="dateOfJourney self-center">
-        
+                    <div className="max-md:hidden text-sm text-gray-400">Journey Date</div>
                     <div className="font-medium">{dayjs(start_date).format("ddd, DD-MMM-YYYY")}</div>
                   </div>
                   <div className="destination pb-2 border rounded-lg mb-2  ">
@@ -100,8 +100,8 @@ const BookingCard = ({ type }) => {
                     </div>
         
                   </div>
-                  <div className="dateOfJourney text-center self-center ">
-        
+                  <div className="location text-center self-center ">
+                  <div className="max-md:hidden text-sm text-gray-400">Location</div>
                     <div className="font-medium text-wrap">{type[booking_type].location}</div>
                   </div>
                   <div className="destination pb-2 border rounded-lg mb-2 text-sm md:text-base">
