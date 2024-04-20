@@ -9,8 +9,14 @@ import {
   useNavigation,
   useNavigationType,
 } from "react-router-dom";
+import { useAuth } from "../../context/AuthProvider";
 const LoginSignup = () => {
   const [displayComponent, setDisplayComponent] = useState("Log In");
+
+  const isLoggedIn = useAuth();
+
+  
+  
 
   return (
       <div className="container bg-white my-4 mx-auto md:max-w-[550px] border py-6 rounded-md shadow-sm">

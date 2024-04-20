@@ -10,6 +10,8 @@ const ProtectedRoute = ({ children }) => {
   // console.log({isLoggedIn});
   let location = useLocation();
 
+  
+
   // if(localStorage.getItem("token")){
 
   //   return (
