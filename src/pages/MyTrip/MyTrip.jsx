@@ -38,8 +38,8 @@ const MyTrip = () => {
   return (
     <main className=" w-11/12 mt-4 sm:w-10/12 md:w-7/12 mx-auto min-h-fit ">
       <ContentWrapper>
-        <div className="absolute bg-orange-600 h-[500px] w-[500px] -top-[200px] -left-[100px] rounded-full rounded-ss-md -z-10"></div>
-        <div className="absolute bg-sky-600 h-[500px] w-[500px] -bottom-[200px] -right-[100px] rounded-full rounded-ee-md -z-10"></div>
+        <div className="absolute bg-orange-600 h-[500px] w-[500px] -top-[200px] right-1/2 rounded-full rounded-ss-md -z-10"></div>
+        <div className="absolute bg-sky-600 h-[300px] w-[300px] -bottom-[200px] max-md:left-0 right-1/2 rounded-full rounded-ee-md -z-10"></div>
         <h1 className="font-semibold text-xl text-white my-2">Your Bookings</h1>
 
         <div className="max-h-screen px-2 md:px-4 py-3 flex flex-col bg-white bg-opacity-75 text-slate-800 rounded-md  transition-all    border-2  gap-4 overflow-y-scroll ">
