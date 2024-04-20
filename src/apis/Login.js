@@ -1,3 +1,4 @@
+import { errorToast } from "../components/Toasts/toast";
 import AxiosInstance from "./axios-instance";
 
 const login = async (email,password) => {
@@ -9,13 +10,18 @@ const login = async (email,password) => {
             password: password,
             appType: "bookingportals",
           });
+          
+          console.log("Error", response);
 
           return response;
           
     
     } catch (error) {
         
-        // console.error(error);
+        errorToast(error?.response?.data?.message);
+
+        // console.log(error);
+        console.error(error?.response?.data?.message);
         return error;
     }
 

@@ -20,6 +20,7 @@ import ComingSoon from "./ErrorPage/ComingSoon";
 import BusSearch from "./BusSearch/BusSearch";
 import BusBooking from "./BookingPage/BusBooking";
 
+
 export {
   Bus,
   Trains,

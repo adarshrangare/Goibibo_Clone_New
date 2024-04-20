@@ -1,3 +1,4 @@
+import { errorToast } from "../components/Toasts/toast";
 import AxiosInstance from "./axios-instance";
 
 
@@ -14,6 +15,7 @@ export const fetchBookings = async (jwtToken) => {
       return res?.data
     } catch (error) {
       // console.error("There is Error", error);
+      
       throw error;
     }
   };

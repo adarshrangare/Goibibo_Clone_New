@@ -1,5 +1,5 @@
 import { Alert } from "antd";
-const {ErrorBoundary} = Alert;
+const { ErrorBoundary } = Alert;
 import React from "react";
 import {
   createBrowserRouter,
@@ -36,7 +36,7 @@ import LoginSignup from "./pages/Login_Signup/LoginSignup";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={ <RootLayout /> } errorElement={<ErrorElement/>}   >
+    <Route path="/" element={<RootLayout />} errorElement={<ErrorElement />}>
       <Route index element={<Flights />} />
       <Route path="/flight" element={<Flights />} />
       <Route path="/flight/:searchQuery" element={<FlightSearch />} />
@@ -126,9 +126,18 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       />
-      <Route path="/testPage" element={<TestPage />} />
+
+      <Route
+        path="/mysupport/trips"
+        element={
+          <ProtectedRoute>
+            <MyTrip />
+          </ProtectedRoute>
+        }
+      />
+
       <Route path="/login-signup" element={<LoginSignup />} />
-      <Route path="/mysupport/trips" element={<MyTrip />} />
+
       <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<Error404 />} />
     </Route>

@@ -12,23 +12,17 @@ import {
 const LoginSignup = () => {
   const [displayComponent, setDisplayComponent] = useState("Log In");
 
-  // const navigate = useNavigate();
-  // const navigation = useNavigation();
-  const location = useLocation();
-  // console.log(location.state?.previousPath);
-  // console.log({navigate,navigation})
-
   return (
-    <div className="container my-2 mx-auto ">
-      <SignTabSwitcher
-        onTabChange={(tab, index) => {
-          setDisplayComponent(tab);
-        }}
-        tabs={["Log In", "Sign Up"]}
-      />
-
-      {displayComponent === "Log In" ? <LoginPage /> : <SignUpPage />}
-    </div>
+      <div className="container bg-white my-4 mx-auto md:max-w-[550px] border py-6 rounded-md shadow-sm">
+        <SignTabSwitcher
+          onTabChange={(tab, index) => {
+            setDisplayComponent(tab);
+          }}
+          tabs={["Log In", "Sign Up"]}
+        />
+        {displayComponent === "Log In" ? <LoginPage /> : <SignUpPage />}
+      </div>
+    
   );
 };
 

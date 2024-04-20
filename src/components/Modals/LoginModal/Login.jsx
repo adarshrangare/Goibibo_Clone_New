@@ -1,3 +1,4 @@
+import { CloseOutlined } from "@ant-design/icons";
 import React from "react";
 import { createPortal } from "react-dom";
 import LoginSignup from "../../../pages/Login_Signup/LoginSignup";
@@ -11,7 +12,7 @@ const Login = ({ toggleLoginModal ,children}) => {
       <div className="fixed mx-auto bottom-0 shadow-all w-full bg-white h-fit py-4 rounded-t-3xl z-50 transition-all duration-300 md:w-1/2  md:fixed md:p-4 md:text-center md:transform md:-translate-x-1/2 md:-translate-y-1/2  md:top-1/2 md:left-1/2 md:rounded-md md:shadow-xl z-12">
         {/* <button onClick={toggleLoginModal}></button> */}
 
-        <button className=" absolute top-[-25px] right-0 " onClick={toggleLoginModal}>X</button>
+        <button className=" absolute top-[5px] right-2 " onClick={toggleLoginModal}><CloseOutlined/></button>
         
         <LoginSignup/>
 

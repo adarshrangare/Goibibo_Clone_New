@@ -14,7 +14,8 @@ const signUp = async (name, email, password) => {
   } catch (error) {
     // console.log("Something Went Wrong", error);
 
-    errorToast("User is already Exist...")
+    // errorToast("User is already Exist...")
+    errorToast(error?.response?.data?.message);
   }
 };
 
