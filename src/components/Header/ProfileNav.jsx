@@ -9,7 +9,7 @@ import { IoMdLogOut } from "react-icons/io";
 const ProfileNav = () => {
   const { isLoggedIn, userDetail, loginOpen, setLoginOpen,logOutFunc } = useAuth();
 
-  // console.log(userDetail);
+  console.log(userDetail);
 
   function toggleLoginModal() {
     setLoginOpen((prev) => !prev);
@@ -23,7 +23,7 @@ const ProfileNav = () => {
         >
           <span className="logo-profile inline-block w-8 h-8 logo-nav mr-2"></span>
           <span className="text-blue-500 font-medium text-xs text-ellipsis text-center ">
-            Hey, {userDetail?.name.split(" ")[0] || "User"}
+            Hey, {userDetail?.user?.name?.split(" ")[0] || "User"}
           </span>
           <div onClick={logOutFunc} className="logout absolute top-0 left-0  z-10 flex justify-center font-medium items-center w-full h-full bg-white text-blue-500 "> <IoMdLogOut/>  Logout </div>
         </div>
