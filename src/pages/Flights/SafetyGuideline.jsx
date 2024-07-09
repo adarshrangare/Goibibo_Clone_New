@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const SafetyGuideline = () => {
   return (
@@ -8,13 +9,15 @@ const SafetyGuideline = () => {
         Read the latest domestic & international travel guidelines here before
         you travel. Stay safe, travel safe.
       </div>
-      <a
-        href="https://www.goibibo.com/info/gosafe/"
+      <span
+        onClick={(e)=>{
+          toast.info("Page is under construction. Sorry for Inconvenience")
+        }}
         target="_blank"
-        className="font-medium text-blue-600"
+        className="font-medium text-blue-600 cursor-pointer"
       >
         Read More
-      </a>
+      </span>
     </section>
   );
 };
