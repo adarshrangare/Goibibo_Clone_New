@@ -42,7 +42,7 @@ const MyTrip = () => {
         <div className="absolute bg-sky-600 h-[300px] w-[300px] -bottom-[200px] max-md:left-0 right-1/2 rounded-full rounded-ee-md -z-10"></div>
         <h1 className="font-semibold text-xl text-white my-2">Your Bookings</h1>
 
-        <div className="max-h-screen px-2 md:px-4 py-3 flex flex-col bg-white bg-opacity-75 text-slate-800 rounded-md  transition-all    border-2  gap-4 overflow-y-scroll ">
+        <div className="max-h-screen px-2 md:px-4 py-3 flex flex-col bg-white bg-opacity-60 backdrop-blur-sm text-slate-800 rounded-md  transition-all    border-2  gap-4 overflow-y-scroll ">
           {!isLoading
             ? ogBookingList?.map((item) => (
                 <BookingCard key={item._id} type={item} />
