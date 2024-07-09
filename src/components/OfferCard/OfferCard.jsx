@@ -1,4 +1,5 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 
 const OfferCard = ({lobDisplayText,newHeroOfferCardUrl,heroUrl,newHeroUrl ,hero,pTl,pTx}) => {
     
@@ -13,8 +14,12 @@ const OfferCard = ({lobDisplayText,newHeroOfferCardUrl,heroUrl,newHeroUrl ,hero,
                 <p className=' text-slate-500 text-wrap text-clip pt-1'>{pTx}</p>
             </div>
         </div>
-        <div className="w-full my-2 p-1 border-t-2 border-dotted font-medium text-lg text-blue-500 hover:bg-blue-100 transition-all duration-300">
-            <a href="https://www.goibibo.com/offers/">View Details</a>
+        <div className="w-full my-2 p-1 border-t-2 border-dotted font-medium text-lg text-blue-500 hover:bg-blue-100 transition-all duration-300" onClick={() => {
+                    toast.info(
+                      "Page is Under Construction \n Sorry for Inconvenience"
+                    );
+                  }}>
+            <span  >View Details</span>
         </div>
         
     </article>

@@ -7,15 +7,18 @@ import "./style.css";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import { Link } from "react-router-dom";
 import FooterContents from "./FooterContents";
+import TooltipComp from "../ToolTip/TooltipComp";
+import { toast } from "react-toastify";
+import { paymentModes } from "../../assets";
 
 const Footer = () => {
   return (
     <footer className="text-gray-400 body-font mt-10 mb-[65px] lg:mb-0 bg-white py-8 shadow-even">
       <ContentWrapper>
-        <FooterContents/>
+        <FooterContents />
         <div className="flex flex-col  px-10">
           <div className="flex items-center justify-between flex-col md:flex-row ">
-            <div className="media pb-4">
+            <div className="media pb-4 ">
               <div className="font-medium text-lg text-slate-600">
                 Follow Us
               </div>
@@ -52,20 +55,47 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+
+            <div className="appdownload">
+              <div className="font-bold text-sm text-slate-600 text-center">
+                Book Tickets faster. Download our mobile Apps
+              </div>
+              <div className="applinks flex gap-2 justify-center mt-1 ">
+                <span
+                  className=" playStoreIcon cursor-pointer"
+                  onClick={() => {
+                    toast.info(
+                      "App is Under Construction. Sorry for Inconvenience"
+                    );
+                  }}
+                ></span>
+
+                <span
+                  className="appStoreIcon cursor-pointer "
+                  onClick={() => {
+                    toast.info(
+                      "App is Under Construction. Sorry for Inconvenience"
+                    );
+                  }}
+                ></span>
+              </div>
+            </div>
+            <div className="payment max-md:mt-4">
+              <img src={paymentModes} alt="payment" width={300} className="max-w-sm  w-full min-w-64" />
+            </div>
           </div>
-          <div className="affiliation pt-6 mt-4 border-t ">
+          <div className="affiliation pt-6 mt-4 border-t max-md:text-center">
             <div className="font-medium text-lg mb-4 text-slate-600">
               Our Brands
             </div>
-            <div className="flex">
+            <div className="flex max-sm:justify-between ">
               <a
                 className="footer-logo mmt w-[98px] h-8 mr-[30px] grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all"
-                href="https://www.makemytrip.com/"
+                aria-disabled
                 target="_blank"
               ></a>
               <a
                 className="footer-logo redbus w-[65px] h-8 mr-[30px] grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all"
-                href="https://www.redbus.in/"
                 target="_blank"
               ></a>
             </div>

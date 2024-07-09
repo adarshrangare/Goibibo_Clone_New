@@ -6,3 +6,26 @@
   background: url(https://gos3.ibcdn.com/footer-sprite-1688459091.png) -56px -166px /
     300px 200px no-repeat;
 }
+
+.playStoreIcon {
+  width: 107px;
+  height: 38px;
+  margin-right: 10px;
+  display: block;
+  display: inline-flex;
+  flex-shrink: 0;
+  background: url(https://gos3.ibcdn.com/footer-sprite-1688459091.png) 0% 0% /
+    300px 200px no-repeat;
+  background-position: 0px -1px;
+}
+
+.appStoreIcon {
+  width: 106px;
+  height: 37px;
+  margin-right: 10px;
+  display: inline-flex;
+  flex-shrink: 0;
+  background: url(https://gos3.ibcdn.com/footer-sprite-1688459091.png) 0% 0% /
+    300px 200px no-repeat;
+  background-position: -107px -1px;
+}

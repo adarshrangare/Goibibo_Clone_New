@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { errorToast } from "../../components/Toasts/toast";
 
-const CreditCard = ({finalPrice}) => {
+const CreditCard = ({ finalPrice,handlePaymentAndBooking }) => {
   const [cardDetails, setCardDetails] = useState({
     number: null,
     expiry: "",
@@ -47,6 +47,9 @@ const CreditCard = ({finalPrice}) => {
 
     setTimeout(() => {
       // console.log("setTimeout");
+
+      handlePaymentAndBooking();
+
       setCardDetails((prev) => {
         return {
           number: null,
@@ -65,23 +68,27 @@ const CreditCard = ({finalPrice}) => {
         <Input
           size="small"
           placeholder="Enter Card Number"
-          className="h-fit p-2 "
+          className="h-fit p-2"
           value={cardDetails.number}
           allowClear={true}
           maxLength={19}
           onChange={(e) => {
-            setCardDetails((prev) => {
-              return { ...prev, number: e.target.value };
-            });
-            if (
-              cardDetails.number.length == 4 ||
-              cardDetails.number.length == 9 ||
-              cardDetails.number.length == 14
-            ) {
-              setCardDetails((prev) => {
-                return { ...prev, number: cardDetails.number + " " };
-              });
+            let value = e.target.value.replace(/\D/g, ""); // Remove all non-numeric characters
+            let formattedValue = "";
+
+            // Add spaces after every 4 digits
+            for (let i = 0; i < value.length; i += 4) {
+              if (i + 4 < value.length) {
+                formattedValue += value.substr(i, 4) + " ";
+              } else {
+                formattedValue += value.substr(i);
+              }
             }
+
+            // Update the state
+            setCardDetails((prev) => {
+              return { ...prev, number: formattedValue };
+            });
           }}
           prefix={<CreditCardFilled className="px-1 text-slate-500" />}
         />
@@ -89,21 +96,34 @@ const CreditCard = ({finalPrice}) => {
           <Input
             size="small"
             placeholder="MM/YYYY"
-            className="h-fit p-2 "
+            className="h-fit p-2"
             maxLength={7}
             value={cardDetails.expiry}
             allowClear={true}
+            pattern="\d{2}/\d{4}"
+            inputMode="numeric"
             onChange={(e) => {
-              if (e.target.value.length == 2) {
-                e.target.value += "/";
+              let value = e.target.value;
+
+              // Automatically add '/' after entering the month
+              if (value.length === 2 && cardDetails.expiry.length === 3) {
+                value = value[0]; // Remove the slash if user is backspacing
+              } else if (value.length === 2 && !value.includes("/")) {
+                // Automatically add '/' after entering the month
+                value += "/";
               }
 
+              // Slice value to ensure it fits the 'MM/YYYY' format
+              value = value.slice(0, 7);
+
+              // Update the state
               setCardDetails((prev) => {
-                return { ...prev, expiry: e.target.value.slice(0, 7) };
+                return { ...prev, expiry: value };
               });
             }}
             prefix={<CalendarFilled className="px-1 text-slate-500" />}
           />
+
           <Input.Password
             size="small"
             placeholder="CVV/CVC2"
